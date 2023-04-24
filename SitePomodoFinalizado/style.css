@@ -1,0 +1,875 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@300;400;500;600;700&family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+
+}
+
+body {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    background: #EDFFF1;
+    overflow-x: hidden;
+}
+
+.header {
+    position: absolute;
+    width: 1440px;
+    height: 118px;
+    left: 0px;
+    top: 14px;
+}
+
+.header a {
+    text-decoration: none;
+    color: #446381;
+}
+
+.logo {
+    width: 153px;
+    background: url(logo_projeto.png);
+}
+
+.navbarLogo {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    left: -2px;
+    top: 0px;
+    list-style: none;
+    align-items: center;
+    padding: 0px;
+    font-size: 20px;
+    font-weight: 1000;
+    gap: 83px;
+
+    position: absolute;
+    width: 967px;
+    height: 118px;
+}
+
+
+.btnEntrar {
+    position: absolute;
+    width: 194px;
+    height: 50px;
+    left: 1250px;
+    top: 34px;
+    list-style: none;
+}
+
+.entrar {
+    position: absolute;
+    right: 7.78%;
+    top: 26%;
+    bottom: 28%;
+    font-family: 'Josefin Sans';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 24px;
+    text-align: center;
+    color: #FFFFFF;
+    left: 10.56%;
+}
+
+.retanguloEntrar {
+    position: absolute;
+    left: 0%;
+    right: 0%;
+    top: 0%;
+    bottom: 0%;
+    background: linear-gradient(94.66deg, #D94444 17.46%, #BE6767 87.77%);
+    border-radius: 25px;
+}
+
+
+.btnSealSolution {
+    position: absolute;
+    width: 194px;
+    height: 50px;
+    left: 1000px;
+    top: 34px;
+    list-style: none;
+}
+
+.retanguloSealSolution {
+    position: absolute;
+    left: 0%;
+    right: 0%;
+    top: 0%;
+    bottom: 0%;
+
+    background: linear-gradient(94.66deg, #D94444 17.46%, #BE6767 87.77%);
+    border-radius: 25px;
+}
+
+.BtnSealSolution {
+    position: absolute;
+    left: 10.56%;
+    right: 7.78%;
+    top: 26%;
+    bottom: 28%;
+    font-family: 'Josefin Sans';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 24px;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+.bannerText {
+    position: absolute;
+    width: 1488px;
+    height: 540.8px;
+    left: -8px;
+    top: 224px;
+    list-style: none;
+}
+
+.SealSolution {
+    position: absolute;
+    width: 196.18px;
+    height: 24px;
+    left: 139.96px;
+    font-family: 'Josefin Sans';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 23px;
+    line-height: 24px;
+    /* identical to box height, or 104% */
+
+
+    color: #446381;
+}
+
+.SubTituloVermelho {
+    position: absolute;
+    width: 569.01px;
+    height: 144px;
+    left: 139.96px;
+    top: 60px;
+
+    font-family: 'Cormorant SC';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 50px;
+    line-height: 75px;
+    /* or 150% */
+
+
+    color: #EB8382;
+}
+
+.texto1 {
+    position: absolute;
+    width: 532.04px;
+    height: 87px;
+    left: 139.96px;
+    top: 230px;
+
+    font-family: 'Josefin Sans';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 29px;
+
+    color: #826F8C;
+}
+
+.btnCadastrar {
+    position: absolute;
+    width: 212px;
+    height: 50px;
+    left: 0px;
+    list-style: none;
+    top: -210px;
+}
+
+.cadastrar {
+    position: absolute;
+    width: 126.33px;
+    height: 24px;
+    left: 181.04px;
+    top: 635px;
+
+    font-family: 'Josefin Sans';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 24px;
+
+    text-align: center;
+    color: #FFFFFF;
+}
+
+.retanguloCadastrar {
+    position: absolute;
+    width: 212.61px;
+    height: 50px;
+    left: 139.96px;
+    top: 622px;
+
+    background: linear-gradient(92.81deg, #D94444 11.62%, #C16C6C 75.39%);
+    border-radius: 25px;
+}
+
+
+.tomatePrincipal {
+    position: absolute;
+    width: 390px;
+    left: 868px;
+    right: 74px;
+    top: 300px;
+    bottom: 87.53%;
+}
+
+
+.circulo {
+    left: 790.45px;
+    height: 555.83px;
+    right: 74px;
+    top: 180px;
+    bottom: 87.53%;
+    border-radius: 100%;
+    background: #4E8FD3;
+    opacity: 0.3;
+    position: absolute;
+}
+
+.arrow {
+    position: absolute;
+    width: 142px;
+    left: 340px;
+    top: 237px;
+
+    filter: drop-shadow(0px 10px 20px rgba(68, 68, 68, 0.4));
+}
+
+.cross {
+    position: absolute;
+    left: 0.33%;
+    right: 65.05%;
+    top: 9.45%;
+    bottom: 76.83%;
+}
+
+.Dots {
+    position: absolute;
+    width: 120px;
+    left: 1250px;
+    top: 420px;
+}
+
+.BoxTomateValor {
+    position: absolute;
+    top: 25px;
+    left: 87px;
+    z-index: 2;
+    width: 104.54px;
+    height: 95px;
+    list-style: none;
+}
+
+.TextoTomate {
+    position: absolute;
+    width: 300px;
+    left: 1250px;
+    top: 620px;
+    font-family: 'Josefin Sans';
+    font-style: normal;
+    font-weight: 650;
+    font-size: 12px;
+    line-height: 12px;
+
+    color: #446381;
+}
+
+.TextoValor {
+
+    position: absolute;
+    width: 74.98px;
+    height: 12px;
+    left: 1320.55px;
+    top: 650px;
+    font-family: 'Josefin Sans';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 10px;
+
+    color: #EB8382;
+}
+
+.retanguloValorTomate {
+    position: absolute;
+    width: 235px;
+    height: 95px;
+    left: 1150px;
+    top: 600px;
+    background: #FFFFFF;
+    opacity: 0.4;
+    border-radius: 10px;
+    filter: drop-shadow(0px 13px 15px rgba(235, 131, 130, 0.4));
+}
+
+.tomateImg {
+    position: absolute;
+    height: 67px;
+    left: 1250px;
+    top: 640px;
+    width: 70px;
+    z-index: 3;
+}
+
+.VetorDiagrama {
+    position: absolute;
+    width: 340px;
+    left: 260px;
+    top: 1332px;
+}
+
+.VetorDiagrama2 {
+    position: absolute;
+    width: 570px;
+    left: 140px;
+    top: 958px;
+}
+
+.diagrama {
+    position: absolute;
+    width: 1251px;
+    left: -200px;
+    top: 922px;
+}
+
+.SobreNos {
+    position: absolute;
+    top: 1020.39px;
+    left: 875px;
+    font-family: 'Josefin Sans';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 23px;
+    line-height: 24px;
+    list-style: none;
+    color: #446381;
+}
+
+.ComoFuncionaTEXTO {
+    list-style: none;
+    position: absolute;
+    width: 586px;
+    height: 143.47px;
+    left: 873.69px;
+    top: 1087.44px;
+
+    font-family: 'Josefin Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 50px;
+    line-height: 75px;
+
+    color: #EB8382;
+}
+
+.Texto3 {
+    list-style: none;
+    position: absolute;
+    width: 518px;
+    height: 115.58px;
+    left: 875.69px;
+    top: 1255.82px;
+
+    font-family: 'Josefin Sans';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 29px;
+    list-style: none;
+
+    color: #826F8C;
+}
+
+.Btn3 {
+    position: absolute;
+    width: 207px;
+    height: 49.82px;
+    left: 69.69px;
+    top: 34px;
+}
+
+.retanguloBtn3 {
+    position: absolute;
+    width: 207px;
+    height: 68.82px;
+    left: 803.69px;
+    top: 1365.29px;
+
+    background: linear-gradient(92.81deg, #D94444 11.62%, #C16C6C 75.39%);
+    border-radius: 25px;
+}
+
+.TextoBtn3 {
+    position: absolute;
+    width: 140px;
+    height: 23.91px;
+    left: 834.69px;
+    top: 1378.24px;
+
+    font-family: 'Josefin Sans';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 24px;
+    /* identical to box height, or 133% */
+
+    text-align: center;
+
+    color: #FFFFFF;
+}
+
+.Descricao4 {
+    list-style: none;
+    position: absolute;
+    width: 190px;
+    height: 24px;
+    left: 140.31px;
+    top: 1715.75px;
+
+    font-family: 'Josefin Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 23px;
+    line-height: 24px;
+
+    color: #446381;
+}
+
+.SubTitulo4 {
+    list-style: none;
+    position: absolute;
+    width: 529px;
+    height: 144px;
+    left: 141px;
+    top: 1770px;
+
+    font-family: 'Josefin Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 68px;
+    line-height: 75px;
+
+    color: #EB8382;
+
+}
+
+.Texto4 {
+    list-style: none;
+    position: absolute;
+    width: 518px;
+    height: 116px;
+    left: 141px;
+    top: 1939px;
+
+    font-family: 'Josefin Sans';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 29px;
+
+    color: #826F8C;
+}
+
+.Btn4 {
+    position: absolute;
+    width: 207px;
+    height: 50px;
+    left: -4px;
+
+}
+
+.retanguloBtn4 {
+    position: absolute;
+    width: 207px;
+    height: 50px;
+    left: 144px;
+    top: 2084px;
+
+    background: linear-gradient(92.81deg, #D94444 11.62%, #C16C6C 75.39%);
+    border-radius: 25px;
+}
+
+.TextoBtn4 {
+    position: absolute;
+    width: 140px;
+    height: 24px;
+    left: 175px;
+    top: 2097px;
+
+    font-family: 'Josefin Sans';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 24px;
+
+    text-align: center;
+
+    color: #FFFFFF;
+}
+
+.imgTexto4 {
+    position: absolute;
+    left: 56%;
+    top: 220%;
+    bottom: 32.48%;
+}
+
+.FinalBox {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+
+    position: absolute;
+    width: 1445px;
+    height: 774px;
+    left: -4px;
+    top: 2108px;
+
+}
+
+.NossosPrecos {
+
+    width: 228.75px;
+    height: 24px;
+
+    font-family: 'Josefin Sans';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 23px;
+    line-height: 24px;
+
+    text-align: center;
+    color: #446381;
+}
+
+.EscolhaPlano {
+    width: 1445px;
+    height: 144px;
+
+    font-family: 'Josefin Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 68px;
+    line-height: 75px;
+    text-align: center;
+
+    color: #EB8382;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+.Autonomo {
+    position: absolute;
+    width: 188px;
+    height: 35px;
+    left: 317px;
+    top: 2680px;
+
+    font-family: 'Josefin Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 28px;
+
+    color: #FFFFFF;
+}
+
+.Empresa {
+    position: absolute;
+    width: 188px;
+    height: 35px;
+    left: 827px;
+    top: 2680px;
+
+    font-family: 'Josefin Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 28px;
+
+    color: #446381;
+    ;
+}
+
+.RetanguloAutonomo {
+    position: absolute;
+    width: 411.17px;
+    height: 606px;
+    left: 250px;
+    top: 2630px;
+
+    background: #09143C;
+    border-radius: 20px;
+}
+
+.RetanguloAutonomo2 {
+    position: absolute;
+    width: 411.17px;
+    height: 606px;
+    left: 250px;
+    top: 2630px;
+
+    background: linear-gradient(180deg, #815344 0%, #826F8C 100%);
+    border-radius: 20px;
+}
+
+.RetanguloEmpresa {
+    position: absolute;
+    width: 411.17px;
+    height: 560px;
+    left: 750px;
+    top: 2647px;
+
+    background: #FBDACF;
+    box-shadow: 0px 20px 50px rgba(132, 148, 205, 0.08);
+    border-radius: 20px;
+}
+
+.imgVerificado {
+    position: absolute;
+    width: 55.69px;
+    left: 580.46px;
+    top: 2656.62px;
+}
+
+
+.topicosPreco {
+    position: absolute;
+    width: 183px;
+    height: 231px;
+    left: 318px;
+    top: 2830px;
+
+    font-family: 'Josefin Sans';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 25px;
+
+    color: #FFFFFF;
+}
+
+.btnPrecoAutonomo {
+    position: absolute;
+    width: 305.38px;
+    height: 50px;
+    left: 56.04px;
+    top: 489px;
+
+}
+
+.BtnVermelho {
+    position: absolute;
+    width: 305.38px;
+    height: 50px;
+    left: 242.04px;
+    top: 2632px;
+
+    background: linear-gradient(92.81deg, #D94444 11.62%, #C16C6C 75.39%);
+    border-radius: 25px;
+}
+
+.BtnVermelhoEmpresa {
+    position: absolute;
+    width: 305.38px;
+    height: 50px;
+    left: 799.04px;
+    top: 3120px;
+
+    background: linear-gradient(92.81deg, #D94444 11.62%, #C16C6C 75.39%);
+    border-radius: 25px;
+}
+
+.BtnPlano1 {
+    position: absolute;
+    width: 148.69px;
+    height: 24px;
+    left: 375px;
+    top: 3133px;
+
+    font-family: 'Josefin Sans';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 24px;
+
+    text-align: center;
+
+    color: #ffffff;
+}
+
+.BtnPlano2 {
+    position: absolute;
+    width: 148.69px;
+    height: 24px;
+    left: 877px;
+    top: 3133px;
+
+    font-family: 'Josefin Sans';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 24px;
+
+    text-align: center;
+
+    color: #ffffff;
+}
+
+.topicosPreco2 {
+    position: absolute;
+    width: 183px;
+    height: 231px;
+    left: 825px;
+    top: 2830px;
+
+    font-family: 'Josefin Sans';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 25px;
+
+    color: #826F8C
+}
+
+.valorAutonomo {
+    position: absolute;
+    width: 170.42px;
+    left: 315px;
+    top: 2750px;
+    list-style: none;
+
+    font-family: 'Josefin Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 50px;
+    line-height: 27px;
+
+    color: #EB8382;
+}
+
+.PerHour {
+    position: absolute;
+    left: 477px;
+    top: 2755px;
+
+    font-family: 'Josefin Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 21px;
+    line-height: 27px;
+
+    color: #EB8382;
+}
+
+.valorEmpresa {
+
+    position: absolute;
+    width: 193.29px;
+    height: 61px;
+    left: 820px;
+    top: 2757px;
+    font-family: 'Josefin Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 50px;
+    line-height: 27px;
+    list-style: none;
+    color: #EB8382;
+
+}
+
+
+.PerHourEmpresa {
+    position: absolute;
+    left: 999px;
+    top: 2765px;
+
+    font-family: 'Josefin Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 27px;
+
+    color: #EB8382;
+}
+
+.LinhaFinalPag {
+    position: absolute;
+    width: 100%;
+    height: 118px;
+    left: -9px;
+    top: 3335px;
+
+    box-sizing: border-box;
+    border: 1.5px solid #816F8C;
+}
+
+.finalLogo {
+    position: absolute;
+    width: 129px;
+    top: 3350px;
+    left: 60px;
+}
+
+.Copyright {
+    position: absolute;
+    top: 3383px;
+    left: 480px;
+
+    font-family: 'Josefin Sans';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 28px;
+
+    text-align: center;
+    color: #826F8C;
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+.RedeSocial {
+    position: absolute;
+    top: 3368px;
+    left: 1120px;
+
+    flex: none;
+    order: 2;
+    flex-grow: 0;
+}
+#myBtn {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 30px;
+    z-index: 99;
+    font-size: 18px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 15px;
+    border-radius: 4px;
+    background-color: transparent;
+  }
+  

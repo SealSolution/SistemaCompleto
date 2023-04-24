@@ -1,0 +1,327 @@
+:root {
+
+
+    /*--vermelho-real: #DD0000;
+    --vermelho-escuro: #430000;
+    --vermelho-claro: #ffe4b2;
+    --vermelho-semiEscuro: #981e10;*/
+  
+  
+    --color-primary: #DD0000;
+    --color-danger: #ff7782;
+    --color-success: #41f1b6;
+    --color-warning: #ffbb55;
+    --color-white: #fff;
+    --color-info-dark: #7d8da1;
+    --color-info-light: #dce1eb;
+    --color-dark: #363949;
+    --color-light: rgba(132, 139, 200, 0.18);
+    --color-primary-variant: #111e88;
+    --color-dark-variant: #677483;
+    --color-background: #f6f6f9;
+  }
+
+
+.heading {
+    font-size: 1.5em;
+    margin-bottom: 12px;
+    color: #121943;
+}
+
+.card_modal {
+    background: #fff;
+    background-image: linear-gradient(48deg, #fff 0%, #e5efe9 100%);
+    border-top-right-radius: 16px;
+    border-bottom-left-radius: 16px;
+    box-shadow: -20px 20px 35px 1px rgba(10, 49, 86, 0.18);
+    display: flex;
+    flex-direction: column;
+    padding: 32px;
+    margin: 40px;
+    max-width: 400px;
+    width: 100%;
+}
+
+.link {
+    color: #121943;
+}
+
+.link:focus {
+    box-shadow: 0px 0px 0px 2px #121943;
+}
+
+.input-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-wrapper .label {
+    align-items: baseline;
+    display: flex;
+    font-weight: 700;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.modal-header {
+    align-items: baseline;
+    display: flex;
+    justify-content: space-between;
+}
+
+.close {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    height: 16px;
+    text-decoration: none;
+    width: 16px;
+}
+
+.close svg {
+    width: 16px;
+}
+
+.modal-wrapper {
+    align-items: center;
+    background: rgba(0, 0, 0, 0.7);
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+}
+
+.modal {
+    opacity: 0;
+    transition: opacity 0.25s ease-in-out;
+    visibility: hidden;
+}
+
+.modal:target {
+    opacity: 1;
+    visibility: visible;
+    z-index: 2;
+}
+
+.modal:target .modal-body {
+    opacity: 1;
+    transform: translateY(1);
+}
+
+.modal .modal-body {
+    max-width: 500px;
+    opacity: 0;
+    transition: opacity 0.25s ease-in-out;
+    width: 100%;
+    z-index: 1;
+}
+
+.outside-trigger {
+    bottom: 0;
+    cursor: default;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+}
+
+.button__link {
+    text-decoration: none;
+}
+
+
+/*  INPUTS */
+
+
+.input-content .inputbox {
+    overflow: hidden;
+    position: relative;
+    padding: 5px 0 20px 150px;
+}
+
+.input-content .inputbox-title {
+    position: absolute;
+    top: 15px;
+    left: 0;
+    width: 200px;
+    height: 30px;
+    color: #666;
+    font-weight: bold;
+    line-height: 30px;
+}
+
+.input-content .inputbox-content {
+    position: relative;
+    width: 100%;
+}
+
+.input-content .inputbox-content input,
+textarea {
+    width: 100%;
+    height: 30px;
+    box-sizing: border-box;
+    line-height: 30px;
+    font-size: 14px;
+    border: 0;
+    background: none;
+    border-bottom: 1px solid #ccc;
+    outline: none;
+    border-radius: 0;
+}
+
+.input-content .inputbox-content input:focus~label,
+.input-content .inputbox-content input:valid~label,
+.input-content .inputbox-content textarea:focus~label,
+.input-content .inputbox-content textarea:valid~label {
+    color: var(--color-primary);
+    transform: translateY(-20px);
+    font-size: 0.825em;
+    cursor: default;
+}
+
+.input-content .inputbox-content input:focus~.underline,
+.input-content .inputbox-content textarea:focus~.underline {
+    width: 100%;
+}
+
+.input-content .inputbox-content label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 30px;
+    line-height: 30px;
+    color: #ccc;
+    cursor: text;
+    transition: all 200ms ease-out;
+    z-index: 10;
+}
+
+.input-content .inputbox-content .underline {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--color-primary);
+    transition: all 200ms ease-out;
+}
+
+/* select */
+
+
+
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: transparent;
+    border: none;
+    padding: 0 1em 0 0;
+    margin: 0;
+    width: 100%;
+    font-family: inherit;
+    font-size: inherit;
+    cursor: inherit;
+    line-height: inherit;
+    z-index: 1;
+    outline: none;
+}
+
+select::-ms-expand {
+    display: none;
+}
+
+option{
+    padding:  10px;
+}
+.select {
+    display: grid;
+    grid-template-areas: "select";
+    align-items: center;
+    position: relative;
+    min-width: 15ch;
+    max-width: 30ch;
+    border: 1px solid var(--color-dark);
+    border-radius: 0.25em;
+    padding: 0.25em 0.5em;
+    font-size: 1.25rem;
+    cursor: pointer;
+    line-height: 1.1;
+    background-color: #fff;
+    background-image: linear-gradient(to top, #f9f9f9, #fff 33%);
+}
+
+.select select,
+.select::after {
+    grid-area: select;
+}
+
+.select:not(.select--multiple)::after {
+    content: "";
+    justify-self: end;
+    width: 0.8em;
+    height: 0.5em;
+    background-color: var(--color-dark);
+    -webkit-clip-path: polygon(100% 0%, 0 0%, 50% 100%);
+    clip-path: polygon(100% 0%, 0 0%, 50% 100%);
+}
+
+select:focus+.focus {
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    right: -1px;
+    bottom: -1px;
+    border: 2px solid var(--color-primary);
+    border-radius: inherit;
+}
+
+#standard-select{
+    padding: 6px;
+}
+
+/* button */
+
+button {
+    padding: 0.1em 1.2em;
+    border: 2px solid var(--color-primary);
+    position: relative;
+    overflow: hidden;
+    background-color: transparent;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 16px;
+    transition: .3s;
+    z-index: 1;
+    font-family: inherit;
+    color: var(--color-primary);
+}
+
+
+button::before {
+    content: '';
+    width: 0;
+    height: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+    background: var(--color-primary);
+    transition: .5s ease;
+    display: block;
+    z-index: -1;
+}
+
+button:hover::before {
+    width: 105%;
+}
+
+button:hover {
+    color: #111;
+}
