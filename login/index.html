@@ -8,6 +8,7 @@
     integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="icon" href="../SitePomodoFinalizado/imagem/tomateBacktop.png">
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"
     integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ=="
@@ -33,7 +34,7 @@
           <div id="alerta"></div>
         </form>
 
-        <
+        
         <form action="#" class="sign-up-form">
           <div class="container-fluid">
             <h2 class="title">CADASTRE-SE</h2>
@@ -103,17 +104,14 @@
                 <input name="complemento" type="text" id="complemento" placeholder="Digite o complemento" />
               </div>
             </section>
-
             <section>
-              <p>SUCESSO !!</p>
-              <p>Seu cadastro foi finalizado com sucesso, obrigado por confiar na seal solution seus tomates estão em
-                ótimas mãos</p>
+              <div id="StatusCadastro">Clique em <span style="color: red;">finalizar</span> para concluir o cadrastro.</div>
             </section>
 
-            <div style="display: flex; flex-direction: row; gap: 30px;">
+            <div id="Skips" style="display: flex; flex-direction: row; gap: 30px;">
               <div class="btn solid" id="prev">&larr; Voltar</div>
               <div class="btn solid" id="next">Próximo &rarr;</div>
-              <a href="../login/index.html" class="btn solid" id="submit" >FINALIZAR</a>
+              <a class="btn solid" id="submit" onclick="Cadastrar()">FINALIZAR</a>
             </div>
           </div>
         </form>

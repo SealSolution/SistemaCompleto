@@ -1,10 +1,7 @@
 function Cadastrar() {
     var nomeUsuario = ipt_nome.value
-    var sobreNome = ipt_sobreNome.value
     var email = ipt_email.value
     var senha = ipt_senha.value
-    var telefone = tel.value
-    var cpfuser = cpf.value
     var cnpjuser = cnpj.value
     var cepuser = cep.value
     var ruauser = rua.value
@@ -12,18 +9,32 @@ function Cadastrar() {
     var cidadeuser = cidade.value
     var ufuser = uf.value
     if (
-        nomeUsuario && sobreNome && email && senha &&
-        telefone && cepuser && ruauser && bairrouser && cidadeuser && ufuser && cpfuser
-        || nomeUsuario && sobreNome && email && senha &&
-        telefone && cepuser && ruauser && bairrouser && cidadeuser && ufuser && cnpjuser
-    ) alert('Usuario cadastrado com sucesso.')
-    else alert('Erro')
+        nomeUsuario && email && senha &&
+        cepuser && ruauser && bairrouser && cidadeuser && ufuser && cnpjuser
+    ) {
+        Skips.innerHTML = ``
+        StatusCadastro.innerHTML = `  
+        
+       <p style="color:green; font-weight: bold;">SUCESSO !!</p>
+       <p>Seu cadastro foi finalizado com sucesso, obrigado por confiar na seal solution seus tomates estão em
+         ótimas mãos</p><br>
+
+         <a class="btn solid" id="submit" style="text-decoration:none; width:auto;" href="../login/index.html">Realizar Login</a>
+
+     `
+    }
+    else {
+        StatusCadastro.innerHTML = `  
+        <p style="color:red; font-weight: bold;">ERRO !!</p>
+        <p>Campos preenchidos incorretamente.</p>
+      `  
+    }
 }
-function Mascara(valuecpf, patternCpf) {
+function Mascara(value, pattern) {
     let i = 0;
-    let v = valuecpf.toString();
+    let v = value.toString();
     v = v.replace(/\D/g, '');
-    return patternCpf.replace(/#/g, () => v[i++] || '');
+    return pattern.replace(/#/g, () => v[i++] || '');
 };
 
 function CPF(valuecpf) {
