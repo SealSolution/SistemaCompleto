@@ -15,9 +15,6 @@ function calcular() {
         perdaDinheiro = precoTomate * perdaTransporte
         semNosso.innerHTML =
             `
-          Sem Nosso Projeto:<br>
-          Preço do tomate : R$${precoTomate}<br>
-          Quantidade de tomates : ${qtdTomates}<br>
           Preço Total de tomates : R${precoTotal}<br>
           perda de tomates no transporte: ${perdaTransporte}<br>
           Perda em dinheiro: R$${perdaDinheiro}<br>
@@ -28,9 +25,6 @@ function calcular() {
 
         semNosso.innerHTML =
             `
-          Sem Nosso Projeto:<br>
-          Preço do tomate : R$${precoTomate}<br>
-          Quantidade de tomates : ${qtdTomates}<br>
           Preço Total de tomates : R${precoTotal}<br>
           perda de tomates durante o transporte: ${perdaTransporte}<br>
           Perda em dinheiro: R$${perdaDinheiro}<br>
@@ -55,8 +49,6 @@ function calcular() {
     // Calculo com nosso projeto
 
 }
-
-
 
 
 function limpar() {
