@@ -1,4 +1,9 @@
+alerta.innerHTML = null;
+alerta.style.display = "block";
+
+/* cadastro de usuario */
 function Cadastrar() {
+
     var nomeUsuario = ipt_nome.value
     var email = ipt_email.value
     var senha = ipt_senha.value
@@ -8,28 +13,70 @@ function Cadastrar() {
     var bairrouser = bairro.value
     var cidadeuser = cidade.value
     var ufuser = uf.value
-    if (
-        nomeUsuario && email && senha &&
-        cepuser && ruauser && bairrouser && cidadeuser && ufuser && cnpjuser
-    ) {
-        Skips.innerHTML = ``
-        StatusCadastro.innerHTML = `  
-        
-       <p style="color:green; font-weight: bold;">SUCESSO !!</p>
-       <p>Seu cadastro foi finalizado com sucesso, obrigado por confiar na seal solution seus tomates estão em
-         ótimas mãos</p><br>
 
-         <a class="btn solid" id="submit" style="text-decoration:none; width:auto;" href="../login/index.html">Realizar Login</a>
+    if (nomeUsuario && email && senha && cepuser && ruauser && bairrouser && cidadeuser && ufuser && cnpjuser) {
 
-     `
-    }
-    else {
-        StatusCadastro.innerHTML = `  
-        <p style="color:red; font-weight: bold;">ERRO !!</p>
-        <p>Campos preenchidos incorretamente.</p>
-      `  
+        alerta.innerHTML = `
+        <div class="alert alert-2-success">
+        <h3 class="alert-title">Olá ${nomeUsuario}, obrigado por escolher a pomodoro.</h3>
+        <p class="alert-content">Seu cadastro foi finalizado com sucesso, obrigado por confiar na seal solution seus tomates estão em
+        ótimas mãos</p>
+      </div>`
+        setTimeout(function () {
+            window.location.href = "./index.html";
+        }, 6000);
+    } else {
+
+
+        alerta.innerHTML = `
+  
+        <div class="alert alert-3-danger">
+        <h3 class="alert-title">Dados incorretos.</h3>
+        <p class="alert-content">Campos preenchidos incorretamente.</p>
+      </div>`
+
+        setTimeout(function () {
+            alerta.style.display = "none";
+        }, 5000)
     }
 }
+
+
+
+
+/* login de usuario */
+function entrar() {
+
+    var email = in_email.value;
+    var senha = in_senha.value;
+
+    if ((email == 'adm') && (senha == '123')) {
+
+      alerta.innerHTML = `
+      <div class="alert alert-2-success">
+      <h3 class="alert-title">Olá ${email}, obrigado por escolher a pomodoro.</h3>
+      <p class="alert-content">Você será redirecionado em 4 segundos</p>
+    </div>`
+      setTimeout(function () {
+        window.location.href = "../dashboard/index.html";
+      }, 4000);
+    } else {
+
+
+      alerta.innerHTML = `
+
+      <div class="alert alert-3-danger">
+      <h3 class="alert-title">Usúario não encontrado.</h3>
+      <p class="alert-content">Verifique seu email e senha, caso esse erro persistir entre em contato conosco</p>
+    </div>`
+
+      setTimeout(function () {
+        alerta.style.display = "none";
+      }, 5000)
+    }
+  }
+
+
 function Mascara(value, pattern) {
     let i = 0;
     let v = value.toString();
@@ -64,7 +111,5 @@ function formatarCNPJ(e) {
     v = v.replace(/(\d{4})(\d)/, "$1-$2");
 
     e.target.value = v;
-
-
 
 }

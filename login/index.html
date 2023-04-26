@@ -4,16 +4,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
+
   <link rel="stylesheet" href="style.css" />
+
   <link rel="icon" type="icon" href="../SitePomodoFinalizado/imagem/tomateBacktop.png">
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"
-    integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <title></title>
+
+  <title>LOGIN</title>
 </head>
 
 <body>
@@ -33,88 +34,6 @@
           <a onclick="entrar()" class="btn solid">Login</a>
           <div id="alerta"></div>
         </form>
-
-        
-        <form action="#" class="sign-up-form">
-          <div class="container-fluid">
-            <h2 class="title">CADASTRE-SE</h2>
-            <div id="svg_wrap"></div>
-            <section>
-              <p>INFORMAÇÕES DA EMPRESA</p>
-              <div class="input-field">
-                <i class="fas fa-user"></i>
-                <input type="text" placeholder="Apelido da empresa" id="ipt_nome" />
-              </div>
-              <div class="input-field">
-                <i class="fas fa-envelope"></i>
-                <input type="email" placeholder="Digite o email da empresa" type="text" id="ipt_email" />
-              </div>
-              <div class="input-field">
-                <i class="fas fa-lock"></i>
-                <input type="password" placeholder="Senha" id="ipt_senha" maxlength="12" />
-              </div>
-            </section>
-
-            <section>
-              <p>INFORMAÇÕES DA EMPRESA</p>
-              <div class="input-field">
-                <i class="fas fa-envelope"></i>
-                <input type="email" placeholder="Digite o cnpj da empresa" maxlength="14" id="cnpj" />
-              </div>
-              <div class="textarea-field">
-                <i class="fa fa-scroll"></i>
-                <textarea id="ipt_desc_empresa" placeholder="Descrição da empresa" cols="30" rows="10"></textarea>
-              </div>
-              <div class="input-field">
-                <i class="fas fa-location-dot"></i>
-                <input name="cep" type="text" id="cep" value="" size="10" maxlength="9"
-                  onblur="pesquisacep(this.value);" placeholder="Digite seu cep" />
-              </div>
-            </section>
-
-            <section>
-              <p>ENDEREÇO DA EMPRESA</p>
-              <div class="input-field">
-                <i class="fas fa-road"></i>
-                <input ame="rua" type="text" id="rua" size="60" placeholder="Digite a rua" />
-              </div>
-              <div class="input-field">
-                <i class="fas fa-regular fa-map-location"></i>
-                <input name="bairro" type="text" id="bairro" size="40" placeholder="Digite o bairro" />
-              </div>
-              <div class="input-field">
-                <i class="fas fa-city"></i>
-                <input name="cidade" type="text" id="cidade" size="40" placeholder="Digite o cidade" />
-              </div>
-            </section>
-
-            <section>
-              <p>ENDEREÇO DA EMPRESA</p>
-              <div class="input-field">
-                <i class="fas fa-light fa-flag"></i>
-                <input name="uf" type="text" id="uf" size="2" placeholder="Digite o UF" />
-              </div>
-              <div class="input-field">
-                <i class="fas fa-light fa-hashtag"></i>
-                <input name="numero local" type="text" id="ipt_numero" size="2"
-                  placeholder="Digite o número do local" />
-              </div>
-              <div class="input-field">
-                <i class="fa-solid fa-magnifying-glass"></i>
-                <input name="complemento" type="text" id="complemento" placeholder="Digite o complemento" />
-              </div>
-            </section>
-            <section>
-              <div id="StatusCadastro">Clique em <span style="color: red;">finalizar</span> para concluir o cadrastro.</div>
-            </section>
-
-            <div id="Skips" style="display: flex; flex-direction: row; gap: 30px;">
-              <div class="btn solid" id="prev">&larr; Voltar</div>
-              <div class="btn solid" id="next">Próximo &rarr;</div>
-              <a class="btn solid" id="submit" onclick="Cadastrar()">FINALIZAR</a>
-            </div>
-          </div>
-        </form>
       </div>
     </div>
 
@@ -126,9 +45,9 @@
             Olá cadastre-se para ter beneficios exclusivos e novos conteudos
           </p>
           <div style="display: flex; flex-direction: row; gap: 20px;">
-            <button class="btn transparent" id="sign-up-btn">
+            <a href='./cadastro.html' class="btn transparent" id="sign-up-btn">
               Inscrever-se
-            </button>
+            </a>
             <a href="../SitePomodoFinalizado/index.html">
               <div class="btn transparent">Voltar</div>
             </a>
@@ -154,48 +73,8 @@
         <img src="./img/register.png" class="image" alt="" />
       </div>
     </div>
-
-    <script src="./js/app.js"></script>
-    <script src="./js/main.js"></script>
-    <script src="./js/viaCep.js"></script>
-
+  </div>
 
 </body>
 
 </html>
-
-<script>
-
-  function entrar() {
-
-    alerta.innerHTML = null;
-    alerta.style.display = "block";
-    var email = in_email.value;
-    var senha = in_senha.value;
-
-    if ((email == 'adm') && (senha == '123')) {
-
-      alerta.innerHTML = `
-      <div class="alert alert-2-success">
-      <h3 class="alert-title">Olá ${email}, obrigado por escolher a pomodoro.</h3>
-      <p class="alert-content">Você será redirecionado em 4 segundos</p>
-    </div>`
-      setTimeout(function () {
-        window.location.href = "../dashboard/index.html";
-      }, 4000);
-    } else {
-
-
-      alerta.innerHTML = `
-
-      <div class="alert alert-3-danger">
-      <h3 class="alert-title">Usúario não encontrado.</h3>
-      <p class="alert-content">Verifique seu email e senha, caso esse erro persistir entre em contato conosco</p>
-    </div>`
-
-      setTimeout(function () {
-        alerta.style.display = "none";
-      }, 5000)
-    }
-  }
-</script>

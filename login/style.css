@@ -21,6 +21,11 @@ textarea {
   font-family: "Poppins", sans-serif;
 }
 
+a {
+
+  text-decoration: none;
+}
+
 .container {
   position: relative;
   width: 100%;
@@ -89,7 +94,7 @@ form.sign-in-form {
   position: relative;
 }
 
-.textarea-field{
+.textarea-field {
 
   max-width: 380px;
   width: 100%;
@@ -103,7 +108,8 @@ form.sign-in-form {
   position: relative;
 }
 
-.input-field i, .textarea-field i {
+.input-field i,
+.textarea-field i {
   text-align: center;
   line-height: 55px;
   color: #acacac;
@@ -116,7 +122,7 @@ i:hover {
   color: var(--vermelho-semiEscuro);
 }
 
-.input-field input  {
+.input-field input {
   background: none;
   outline: none;
   border: none;
@@ -137,7 +143,8 @@ i:hover {
   color: #333;
 }
 
-.input-field input::placeholder, textarea::placeholder {
+.input-field input::placeholder,
+textarea::placeholder {
   color: #aaa;
   font-weight: 500;
 }
@@ -359,45 +366,82 @@ i:hover {
 
 }
 
-/*form to step*/
-#svg_form_time {
-  height: 15px;
-  max-width: 80%;
-  margin: 40px auto 20px;
+
+/* Multi-Part CSS */
+input[type=checkbox] {
+  position: absolute;
+  /* Position the checkbox in upper left corner */
+  opacity: 0;
+}
+
+/* Styling Parts */
+#part1,
+#part2,
+#part3,
+#part4 {
+  z-index: 2;
   display: block;
+  height: auto;
+  opacity: 1;
+  transition: opacity 1s ease-in-out;
 }
 
-#svg_form_time circle,
-#svg_form_time rect {
-  fill: white;
+/* Hidden Parts */
+#part2,
+#part3,
+#part4 {
+  opacity: 0;
+  height: 0;
+  overflow: hidden;
 }
 
-.button {
-  background: rgb(237, 40, 70);
-  border-radius: 5px;
-  padding: 15px 25px;
-  display: inline-block;
-  margin: 10px;
-  font-weight: bold;
-  color: white;
-  cursor: pointer;
-  box-shadow:0px 2px 5px rgb(0,0,0,0.5);
+/* Show Step 2 & Hide Step 1 */
+#step2:checked~#part2 {
+  opacity: 1;
+  height: auto;
 }
 
-.disabled {
-  display:none;
+#step2:checked~#part1 {
+  opacity: 0;
+  height: 0;
+  display: none;
 }
+
+/* Show Step 3  & Hide Step 2 */
+#step3:checked~#part3 {
+  opacity: 1;
+  height: auto;
+}
+
+#step3:checked~#part2 {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* Show Step 4  & Hide Step 3 */
+#step4:checked~#part4 {
+  opacity: 1;
+  height: auto;
+}
+
+#step4:checked~#part3 {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
 
 section {
-  padding: 50px ;
+  padding: 50px;
   width: 400px;
   margin: 30px auto;
-  background:white;
-  background:rgba(255,255,255,0.9);
-  backdrop-filter:blur(10px);
-  box-shadow:0px 2px 10px rgba(0,0,0,0.3);
-  border-radius:5px;
-  transition:transform 0.2s ease-in-out;
+  background: white;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+  transition: transform 0.2s ease-in-out;
 }
 
 @media (max-width: 870px) {
@@ -516,6 +560,7 @@ section {
   border-left: 4px solid #2ec946;
   background-color: rgba(46, 201, 70, 0.05);
 }
+
 .alert-2-success .alert-title {
   color: #2ec946;
 }
@@ -525,6 +570,7 @@ section {
   border-radius: 8px;
   background-color: rgba(255, 56, 56, 0.05);
 }
+
 .alert-3-danger .alert-title {
   color: #ff3838;
 }
