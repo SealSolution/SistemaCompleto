@@ -8,7 +8,8 @@ function calcular() {
     // Calculo Sem nosso projeto
     var precoTotal = qtdTomates * precoTomate
     var perdaTomate = qtdTomates * .40
-    var perdaTransporte, perdaDinheiro = 0
+    var perdaTransporte = 0;
+    var perdaDinheiro = 0;
 
     if (estadoTomate == "Não") {
         perdaTransporte = perdaTomate
@@ -33,6 +34,8 @@ function calcular() {
         alert("Selecione uma opção valida.")
     }
 
+    // Calculo com nosso projeto
+    
     var efetividadeTomate = qtdTomates * .90
     var efetividadeDinheiro = precoTomate * efetividadeTomate
     var perdaComEfetividadeTomate = qtdTomates * 0.10
@@ -45,8 +48,6 @@ function calcular() {
       Perda de tomates durante o transporte = ${perdaComEfetividadeTomate}<br>
       Dinheiro Perdido = R$${perdaComEfetividadeDinheiro}
       `
-
-    // Calculo com nosso projeto
 
 }
 
