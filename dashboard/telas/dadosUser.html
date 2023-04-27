@@ -8,13 +8,14 @@
     <title>Dados usúario</title>
 
 
-    <link rel="icon" type="imagem/ico"  sizes="192x192" href="../img/favicon.ico" />
-    
+    <link rel="icon" type="imagem/ico" sizes="192x192" href="../img/favicon.ico" />
+
     <!--links pages-->
 
+    <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/modal_form.css">
     <link rel="stylesheet" href="../css/dadoUser.css">
-    <link rel="stylesheet" href="../css/style.css">
+
 
 
     <!--Material CDN-->
@@ -22,6 +23,19 @@
 
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css'>
 
+    <style>
+        /* Dark theme  */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --color-background: #181a1e;
+                --color-white: #202528;
+                --color-dark: #edeffd;
+                --color-dark-variant: #a3bdcc;
+                --color-light: rgba(0, 0, 0, 0.4);
+                --box-shadow: 0 2rem 3rem var(--color-light);
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -114,10 +128,6 @@
                 <button id="menu-btn">
                     <span class="material-icons-sharp">menu</span>
                 </button>
-                <div class="theme-toggler">
-                    <span class="material-icons-sharp active">light_mode</span>
-                    <span class="material-icons-sharp">dark_mode</span>
-                </div>
                 <div class="profile">
                     <div class="info">
                         <p>OLÁ, <b>Winyc</b></p>

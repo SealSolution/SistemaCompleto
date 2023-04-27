@@ -1,5 +1,7 @@
 alerta.innerHTML = null;
 alerta.style.display = "block";
+alerta_cadastro.innerHTML = null;
+alerta_cadastro.style.display = "block";
 
 /* cadastro de usuario */
 function Cadastrar() {
@@ -16,7 +18,7 @@ function Cadastrar() {
 
     if (nomeUsuario && email && senha && cepuser && ruauser && bairrouser && cidadeuser && ufuser && cnpjuser) {
 
-        alerta.innerHTML = `
+        alerta_cadastro.innerHTML = `
         <div class="alert alert-2-success">
         <h3 class="alert-title">Olá ${nomeUsuario}, obrigado por escolher a pomodoro.</h3>
         <p class="alert-content">Seu cadastro foi finalizado com sucesso, obrigado por confiar na seal solution seus tomates estão em
@@ -28,7 +30,7 @@ function Cadastrar() {
     } else {
 
 
-        alerta.innerHTML = `
+        alerta_cadastro.innerHTML = `
   
         <div class="alert alert-3-danger">
         <h3 class="alert-title">Dados incorretos.</h3>
@@ -36,7 +38,7 @@ function Cadastrar() {
       </div>`
 
         setTimeout(function () {
-            alerta.style.display = "none";
+            alerta_cadastro.style.display = "none";
         }, 5000)
     }
 }

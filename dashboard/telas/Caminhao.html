@@ -8,7 +8,7 @@
     <title>Caminhões</title>
 
 
-    <link rel="icon" type="imagem/ico"  sizes="192x192" href="../img/favicon.ico" />
+    <link rel="icon" type="imagem/ico" sizes="192x192" href="../img/favicon.ico" />
 
     <!--links pages-->
 
@@ -22,6 +22,20 @@
 
     <!--Material CDN-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+
+    <style>
+        /* Dark theme  */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --color-background: #181a1e;
+                --color-white: #202528;
+                --color-dark: #edeffd;
+                --color-dark-variant: #a3bdcc;
+                --color-light: rgba(0, 0, 0, 0.4);
+                --box-shadow: 0 2rem 3rem var(--color-light);
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -108,10 +122,6 @@
                 <button id="menu-btn">
                     <span class="material-icons-sharp">menu</span>
                 </button>
-                <div class="theme-toggler">
-                    <span class="material-icons-sharp active">light_mode</span>
-                    <span class="material-icons-sharp">dark_mode</span>
-                </div>
                 <div class="profile">
                     <div class="info">
                         <p>OLÁ, <b>Winyc</b></p>

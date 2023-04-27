@@ -9,9 +9,8 @@ const data_funcionario_Donnut = {
         label: 'Total de funcionários',
         data: [3, 1],
         backgroundColor: [
-            'rgb(255, 99, 132)',
             'rgb(54, 162, 235)',
-            'rgb(255, 205, 86)'
+            'rgb(255, 99, 132)'
         ],
         hoverOffset: 4
     }]

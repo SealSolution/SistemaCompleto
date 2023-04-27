@@ -35,7 +35,7 @@ function calcular() {
     }
 
     // Calculo com nosso projeto
-    
+
     var efetividadeTomate = qtdTomates * .90
     var efetividadeDinheiro = precoTomate * efetividadeTomate
     var perdaComEfetividadeTomate = qtdTomates * 0.10

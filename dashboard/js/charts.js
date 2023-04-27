@@ -88,7 +88,7 @@ const config = {
         plugins: {
             title: {
                 display: true,
-                text: 'Média de temperatura e unidade dos veículos',
+                text: 'Média de temperatura e umidade dos veículos',
                 color: '#ff7782',
                 font: {
                     size: 16,
@@ -128,9 +128,9 @@ const dataDonnut = {
         label: 'Total de tomates',
         data: [300, 50],
         backgroundColor: [
-            'rgb(255, 99, 132)',
             'rgb(54, 162, 235)',
-            'rgb(255, 205, 86)'
+            'rgb(255, 99, 132)'
+            
         ],
         hoverOffset: 4
     }]
