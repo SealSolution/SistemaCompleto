@@ -194,7 +194,7 @@ body {
     width: 126.33px;
     height: 24px;
     left: 181.04px;
-    top: 635px;
+    top: 615px;
 
     font-family: 'Josefin Sans';
     font-style: normal;
@@ -204,14 +204,20 @@ body {
 
     text-align: center;
     color: #FFFFFF;
+   
+}
+
+.orcar{
+    text-decoration: none;
+    color: white;
 }
 
 .retanguloCadastrar {
     position: absolute;
     width: 212.61px;
-    height: 50px;
+    height: 70px;
     left: 139.96px;
-    top: 622px;
+    top: 600px;
 
     background: linear-gradient(92.81deg, #D94444 11.62%, #C16C6C 75.39%);
     border-radius: 25px;
@@ -878,3 +884,7 @@ body {
     color: white;
 }
 
+.orcamento{
+    text-decoration: none;
+    color: white;
+}
