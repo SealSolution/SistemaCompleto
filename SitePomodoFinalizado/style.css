@@ -227,7 +227,7 @@ body {
 .tomatePrincipal {
     position: absolute;
     width: 390px;
-    left: 868px;
+    left: 890px;
     right: 74px;
     top: 300px;
     bottom: 87.53%;
@@ -235,7 +235,7 @@ body {
 
 
 .circulo {
-    left: 790.45px;
+    left: 830.45px;
     height: 555.83px;
     right: 74px;
     top: 180px;
@@ -530,7 +530,7 @@ body {
 .imgTexto4 {
     position: absolute;
     left: 56%;
-    top: 220%;
+    top: 1600px;
     bottom: 32.48%;
 }
 

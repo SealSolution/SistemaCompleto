@@ -20,6 +20,7 @@ function calcular() {
           perda de tomates no transporte: ${perdaTransporte}<br>
           Perda em dinheiro: R$${perdaDinheiro}<br>
           `
+
     } else if (estadoTomate == "Sim") {
         perdaTransporte = qtdTomates * .45
         perdaDinheiro = precoTomate * perdaTransporte
@@ -43,9 +44,10 @@ function calcular() {
 
     comNosso.innerHTML =
         `
+      Preço Total de tomates : R${precoTotal}<br>
+      Perda de tomates durante o transporte = ${perdaComEfetividadeTomate}<br>
       Tomates Economizados = ${efetividadeTomate}<br>
       Dinheiro Economizado = R$${efetividadeDinheiro}<br>
-      Perda de tomates durante o transporte = ${perdaComEfetividadeTomate}<br>
       Dinheiro Perdido = R$${perdaComEfetividadeDinheiro}
       `
 

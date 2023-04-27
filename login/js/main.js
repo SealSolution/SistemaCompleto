@@ -26,7 +26,7 @@ function Cadastrar() {
       </div>`
         setTimeout(function () {
             window.location.href = "./index.html";
-        }, 6000);
+        }, 2500);
     } else {
 
 
@@ -39,7 +39,7 @@ function Cadastrar() {
 
         setTimeout(function () {
             alerta_cadastro.style.display = "none";
-        }, 5000)
+        }, 3000)
     }
 }
 

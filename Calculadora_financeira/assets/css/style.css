@@ -4,7 +4,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@300;400;500;600;700&display=swap');
 
 
-  * {
+* {
 
   font-family: 'Cormorant SC', sans-serif;
   padding: 0;
@@ -165,13 +165,14 @@ input:focus {
   transition: 0.8s;
 }
 
-.h3_text:hover{
+.h3_text:hover {
 
   transition: 0.5s;
   color: #333;
   text-transform: uppercase;
 }
-.label_one{
+
+.label_one {
   display: flex;
   justify-content: center;
 }
@@ -187,8 +188,8 @@ input:focus {
   font-size: 16px;
 }
 
-.vl{ 
-  
+.vl {
+
   border-left: 6px solid rgba(182, 197, 182, 10);
   height: 100%;
   left: 50%;
@@ -196,7 +197,7 @@ input:focus {
 
 }
 
-.vh{
+.vh {
   border: 0;
   height: 1px;
   background: #333;
@@ -245,6 +246,7 @@ code {
   text-decoration: none;
   width: 16px;
 }
+
 .close svg {
   width: 16px;
 }
@@ -266,14 +268,17 @@ code {
   transition: opacity 0.25s ease-in-out;
   visibility: hidden;
 }
+
 #modal:target {
   opacity: 1;
   visibility: visible;
 }
+
 #modal:target .modal-body {
   opacity: 1;
   transform: translateY(1);
 }
+
 #modal .modal-body {
   max-width: 500px;
   opacity: 0;
@@ -281,6 +286,11 @@ code {
   transition: opacity 0.25s ease-in-out;
   width: 100%;
   z-index: 1;
+}
+
+.text-modal{
+
+  font-size: 20px;
 }
 
 .outside-trigger {
@@ -296,7 +306,7 @@ code {
   text-decoration: none;
 }
 
-.line{
+.line {
   margin-top: 20px;
   border-top: 3px solid rgb(114 105 149);
   width: 100%;
@@ -365,7 +375,7 @@ code {
   display: none;
 }
 
-:checked + .alert {
+:checked+.alert {
   display: none;
 }
 
@@ -399,7 +409,7 @@ code {
 }
 
 
-/* select */ 
+/* select */
 :root {
   --select-border: #777;
   --select-focus: blue;
@@ -408,8 +418,8 @@ code {
 
 select {
   -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   background-color: transparent;
   border: none;
   padding: 0 1em 0 0;
@@ -422,6 +432,7 @@ select {
   z-index: 1;
   outline: none;
 }
+
 select::-ms-expand {
   display: none;
 }
@@ -442,9 +453,12 @@ select::-ms-expand {
   background-color: #fff;
   background-image: linear-gradient(to top, #f9f9f9, #fff 33%);
 }
-.select select, .select::after {
+
+.select select,
+.select::after {
   grid-area: select;
 }
+
 .select:not(.select--multiple)::after {
   content: "";
   justify-self: end;
@@ -452,10 +466,10 @@ select::-ms-expand {
   height: 0.5em;
   background-color: var(--select-arrow);
   -webkit-clip-path: polygon(100% 0%, 0 0%, 50% 100%);
-          clip-path: polygon(100% 0%, 0 0%, 50% 100%);
+  clip-path: polygon(100% 0%, 0 0%, 50% 100%);
 }
 
-select:focus + .focus {
+select:focus+.focus {
   position: absolute;
   top: -1px;
   left: -1px;
@@ -481,6 +495,7 @@ select[multiple] {
    * Not supported crossbrowser
    */
 }
+
 select[multiple] option {
   white-space: normal;
   outline-color: var(--select-focus);
