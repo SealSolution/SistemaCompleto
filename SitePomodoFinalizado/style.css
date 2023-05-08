@@ -12,6 +12,7 @@ body {
     height: 100vh;
     background: #EDFFF1;
     overflow-x: hidden;
+    font-family: 'Cormorant SC';
 }
 
 .header {

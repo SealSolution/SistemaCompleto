@@ -1,10 +1,10 @@
 alerta.innerHTML = null;
-alerta.style.display = "block";
 alerta_cadastro.innerHTML = null;
-alerta_cadastro.style.display = "block";
 
 /* cadastro de usuario */
 function Cadastrar() {
+
+  alerta_cadastro.style.display = "block";
 
     var nomeUsuario = ipt_nome.value
     var email = ipt_email.value
@@ -48,6 +48,8 @@ function Cadastrar() {
 
 /* login de usuario */
 function entrar() {
+
+  alerta.style.display = "block";
 
     var email = in_email.value;
     var senha = in_senha.value;
