@@ -64,8 +64,8 @@ const data_caminhao_Donnut = {
         label: 'Total de funcionários',
         data: [2, 1,5],
         backgroundColor: [
-            'rgb(255, 99, 132)',
             'rgb(54, 162, 235)',
+            'rgb(255, 99, 132)',
             'rgb(255, 205, 86)'
         ],
         hoverOffset: 4
