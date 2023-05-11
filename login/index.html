@@ -24,7 +24,7 @@
           <h2 class="title">LOGAR</h2>
           <div class="input-field">
             <i class="fas fa-user"></i>
-            <input type="text" id="in_email" placeholder="Nome de usúario" />
+            <input type="email" id="in_email" placeholder="Email" />
           </div>
           <div class="input-field">
             <i class="fas fa-lock"></i>
@@ -41,23 +41,27 @@
           <input id='step3' type='checkbox'>
           <input id='step4' type='checkbox'>
 
+
           <div id="part1" class="form-group">
             <section>
               <div class="container-fluid">
                 <p>INFORMAÇÕES DA EMPRESA</p>
                 <div class="input-field">
                   <i class="fas fa-user"></i>
-                  <input type="text" placeholder="Apelido da empresa" id="ipt_nome" />
+                  <input type="text" placeholder="Nome da empresa" id="ipt_nome" />
+                </div>
+                <div class="input-field">
+                  <i class="fa-solid fa-at"></i>
+                  <input type="email" placeholder="Digite o email da empresa" type="text" id="ipt_email" />
                 </div>
                 <div class="input-field">
                   <i class="fas fa-envelope"></i>
-                  <input type="email" placeholder="Digite o email da empresa" type="text" id="ipt_email" />
+                  <input type="email" placeholder="Digite o CNPJ da empresa" maxlength="14" id="cnpj" />
                 </div>
                 <div class="input-field">
                   <i class="fas fa-lock"></i>
                   <input type="password" placeholder="Senha" id="ipt_senha" maxlength="12" />
                 </div>
-
                 <div style="display: flex; flex-direction: row; gap: 30px;">
                   <label for='step2' class="continue">
                     <div class="btn solid" role="button">Continue</div>
@@ -70,21 +74,11 @@
           <div id="part2" class="form-group">
             <section>
               <div class="container-fluid">
-                <p>INFORMAÇÕES DA EMPRESA</p>
-                <div class="input-field">
-                  <i class="fas fa-envelope"></i>
-                  <input type="email" placeholder="Digite o cnpj da empresa" maxlength="14" id="cnpj" />
-                </div>
+                <p>DESCRIÇÃO DA EMPRESA</p>
                 <div class="textarea-field">
                   <i class="fa fa-scroll"></i>
-                  <textarea id="ipt_desc_empresa" placeholder="Descrição da empresa" cols="30" rows="10"></textarea>
+                  <textarea id="ipt_desc_empresa" placeholder="Descrição da empresa"></textarea>
                 </div>
-                <div class="input-field">
-                  <i class="fas fa-location-dot"></i>
-                  <input name="cep" type="text" id="cep" value="" size="10" maxlength="9"
-                    onblur="pesquisacep(this.value);" placeholder="Digite seu cep" />
-                </div>
-
 
                 <div style="display: flex; flex-direction: row; gap: 30px;">
                   <label for='step2' class="back">
@@ -103,6 +97,11 @@
             <div class="container-fluid">
               <section>
                 <p>ENDEREÇO DA EMPRESA</p>
+                <div class="input-field">
+                  <i class="fas fa-location-dot"></i>
+                  <input name="cep" type="text" id="cep" value="" size="10" maxlength="9"
+                    onblur="pesquisacep(this.value);" placeholder="Digite seu cep" />
+                </div>
                 <div class="input-field">
                   <i class="fas fa-road"></i>
                   <input ame="rua" type="text" id="rua" size="60" placeholder="Digite a rua" />
