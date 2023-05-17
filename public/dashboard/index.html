@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="PT-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DashBoard</title>
+
+
+    <link rel="icon" type="imagem/ico" sizes="192x192" href="./img/favicon.ico" />
+
+    <!--links pages-->
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- chart js-->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!--Material CDN-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+
+    <style>
+        /* Dark theme  */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --color-background: #181a1e;
+                --color-white: #202528;
+                --color-dark: #edeffd;
+                --color-dark-variant: #a3bdcc;
+                --color-light: rgba(0, 0, 0, 0.4);
+                --box-shadow: 0 2rem 3rem var(--color-light);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!--side bar-->
+    <div class="container">
+        <aside>
+            <div class="top">
+                <div class="logo">
+                    <h2>SEAL<span style="color: var(--color-primary);"> SOLUTION</span></h2>
+                </div>
+                <div class="close" id="close-btn">
+                    <span class="material-icons-sharp">close</span>
+                </div>
+            </div>
+            <div class="sidebar">
+                <a href="./index.html" class="active">
+                    <span class="material-icons-sharp">grid_view</span>
+                    <h3>GRÁFICOS</h3>
+                </a>
+                <a href="./telas/funcionario.html" class="active">
+                    <span class="material-icons-sharp">person_outline</span>
+                    <h3>USÚARIOS</h3>
+                </a>
+                <a href="./telas/Caminhao.html" class="active">
+                    <span class="material-icons-sharp">receipt_long</span>
+                    <h3>CAMINHÕES</h3>
+                    <span class="message-count">3</span>
+                </a>
+
+                <a href="./telas/help.html" class="active">
+                    <span class="material-icons-sharp">help</span>
+                    <h3>CANAL DE AJUDA</h3>
+                </a>
+
+                <a href="../login/index.html" class="active">
+                    <span class="material-icons-sharp">logout</span>
+                    <h3>DESLOGAR</h3>
+                </a>
+            </div>
+        </aside>
+
+        <!---------------- end aside ---------------->
+
+        <main>
+            <h1>DASHBOARD</h1>
+
+            <div class="insights">
+                <div class="sales">
+                    <span class="material-icons-sharp">bar_chart</span>
+                    <div style="width: 100%;">
+                        <canvas id="chartBar"></canvas>
+                    </div>
+                    <small class="text-muted">ATUALIZADO HÁ 30 MINUTOS
+                    </small>
+                </div>
+                <!-----------------end sales----------------->
+                <div class="expenses">
+                    <span class="material-icons-sharp">ssid_chart</span>
+                    <div style="width: 100%;">
+                        <canvas id="chartLine"></canvas>
+                    </div>
+                    <small class="text-muted">ATUALIZADO HÁ 30 MINUTOS
+                    </small>
+                </div>
+                <!-----------------end of expenses----------------->
+            </div>
+            <!---------------- end insights ---------------->
+
+            <div class="recent-orders">
+                <h2>VIAGENS EM ANDAMENTO</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Modelo</th>
+                            <th>Motorista</th>
+                            <th>umidade(tomate)</th>
+                            <th>temperatura(tomate)</th>
+                            <th>Caixas</th>
+                            <th>Tempo estimado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Peterbilt 379</td>
+                            <td>Winycios</td>
+                            <td class="success">84</td>
+                            <td class="danger">50°C</td>
+                            <td>100</td>
+                            <td>5 dias</td>
+                        </tr>
+                        <tr>
+                            <td>5700XE</td>
+                            <td>Winycios</td>
+                            <td class="warning">80</td>
+                            <td class="danger">5°C</td>
+                            <td>110</td>
+                            <td>5 dias</td>
+                        </tr>
+                        <tr>
+                            <td>S730</td>
+                            <td>Winycios</td>
+                            <td class="success">85</td>
+                            <td class="success">11°C</td>
+                            <td>200</td>
+                            <td>5 dias</td>
+                        </tr>
+                    </tbody>
+                    <small class="text-muted">ATUALIZADO HÁ 1 HORA</small>
+                </table>
+
+                <div class="icon-box">
+                    <div class="icon icon__danger">
+                        <div class="tooltip tooltip__dang">
+                            Fudeu
+                        </div>
+                        <span class="material-icons-sharp" style="color: var(--color-primary);">
+                            radio_button_checked
+                        </span>
+                    </div>
+
+                    <div class="icon icon__src">
+                        <div class="tooltip tooltip__war">
+                            Perigo, não ta ruim mas não tá bão
+                        </div>
+                        <span class="material-icons-sharp" style="color: var(--color-warning);">
+                            radio_button_checked
+                        </span>
+                    </div>
+                    
+                    <div class="icon icon__cow">
+                        <div class="tooltip tooltip__suc">
+                            Coisa boinhaaaa
+                        </div>
+                        <span class="material-icons-sharp" style="color: var(--color-success);">
+                            radio_button_checked
+                        </span>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+
+        <!----------- end main ------------->
+
+        <div class="right">
+            <div class="top">
+                <button id="menu-btn">
+                    <span class="material-icons-sharp">menu</span>
+                </button>
+                <div class="profile">
+                    <div class="info">
+                        <p>OLÁ, <b>Winyc</b></p>
+                    </div>
+                    <div class="profile-photo"><a href="./telas/dadosUser.html">
+                            <img src="img/img1.jpg"></a>
+                    </div>
+                </div>
+            </div>
+            <!--end top-->
+            <div class="recent-updates">
+                <div class="updates">
+                    <div class="update">
+                        <span class="material-icons-sharp icons">donut_large</span>
+                        <div style="width: 100%;">
+                            <canvas id="chartDonnut"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!------------------- end recent updates -------------------->
+            <div class="sales-analytics">
+                <h2>DADOS POR SEMANA</h2>
+                <div class="item online">
+                    <div class="icon">
+                        <span class="material-icons-sharp">all_inbox</span>
+                    </div>
+                    <div class="right">
+                        <div class="info">
+                            <h3>TOMATES ENTREGUES</h3>
+                            <smal class="text-muted">Atualizado há 7 dias</smal>
+                        </div>
+                        <h5 class="success">+39%</h5>
+                        <h3>349</h3>
+                    </div>
+                </div>
+                <div class="item offline">
+                    <div class="icon">
+                        <span class="material-icons-sharp">not_interested</span>
+                    </div>
+                    <div class="right">
+                        <div class="info">
+                            <h3>PERDA DE TOMATE</h3>
+                            <smal class="text-muted">Atualizado há 7 dias</smal>
+                        </div>
+                        <h5 class="danger">-17%</h5>
+                        <h3>1100</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/style.js"></script>
+    <script src="./js/charts.js"></script>
+</body>
+
+</html>

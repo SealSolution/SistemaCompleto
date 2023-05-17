@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="PT-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funcionários</title>
+
+    <link rel="icon" type="imagem/ico" sizes="192x192" href="../img/favicon.ico" />
+
+    <!--links pages-->
+
+    <link rel="stylesheet" href="../css/style.css">
+
+    <link rel="stylesheet" href="../css/modal_form.css">
+
+
+    <!-- chart js-->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!--Material CDN-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+
+    <style>
+        /* Dark theme  */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --color-background: #181a1e;
+                --color-white: #202528;
+                --color-dark: #edeffd;
+                --color-dark-variant: #a3bdcc;
+                --color-light: rgba(0, 0, 0, 0.4);
+                --box-shadow: 0 2rem 3rem var(--color-light);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!--side bar-->
+    <div class="container">
+        <aside>
+            <div class="top">
+                <div class="logo">
+                    <h2>SEAL<span style="color: var(--color-primary);"> SOLUTION</span></h2>
+                </div>
+                <div class="close" id="close-btn">
+                    <span class="material-icons-sharp">close</span>
+                </div>
+            </div>
+            <div class="sidebar">
+                <a href="../index.html" class="active">
+                    <span class="material-icons-sharp">grid_view</span>
+                    <h3>GRÁFICOS</h3>
+                </a>
+                <a href="../telas/funcionario.html" class="active">
+                    <span class="material-icons-sharp">person_outline</span>
+                    <h3>USÚARIOS</h3>
+                </a>
+                <a href="./Caminhao.html" class="active">
+                    <span class="material-icons-sharp">receipt_long</span>
+                    <h3>CAMINHÕES</h3>
+                    <span class="message-count">3</span>
+                </a>
+
+                <a href="../telas/help.html" class="active">
+                    <span class="material-icons-sharp">help</span>
+                    <h3>CANAL DE AJUDA</h3>
+                </a>
+
+                <a href="../../login/index.html" class="active">
+                    <span class="material-icons-sharp">logout</span>
+                    <h3>DESLOGAR</h3>
+                </a>
+            </div>
+        </aside>
+
+        <!---------------- end aside ---------------->
+
+        <main>
+            <div class="recent-orders">
+                <h2>FUNCIONÁRIOS CADASTRADOS</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Função</th>
+                            <th>Nome</th>
+                            <th>CPf</th>
+                            <th>Nivel de acesso</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Analista</td>
+                            <td>Gabriel</td>
+                            <td>123.456.789-31</td>
+                            <td>Médio</td>
+                            <td class="success">Ativo</td>
+                        </tr>
+                        <tr>
+                            <td>Estagiário</td>
+                            <td>Rafael</td>
+                            <td>340.759.250-72</td>
+                            <td>Basico</td>
+                            <td class="success">Ativo</td>
+                        </tr>
+                        <tr>
+                            <td>Gerencia</td>
+                            <td>Winycius</td>
+                            <td>370.192.810-01</td>
+                            <td>Total</td>
+                            <td class="success">Ativo</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <a href="#cadastro_user">CADASTRAR FUNCIONÁRIO</a>
+            </div>
+        </main>
+
+        <!----------- end main ------------->
+
+        <div class="right">
+            <div class="top">
+                <button id="menu-btn">
+                    <span class="material-icons-sharp">menu</span>
+                </button>
+                <div class="profile">
+                    <div class="info">
+                        <p>OLÁ, <b>Winyc</b></p>
+                    </div>
+                    <div class="profile-photo"><a href="../telas/dadosUser.html">
+                            <img src="../img/img1.jpg"></a>
+                    </div>
+                </div>
+            </div>
+            <!--end top-->
+            <div class="recent-updates">
+                <h2>GRÁFICO</h2>
+                <div class="updates">
+                    <div class="update">
+                        <span class="material-icons-sharp icons">donut_large</span>
+                        <div style="width: 100%;">
+                            <canvas id="Donnut_funcionario"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Modal -->
+    <div class="modal-wrapper modal" id="cadastro_user">
+        <div class="modal-body card_modal">
+            <div class="modal-header">
+                <h2 class="heading">Dados do Funcionário</h2>
+                <a href="#!" role="button" class="close" aria-label="close this modal">
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z" />
+                    </svg>
+                </a>
+            </div>
+            <section class="input-content">
+                <div class="input-content-wrap">
+                    <dl class="inputbox">
+                        <dt class="inputbox-title">Nome</dt>
+                        <dd class="inputbox-content">
+                            <input id="" type="text" placeholder="Nome Completo" />
+                            <span class="underline"></span>
+                        </dd>
+                    </dl>
+                    <dl class="inputbox">
+                        <dt class="inputbox-title">Email</dt>
+                        <dd class="inputbox-content">
+                            <input id="" type="email" placeholder="Email" />
+                            <span class="underline"></span>
+                        </dd>
+                    </dl>
+                    <dl class="inputbox">
+                        <dt class="inputbox-title">Senha</dt>
+                        <dd class="inputbox-content">
+                            <input id="" type="password" placeholder="Senha" />
+                            <span class="underline"></span>
+                        </dd>
+                    </dl>
+                    <dl class="inputbox">
+                        <dt class="inputbox-title">CPF</dt>
+                        <dd class="inputbox-content">
+                            <input maxlength="14" id="cpf" placeholder="CPF" onkeypress="CPF(cpf.value)" />
+                            <span class="underline"></span>
+                        </dd>
+                    </dl>
+                    <dl class="inputbox">
+                        <dt class="inputbox-title">Nivel de acesso</dt>
+                        <dd class="inputbox-content">
+                            <div class="select">
+                                <select id="standard-select">
+                                    <option value="baixo">baixo</option>
+                                    <option value="médio">médio</option>
+                                    <option value="total">total</option>
+                                </select>
+                                <span class="focus"></span>
+                            </div>
+                        </dd>
+                    </dl>
+                    <dl class="inputbox">
+                        <dt class="inputbox-title">Função</dt>
+                        <dd class="inputbox-content">
+                            <div class="select">
+                                <select id="standard-select">
+                                    <option value="Analista">Analista</option>
+                                    <option value="Gerência">Geréncia</option>
+                                    <option value="Estagiário">Estagiário</option>
+                                </select>
+                                <span class="focus"></span>
+                            </div>
+                        </dd>
+                    </dl>
+                    <button class="btn btn-confirm">Cadastrar</button>
+                </div>
+            </section>
+        </div>
+        <a href="#!" class="outside-trigger"></a>
+    </div>
+
+
+
+    <script src="../js/style.js"></script>
+    <script src="../js/chart_individual.js"></script>
+</body>
+
+</html>
+
+<script>
+    function Cadastrar() {
+        var cpfuser = cpf.value
+    }
+
+    function Mascara(valuecpf, patternCpf) {
+        let i = 0;
+        let v = valuecpf.toString();
+        v = v.replace(/\D/g, '');
+        return patternCpf.replace(/#/g, () => v[i++] || '');
+    };
+
+    function CPF(valuecpf) {
+        const cpf = Mascara(valuecpf, '###.###.###-##');
+        document.getElementById('cpf').value = cpf;
+    }
+
+</script>
