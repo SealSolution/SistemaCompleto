@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="PT-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EMPRESA</title>
+
+    <link rel="icon" type="imagem/ico" sizes="192x192" href="../img/favicon.ico" />
+
+    <!--links pages-->
+
+    <link rel="stylesheet" href="../css/style.css">
+
+    <link rel="stylesheet" href="../css/modal_form.css">
+
+    <link rel="stylesheet" href="../css/dadoUser.css">
+
+
+    <!-- chart js-->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!--Material CDN-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+
+    <style>
+        /* Dark theme  */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --color-background: #181a1e;
+                --color-white: #202528;
+                --color-dark: #edeffd;
+                --color-dark-variant: #a3bdcc;
+                --color-light: rgba(0, 0, 0, 0.4);
+                --box-shadow: 0 2rem 3rem var(--color-light);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!--side bar-->
+    <div class="container">
+        <aside>
+            <div class="top">
+                <div class="logo">
+                    <h2>SEAL<span style="color: var(--color-primary);"> SOLUTION</span></h2>
+                </div>
+                <div class="close" id="close-btn">
+                    <span class="material-icons-sharp">close</span>
+                </div>
+            </div>
+            <div class="sidebar">
+                <a href="../index.html" class="active">
+                    <span class="material-icons-sharp">grid_view</span>
+                    <h3>GRÁFICOS</h3>
+                </a>
+                <a href="../telas/empresa.html" class="active">
+                    <span class="material-icons-sharp">business</span>
+                    <h3>EMPRESA</h3>
+                </a>
+                <a href="../telas/funcionario.html" class="active">
+                    <span class="material-icons-sharp">person_outline</span>
+                    <h3>USÚARIOS</h3>
+                </a>
+                <a href="./Caminhao.html" class="active">
+                    <span class="material-icons-sharp">receipt_long</span>
+                    <h3>CAMINHÕES</h3>
+                    <span class="message-count">3</span>
+                </a>
+
+                <a href="../telas/help.html" class="active">
+                    <span class="material-icons-sharp">help</span>
+                    <h3>CANAL DE AJUDA</h3>
+                </a>
+
+                <a href="../../login/index.html" class="active">
+                    <span class="material-icons-sharp">logout</span>
+                    <h3>DESLOGAR</h3>
+                </a>
+            </div>
+        </aside>
+
+        <!---------------- end aside ---------------->
+
+        <main>
+            <div class="recent-orders">
+                <h2>SUA EMPRESA</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Função</th>
+                            <th>Nome</th>
+                            <th>CPf</th>
+                            <th>Nivel de acesso</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Analista</td>
+                            <td>Gabriel</td>
+                            <td>123.456.789-31</td>
+                            <td>Médio</td>
+                            <td class="success">Ativo</td>
+                        </tr>
+                        <tr>
+                            <td>Estagiário</td>
+                            <td>Rafael</td>
+                            <td>340.759.250-72</td>
+                            <td>Basico</td>
+                            <td class="success">Ativo</td>
+                        </tr>
+                        <tr>
+                            <td>Gerencia</td>
+                            <td>Winycius</td>
+                            <td>370.192.810-01</td>
+                            <td>Total</td>
+                            <td class="success">Ativo</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <a href="#cadastro_empresa">CADASTRAR EMPRESA</a>
+            </div>
+        </main>
+
+        <!----------- end main ------------->
+
+        <div class="right">
+            <div class="top">
+                <button id="menu-btn">
+                    <span class="material-icons-sharp">menu</span>
+                </button>
+                <div class="profile">
+                    <div class="info">
+                        <p>OLÁ, <b>Winyc</b></p>
+                    </div>
+                    <div class="profile-photo"><a href="../telas/dadosUser.html">
+                            <img src="../img/img1.jpg"></a>
+                    </div>
+                </div>
+            </div>
+            <!--end top-->
+        </div>
+    </div>
+
+
+
+    <!-- Modal -->
+    <div class="modal-wrapper modal" id="cadastro_empresa">
+        <div class="modal-body card_modal">
+            <div class="modal-header">
+                <h2 class="heading">INFORMAÇÕES DA EMPRESA</h2>
+                <a href="#!" role="button" class="close" aria-label="close this modal">
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z" />
+                    </svg>
+                </a>
+            </div>
+            <section class="input-content">
+                <form action="" class="sign-up-form">
+                    <div class="input-content-wrap">
+                        <input id='step2' type='checkbox'>
+                        <input id='step3' type='checkbox'>
+
+                        <div id="part1" class="form-group">
+                            <section>
+                                <div class="container-fluid">
+                                    <dl class="inputbox">
+                                        <dt class="inputbox-title">Nome da empresa</dt>
+                                        <dd class="inputbox-content">
+                                            <input id="inp_nomeEmpresa" type="text" placeholder="Nome Completo" required />
+                                            <span class="underline"></span>
+                                        </dd>
+                                    </dl>
+                                    <dl class="inputbox">
+                                        <dt class="inputbox-title">CNPJ</dt>
+                                        <dd class="inputbox-content">
+                                            <input id="inp_cnpj" type="text" placeholder="Digite o cnpj" required />
+                                            <span class="underline"></span>
+                                        </dd>
+                                    </dl>
+                                    <dl class="inputbox">
+                                        <dt class="inputbox-title">Descrição da empresa</dt>
+                                        <dd class="inputbox-content">
+                                            <textarea id="text_desc" cols="30" rows="10"></textarea>
+                                            <span class="underline"></span>
+                                        </dd>
+                                    </dl>
+
+                                    <div style="display: flex; flex-direction: row; gap: 30px;">
+                                        <label for='step2' class="continue">
+                                            <div class=" button " role="div">Continuar</div>
+                                        </label>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+
+                        <div id="part2" class="form-group">
+                            <section>
+                                <div class="container-fluid">
+                                    <dl class="inputbox">
+                                        <dt class="inputbox-title">CEP</dt>
+                                        <dd class="inputbox-content">
+                                            <input name="cep" type="text" id="cep" value="" size="10" maxlength="9"
+                                                onblur="pesquisacep(this.value);" placeholder="Digite seu cep"
+                                                required />
+                                            <span class="underline"></span>
+                                        </dd>
+                                    </dl>
+                                    <dl class="inputbox">
+                                        <dt class="inputbox-title">RUA</dt>
+                                        <dd class="inputbox-content">
+                                            <input name="rua" type="text" id="rua" size="60" maxlength="9"
+                                                placeholder="Digite sua rua" required />
+                                            <span class="underline"></span>
+                                        </dd>
+                                    </dl>
+                                    <dl class="inputbox">
+                                        <dt class="inputbox-title">bairro</dt>
+                                        <dd class="inputbox-content">
+                                            <input name="bairro" type="text" id="bairro" placeholder="Digite seu bairro"
+                                                required />
+                                            <span class="underline"></span>
+                                        </dd>
+                                    </dl>
+                                    <dl class="inputbox">
+                                        <dt class="inputbox-title">cidade</dt>
+                                        <dd class="inputbox-content">
+                                            <input name="cidade" type="text" id="cidade" placeholder="Digite sua cidade"
+                                                required />
+                                            <span class="underline"></span>
+                                        </dd>
+                                    </dl>
+                                    <div style="display: flex; flex-direction: row; gap: 30px;">
+                                        <label for='step2' class="back">
+                                            <div class="button" role="button">Voltar</div>
+                                        </label>
+
+                                        <label for='step3' class="continue">
+                                            <div class="button" role="button">Continuar</div>
+                                        </label>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+
+                        <div id="part3" class="form-group">
+                            <div class="container-fluid">
+                                <section>
+                                    <dl class="inputbox">
+                                        <dt class="inputbox-title">UF</dt>
+                                        <dd class="inputbox-content">
+                                            <input name="uf" type="text" id="uf" placeholder="Digite sua uf" required />
+                                            <span class="underline"></span>
+                                        </dd>
+                                    </dl>
+                                    <dl class="inputbox">
+                                        <dt class="inputbox-title">Número</dt>
+                                        <dd class="inputbox-content">
+                                            <input name="numero" type="text" id="numero" placeholder="Digite seu numero"
+                                                required />
+                                            <span class="underline"></span>
+                                        </dd>
+                                    </dl>
+                                    <dl class="inputbox">
+                                        <dt class="inputbox-title">complemento</dt>
+                                        <dd class="inputbox-content">
+                                            <input name="complemento" type="text" id="complemento"
+                                                placeholder="Digite sua complemento" required />
+                                            <span class="underline"></span>
+                                        </dd>
+                                    </dl>
+                                    <div style="display: flex; flex-direction: row; gap: 30px;">
+                                        <label for='step3' class="back">
+                                            <div class="button" role="button">Voltar</div>
+                                        </label>
+
+                                        <label>
+                                            <a onclick="cadastrar2()" class="button">CADASTRAR</a>
+                                        </label>
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </section>
+        </div>
+        <a href="#!" class="outside-trigger"></a>
+    </div>
+
+    <script src="../js/style.js"></script>
+    <script src="../js/viaCep.js"></script>
+</body>
+
+</html>
+
+<script>
+    function cadastrar2() {
+
+//Recupere o valor da nova input pelo nome do id
+// Agora vá para o método fetch logo abaixo
+var nomeEmpresaVar = inp_nomeEmpresa.value;
+var cnpjVar = inp_cnpj.value;
+var descVar = text_desc.value;
+var cepVar = cep.value;
+var ruaVar = rua.value;
+var bairroVar = bairro.value;
+var cidadeVar = cidade.value;
+var ufVar = uf.value;
+var numeroVar = numero.value;
+var complementoVar = complemento.value;
+
+
+
+
+console.log(nomeEmpresaVar, cnpjVar, descVar, cepVar, ruaVar, bairroVar, cidadeVar, ufVar, numeroVar)
+
+
+// Enviando o valor da nova input
+fetch("/usuarios/cadastrar2", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify({
+    // crie um atributo que recebe o valor recuperado aqui
+    // Agora vá para o arquivo routes/usuario.js
+    nomeEmpresaServer: nomeEmpresaVar,
+    cnpjServer: cnpjVar,
+    descServer: descVar,
+    cepServer: cepVar,
+    ruaServer: ruaVar,
+    bairroServer: bairroVar,
+    cidadeServer: cidadeVar,
+    ufServer: ufVar,
+    numeroServer: numeroVar,
+    complementoServer: complementoVar
+  })
+
+}).then(function (resposta) {
+
+  console.log("resposta: ", resposta);
+
+  if (resposta.ok) {
+    cardErro.style.display = "block";
+
+    mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+    setTimeout(() => {
+      window.location = "login.html";
+    }, "2000")
+
+    limparFormulario();
+    finalizarAguardar();
+  } else {
+    throw ("Houve um erro ao tentar realizar o cadastro!");
+  }
+}).catch(function (resposta) {
+  console.log(`#ERRO: ${resposta}`);
+});
+
+return false;
+}
+
+
+
+</script>
