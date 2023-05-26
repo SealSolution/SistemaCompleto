@@ -175,14 +175,14 @@
                     <dl class="inputbox">
                         <dt class="inputbox-title">Placa</dt>
                         <dd class="inputbox-content">
-                            <input id="" type="text" placeholder="Placa do veículo" />
+                            <input id="ipt_Placa" type="text" placeholder="Placa do veículo" />
                             <span class="underline"></span>
                         </dd>
                     </dl>
                     <dl class="inputbox">
                         <dt class="inputbox-title">Marca</dt>
                         <dd class="inputbox-content">
-                            <input id="" type="text" placeholder="Marca do veículo" />
+                            <input id="ipt_Marca" type="text" placeholder="Marca do veículo" />
                             <span class="underline"></span>
                         </dd>
                     </dl>
@@ -190,7 +190,7 @@
                         <dt class="inputbox-title">Tipo de Caminhão</dt>
                         <dd class="inputbox-content">
                             <div class="select">
-                                <select id="standard-select">
+                                <select id="sel_tipoCaminhao">
                                     <option value="Toco">Toco</option>
                                     <option value="Truck">Truck</option>
                                     <option value="CarretaSimples">Carreta Simples</option>
@@ -204,7 +204,7 @@
                         <dt class="inputbox-title">Sensores</dt>
                         <dd class="inputbox-content">
                             <div class="select">
-                                <select id="standard-select">
+                                <select id="sel_sensor">
                                     <option value="dht11(1)">DHT 11</option>
                                     <option value="dht11(2)">DHT 11</option>
                                     <option value="dht11(3)">DHT 11</option>
@@ -214,7 +214,7 @@
                             </div>
                         </dd>
                     </dl>
-                    <button class="btn btn-confirm">Cadastrar</button>
+                    <button class="btn btn-confirm" onclick="cadastrarCaminhao()">Cadastrar</button>
                 </div>
             </section>
         </div>
@@ -228,3 +228,45 @@
 </body>
 
 </html>
+<script>
+
+function cadastrarCaminhao() {
+        var placaVar = ipt_Placa.value
+        var marcaVar = ipt_Marca.value
+        var tipoCaminhaoVar = sel_tipoCaminhao.value
+        var sensorVar = sel_sensor.value
+        if (placaVar == "" || marcaVar == "" || tipoCaminhaoVar == "" || sensorVar == "") {
+            alert("Campos não preenchidos")
+        }
+
+        fetch("/caminhaos/cadastrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                marcaServer: marcaVar,
+                placaServer: placaVar,
+                tipoCaminhaoServer: tipoCaminhaoVar,
+                sensorServer: sensorVar
+            })
+
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                setTimeout(() => {
+                    window.location = "funcionario.html";
+                }, "2000")
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+
+        return false;
+    }
+
+</script>

@@ -2,10 +2,7 @@ var usuarioModel = require("../models/usuarioModel");
 
 var sessoes = [];
 
-function testar(req, res) {
-    console.log("ENTRAMOS NA usuarioController");
-    res.json("ESTAMOS FUNCIONANDO!");
-}
+
 
 function listar(req, res) {
     usuarioModel.listar()
@@ -180,6 +177,5 @@ module.exports = {
     cadastrar,
     cadastrar2,
     listar,
-    testar,
     Funcionario
 }

@@ -3,9 +3,6 @@ var router = express.Router();
 
 var usuarioController = require("../controllers/usuarioController");
 
-router.get("/", function (req, res) {
-    usuarioController.testar(req, res);
-});
 
 router.get("/listar", function (req, res) {
     usuarioController.listar(req, res);
@@ -23,7 +20,6 @@ router.post("/cadastrar2", function (req, res) {
 router.post("/funcionario", function (req, res) {
     usuarioController.Funcionario(req, res);
 });
-
 
 router.post("/autenticar", function (req, res) {
     usuarioController.entrar(req, res);
