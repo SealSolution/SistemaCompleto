@@ -28,11 +28,17 @@ function cadastrar( nome, email, cpf, senha) {
     // INSERT INTO empresa (nomeEmpresa, CNPJ, CEP, numero, rua, bairro, cidade, UF, complemento, descricao) VALUES ('${nome}', '${cnpj}', '${cep}', '${numero}', '${rua}', '${bairro}', '${cidade}', '${uf}', '${complemento}', '${desc}');
 
     var instrucao = `
-    INSERT INTO usuario (nome, email, cpf, senha) VALUES ('${nome}', '${email}', '${cpf}' , '${senha}');
+    INSERT INTO usuario (nomeUsuario, email, cpf, senha) VALUES ('${nome}', '${email}', '${cpf}' , '${senha}');
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
 } 
+function Funcionario(nomeFunc, funcaoFunc, nivelAcessoFunc, emailFunc, senhaFunc, cpfFunc) {
+    var instrucao = `
+    INSERT INTO usuario (nomeUsuario, tipo, nivelAcesso, email, senha, cpf) VALUES ('${nomeFunc}', '${funcaoFunc}', '${nivelAcessoFunc}' ,'${emailFunc}', '${senhaFunc}', '${cpfFunc}');`;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
 
 function cadastrar2(nomeEmpresa, cnpj, desc, cep, rua, bairro, cidade, uf, numero, complemento) {
     
@@ -54,6 +60,7 @@ module.exports = {
     cadastrar,
     cadastrar2,
     listar,
+    Funcionario
 };
 
 

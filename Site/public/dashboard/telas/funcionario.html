@@ -55,10 +55,6 @@
                     <span class="material-icons-sharp">grid_view</span>
                     <h3>GRÁFICOS</h3>
                 </a>
-                <a href="./empresa.html" class="active">
-                    <span class="material-icons-sharp">business</span>
-                    <h3>EMPRESA</h3>
-                </a>
                 <a href="../telas/funcionario.html" class="active">
                     <span class="material-icons-sharp">person_outline</span>
                     <h3>USÚARIOS</h3>
@@ -174,21 +170,21 @@
                     <dl class="inputbox">
                         <dt class="inputbox-title">Nome</dt>
                         <dd class="inputbox-content">
-                            <input id="" type="text" placeholder="Nome Completo" />
+                            <input id="ipt_nome" type="text" placeholder="Nome Completo" />
                             <span class="underline"></span>
                         </dd>
                     </dl>
                     <dl class="inputbox">
                         <dt class="inputbox-title">Email</dt>
                         <dd class="inputbox-content">
-                            <input id="" type="email" placeholder="Email" />
+                            <input id="ipt_email" type="email" placeholder="Email" />
                             <span class="underline"></span>
                         </dd>
                     </dl>
                     <dl class="inputbox">
                         <dt class="inputbox-title">Senha</dt>
                         <dd class="inputbox-content">
-                            <input id="" type="password" placeholder="Senha" />
+                            <input id="ipt_senha" type="password" placeholder="Senha" />
                             <span class="underline"></span>
                         </dd>
                     </dl>
@@ -203,10 +199,11 @@
                         <dt class="inputbox-title">Nivel de acesso</dt>
                         <dd class="inputbox-content">
                             <div class="select">
-                                <select id="standard-select">
-                                    <option value="baixo">baixo</option>
-                                    <option value="médio">médio</option>
-                                    <option value="total">total</option>
+                                <select id="sel_NivelAcesso">
+                                    <option value="" selected disabled>Selecione</option>
+                                    <option value="Sem">Nenhum</option>
+                                    <option value="Medio">médio</option>
+                                    <option value="Total">total</option>
                                 </select>
                                 <span class="focus"></span>
                             </div>
@@ -216,7 +213,8 @@
                         <dt class="inputbox-title">Função</dt>
                         <dd class="inputbox-content">
                             <div class="select">
-                                <select id="standard-select">
+                                <select id="sel_Funcao">
+                                    <option value="" selected disabled> Selecione</option>
                                     <option value="Analista">Analista</option>
                                     <option value="Gerência">Geréncia</option>
                                     <option value="Estagiário">Estagiário</option>
@@ -225,7 +223,7 @@
                             </div>
                         </dd>
                     </dl>
-                    <button class="btn btn-confirm">Cadastrar</button>
+                    <button class="btn btn-confirm" onclick="cadastrarFuncionario()">Cadastrar</button>
                 </div>
             </section>
         </div>
@@ -241,8 +239,52 @@
 </html>
 
 <script>
-    function Cadastrar() {
-        var cpfuser = cpf.value
+    function cadastrarFuncionario() {
+        var nomeVar = ipt_nome.value;
+        var funcaoVar = sel_Funcao.value
+        var nivelAcessoVar = sel_NivelAcesso.value
+        var emailVar = ipt_email.value;
+        var senhaVar = ipt_senha.value;
+        var cpfVar = cpf.value;
+        cpfVar = cpfVar.replaceAll("-","").replaceAll(".", "") // Remoção de mascara
+
+        console.log(nomeVar, emailVar, cpfVar,
+            senhaVar, nivelAcessoVar, funcaoVar)
+
+        if (nomeVar == "" || emailVar == "" || cpfVar == "" || senhaVar == "" || nivelAcessoVar == "" || funcaoVar == "") {
+            alert("Campos não preenchidos")
+        }
+
+        fetch("/usuarios/Funcionario", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                nomeServer: nomeVar,
+                funcaoServer: funcaoVar,
+                nivelAcessoServer: nivelAcessoVar,
+                emailServer: emailVar,
+                senhaServer: senhaVar,
+                cpfServer: cpfVar
+            })
+
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                setTimeout(() => {
+                    window.location = "funcionario.html";
+                }, "2000")
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+
+        return false;
     }
 
     function Mascara(valuecpf, patternCpf) {

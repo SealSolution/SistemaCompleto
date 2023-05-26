@@ -27,3 +27,6 @@ DROP TABLE usuario;
 DROP TABLE empresa;
 SELECT * FROM usuario;
 SELECT * FROM empresa;
+
+create user 'userPomodoro'@'localhost' identified by '123';
+grant all privileges on sealSolutions.* to 'userPomodoro'@'localhost';
