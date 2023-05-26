@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EMPRESA</title>
 
+    <script src="../../js/funcao.js"></script>
+    
     <link rel="icon" type="imagem/ico" sizes="192x192" href="../img/favicon.ico" />
 
     <!--links pages-->
@@ -63,7 +65,7 @@
                 </a>
                 <a href="../telas/funcionario.html" class="active">
                     <span class="material-icons-sharp">person_outline</span>
-                    <h3>USÚARIOS</h3>
+                    <h3>USUÁRIOS</h3>
                 </a>
                 <a href="./Caminhao.html" class="active">
                     <span class="material-icons-sharp">receipt_long</span>
@@ -76,7 +78,7 @@
                     <h3>CANAL DE AJUDA</h3>
                 </a>
 
-                <a href="../../login/index.html" class="active">
+                <a onclick="limparSessao_telas()" class="active">
                     <span class="material-icons-sharp">logout</span>
                     <h3>DESLOGAR</h3>
                 </a>
@@ -135,7 +137,7 @@
                 </button>
                 <div class="profile">
                     <div class="info">
-                        <p>OLÁ, <b>Winyc</b></p>
+                        <p>OLÁ, <b id="b_usuario"></b></p>
                     </div>
                     <div class="profile-photo"><a href="../telas/dadosUser.html">
                             <img src="../img/img1.jpg"></a>
@@ -163,8 +165,6 @@
             <section class="input-content">
                 <form action="" class="sign-up-form">
                     <div class="input-content-wrap">
-                        <input id='step2' type='checkbox'>
-                        <input id='step3' type='checkbox'>
 
                         <div id="part1" class="form-group">
                             <section>
@@ -172,7 +172,8 @@
                                     <dl class="inputbox">
                                         <dt class="inputbox-title">Nome da empresa</dt>
                                         <dd class="inputbox-content">
-                                            <input id="inp_nomeEmpresa" type="text" placeholder="Nome Completo" required />
+                                            <input id="inp_nomeEmpresa" type="text" placeholder="Nome Completo"
+                                                required />
                                             <span class="underline"></span>
                                         </dd>
                                     </dl>
@@ -190,102 +191,13 @@
                                             <span class="underline"></span>
                                         </dd>
                                     </dl>
-
                                     <div style="display: flex; flex-direction: row; gap: 30px;">
-                                        <label for='step2' class="continue">
-                                            <div class=" button " role="div">Continuar</div>
-                                        </label>
-                                    </div>
-                                </div>
-                            </section>
-                        </div>
-
-                        <div id="part2" class="form-group">
-                            <section>
-                                <div class="container-fluid">
-                                    <dl class="inputbox">
-                                        <dt class="inputbox-title">CEP</dt>
-                                        <dd class="inputbox-content">
-                                            <input name="cep" type="text" id="cep" value="" size="10" maxlength="9"
-                                                onblur="pesquisacep(this.value);" placeholder="Digite seu cep"
-                                                required />
-                                            <span class="underline"></span>
-                                        </dd>
-                                    </dl>
-                                    <dl class="inputbox">
-                                        <dt class="inputbox-title">RUA</dt>
-                                        <dd class="inputbox-content">
-                                            <input name="rua" type="text" id="rua" size="60" maxlength="9"
-                                                placeholder="Digite sua rua" required />
-                                            <span class="underline"></span>
-                                        </dd>
-                                    </dl>
-                                    <dl class="inputbox">
-                                        <dt class="inputbox-title">bairro</dt>
-                                        <dd class="inputbox-content">
-                                            <input name="bairro" type="text" id="bairro" placeholder="Digite seu bairro"
-                                                required />
-                                            <span class="underline"></span>
-                                        </dd>
-                                    </dl>
-                                    <dl class="inputbox">
-                                        <dt class="inputbox-title">cidade</dt>
-                                        <dd class="inputbox-content">
-                                            <input name="cidade" type="text" id="cidade" placeholder="Digite sua cidade"
-                                                required />
-                                            <span class="underline"></span>
-                                        </dd>
-                                    </dl>
-                                    <div style="display: flex; flex-direction: row; gap: 30px;">
-                                        <label for='step2' class="back">
-                                            <div class="button" role="button">Voltar</div>
-                                        </label>
-
-                                        <label for='step3' class="continue">
-                                            <div class="button" role="button">Continuar</div>
-                                        </label>
-                                    </div>
-                                </div>
-                            </section>
-                        </div>
-
-                        <div id="part3" class="form-group">
-                            <div class="container-fluid">
-                                <section>
-                                    <dl class="inputbox">
-                                        <dt class="inputbox-title">UF</dt>
-                                        <dd class="inputbox-content">
-                                            <input name="uf" type="text" id="uf" placeholder="Digite sua uf" required />
-                                            <span class="underline"></span>
-                                        </dd>
-                                    </dl>
-                                    <dl class="inputbox">
-                                        <dt class="inputbox-title">Número</dt>
-                                        <dd class="inputbox-content">
-                                            <input name="numero" type="text" id="numero" placeholder="Digite seu numero"
-                                                required />
-                                            <span class="underline"></span>
-                                        </dd>
-                                    </dl>
-                                    <dl class="inputbox">
-                                        <dt class="inputbox-title">complemento</dt>
-                                        <dd class="inputbox-content">
-                                            <input name="complemento" type="text" id="complemento"
-                                                placeholder="Digite sua complemento" required />
-                                            <span class="underline"></span>
-                                        </dd>
-                                    </dl>
-                                    <div style="display: flex; flex-direction: row; gap: 30px;">
-                                        <label for='step3' class="back">
-                                            <div class="button" role="button">Voltar</div>
-                                        </label>
-
                                         <label>
-                                            <a onclick="cadastrar2()" class="button">CADASTRAR</a>
+                                            <button onclick="cadastrar2()" class="button">CADASTRAR</button>
                                         </label>
                                     </div>
-                                </section>
-                            </div>
+                                </div>
+                            </section>
                         </div>
                     </div>
                 </form>
@@ -303,70 +215,53 @@
 <script>
     function cadastrar2() {
 
-//Recupere o valor da nova input pelo nome do id
-// Agora vá para o método fetch logo abaixo
-var nomeEmpresaVar = inp_nomeEmpresa.value;
-var cnpjVar = inp_cnpj.value;
-var descVar = text_desc.value;
-var cepVar = cep.value;
-var ruaVar = rua.value;
-var bairroVar = bairro.value;
-var cidadeVar = cidade.value;
-var ufVar = uf.value;
-var numeroVar = numero.value;
-var complementoVar = complemento.value;
+        //Recupere o valor da nova input pelo nome do id
+        // Agora vá para o método fetch logo abaixo
+        var nomeEmpresaVar = inp_nomeEmpresa.value;
+        var cnpjVar = inp_cnpj.value;
+        var descVar = text_desc.value;
+
+        console.log(nomeEmpresaVar, cnpjVar, descVar)
 
 
+        // Enviando o valor da nova input
+        fetch("/usuarios/cadastrar2", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                nomeEmpresaServer: nomeEmpresaVar,
+                cnpjServer: cnpjVar,
+                descServer: descVar,
+            })
 
+        }).then(function (resposta) {
 
-console.log(nomeEmpresaVar, cnpjVar, descVar, cepVar, ruaVar, bairroVar, cidadeVar, ufVar, numeroVar)
+            console.log("resposta: ", resposta);
 
+            if (resposta.ok) {
+                cardErro.style.display = "block";
 
-// Enviando o valor da nova input
-fetch("/usuarios/cadastrar2", {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json"
-  },
-  body: JSON.stringify({
-    // crie um atributo que recebe o valor recuperado aqui
-    // Agora vá para o arquivo routes/usuario.js
-    nomeEmpresaServer: nomeEmpresaVar,
-    cnpjServer: cnpjVar,
-    descServer: descVar,
-    cepServer: cepVar,
-    ruaServer: ruaVar,
-    bairroServer: bairroVar,
-    cidadeServer: cidadeVar,
-    ufServer: ufVar,
-    numeroServer: numeroVar,
-    complementoServer: complementoVar
-  })
+                mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
 
-}).then(function (resposta) {
+                setTimeout(() => {
+                    window.location = "login.html";
+                }, "2000")
 
-  console.log("resposta: ", resposta);
+                limparFormulario();
+                finalizarAguardar();
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
 
-  if (resposta.ok) {
-    cardErro.style.display = "block";
-
-    mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
-
-    setTimeout(() => {
-      window.location = "login.html";
-    }, "2000")
-
-    limparFormulario();
-    finalizarAguardar();
-  } else {
-    throw ("Houve um erro ao tentar realizar o cadastro!");
-  }
-}).catch(function (resposta) {
-  console.log(`#ERRO: ${resposta}`);
-});
-
-return false;
-}
+        return false;
+    }
 
 
 

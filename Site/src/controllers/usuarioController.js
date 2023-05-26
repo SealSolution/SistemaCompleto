@@ -2,7 +2,7 @@ var usuarioModel = require("../models/usuarioModel");
 
 var sessoes = [];
 
-
+var oi = "oi"
 
 function listar(req, res) {
     usuarioModel.listar()
@@ -102,21 +102,14 @@ function cadastrar2(req, res) {
     var nomeEmpresa =  req.body.nomeEmpresaServer;
     var cnpj =  req.body.cnpjServer;
     var desc =  req.body.descServer;
-    var cep =  req.body.cepServer;
-    var rua =  req.body.ruaServer;
-    var bairro =  req.body.bairroServer;
-    var cidade =  req.body.cidadeServer;
-    var uf =  req.body.ufServer;
-    var numero =  req.body.numeroServer;
-    var complemento = req.body.complementoServer;
+
     
 
     // Faça as validações dos valores
 
-     
         
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.cadastrar2(nomeEmpresa, cnpj, desc, cep, rua, bairro, cidade, uf, numero, complemento)
+        usuarioModel.cadastrar2(nomeEmpresa, cnpj, desc)
             .then(
                 function (resultado) {
                     res.json(resultado);
@@ -140,6 +133,7 @@ function Funcionario(req, res) {
     var email = req.body.emailServer;
     var senha = req.body.senhaServer;
     var cpf = req.body.cpfServer;
+    var idAtual = req.body.idAtualServer;
 
     if (nome == undefined) {
         res.status(400).send("Seu nome está undefined!");

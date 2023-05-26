@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Caminhões</title>
 
+    <script src="../../js/funcao.js"></script>
 
     <link rel="icon" type="imagem/ico" sizes="192x192" href="../img/favicon.ico" />
 
@@ -76,7 +77,7 @@
                     <h3>CANAL DE AJUDA</h3>
                 </a>
 
-                <a href="../../login/index.html" class="active">
+                <a onclick="limparSessao_telas()" class="active">
                     <span class="material-icons-sharp">logout</span>
                     <h3>DESLOGAR</h3>
                 </a>
@@ -135,7 +136,7 @@
                 </button>
                 <div class="profile">
                     <div class="info">
-                        <p>OLÁ, <b>Winyc</b></p>
+                        <p>OLÁ, <b id="b_usuario"></b></p>
                     </div>
                     <div class="profile-photo"><a href="../telas/dadosUser.html">
                             <img src="../img/img1.jpg"></a>
@@ -205,9 +206,9 @@
                         <dd class="inputbox-content">
                             <div class="select">
                                 <select id="sel_sensor">
-                                    <option value="dht11(1)">DHT 11</option>
-                                    <option value="dht11(2)">DHT 11</option>
-                                    <option value="dht11(3)">DHT 11</option>
+                                    <option value="dht11">DHT 11</option>
+                                    <option value="dht11">DHT 11</option>
+                                    <option value="dht11">DHT 11</option>
                                     <option value="vazio">Vazio</option>
                                 </select>
                                 <span class="focus"></span>

@@ -5,13 +5,16 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+  <title>LOGIN USUÁRIO</title>
+
+  <script src="../js/funcao.js"></script>
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <link rel="stylesheet" href="style.css" />
 
-  <title>LOGIN USUÁRIO</title>
 </head>
 
 <body>
@@ -131,7 +134,11 @@
     console.log(nomeVar, emailVar, cpfVar,
       senhaVar)
 
-    
+      if (nomeVar == "" || emailVar == "" || senhaVar == ""  || cpfVar == "") {
+            alert("(Mensagem de erro para todos os campos em branco)");
+
+            return false;  
+           }
 
     // Enviando o valor da nova input
     fetch("/usuarios/cadastrar", {
@@ -153,18 +160,15 @@
       console.log("resposta: ", resposta);
 
       if (resposta.ok) {
-        cardErro.style.display = "block";
 
-        mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+        alert("Cadastro realizado com sucesso! Redirecionando para tela de Login...");
 
         setTimeout(() => {
-          window.location = "login.html";
+          window.location = "./index.html";
         }, "2000")
 
-        limparFormulario();
-        finalizarAguardar();
       } else {
-        throw ("Houve um erro ao tentar realizar o cadastro!");
+        alert("Houve um erro ao tentar realizar o cadastro!");
       }
     }).catch(function (resposta) {
       console.log(`#ERRO: ${resposta}`);
@@ -174,13 +178,15 @@
   }
 
 
+  /* ========================== Entrar ============================== */
   function entrar() {
 
     var emailVar = ipt_email.value;
     var senhaVar = in_senha.value;
 
     if (emailVar == "" || senhaVar == "") {
-      return false;
+       
+      alert("Campos invalidos digite suas credenciais novamente");
     }
 
     console.log("FORM LOGIN: ", emailVar);
@@ -205,9 +211,13 @@
           console.log(json);
           console.log(JSON.stringify(json));
 
+          sessionStorage.ID_USUARIO = json.idUsuario;
           sessionStorage.EMAIL_USUARIO = json.email;
-          sessionStorage.NOME_USUARIO = json.nome;
-          sessionStorage.ID_USUARIO = json.id;
+          sessionStorage.NOME_USUARIO = json.nomeUsuario;
+          sessionStorage.CPF_USUARIO = json.cpf;
+          sessionStorage.TIPO_USUARIO = json.tipo;
+          sessionStorage.NIVEL_ACESSO_USUARIO = json.nivel_acesso;
+
 
           setTimeout(function () {
             window.location = "../dashboard/index.html";
@@ -230,6 +240,5 @@
 
     return false;
   }
-
 
 </script>

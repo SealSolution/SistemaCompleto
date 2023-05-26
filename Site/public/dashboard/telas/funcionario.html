@@ -9,6 +9,8 @@
 
     <link rel="icon" type="imagem/ico" sizes="192x192" href="../img/favicon.ico" />
 
+    <script src="../../js/funcao.js"></script>
+    
     <!--links pages-->
 
     <link rel="stylesheet" href="../css/style.css">
@@ -18,6 +20,8 @@
 
     <!-- chart js-->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script src="../../js/funcao.js"></script>
 
     <!--Material CDN-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
@@ -37,7 +41,7 @@
     </style>
 </head>
 
-<body>
+<body onload="validarSessao()">
 
     <!--side bar-->
     <div class="container">
@@ -55,9 +59,13 @@
                     <span class="material-icons-sharp">grid_view</span>
                     <h3>GRÁFICOS</h3>
                 </a>
+                <a href="../telas/empresa.html" class="active">
+                    <span class="material-icons-sharp">business</span>
+                    <h3>EMPRESA</h3>
+                </a>
                 <a href="../telas/funcionario.html" class="active">
                     <span class="material-icons-sharp">person_outline</span>
-                    <h3>USÚARIOS</h3>
+                    <h3>USUÁRIOS</h3>
                 </a>
                 <a href="./Caminhao.html" class="active">
                     <span class="material-icons-sharp">receipt_long</span>
@@ -70,7 +78,7 @@
                     <h3>CANAL DE AJUDA</h3>
                 </a>
 
-                <a href="../../login/index.html" class="active">
+                <a onclick="limparSessao_telas()" class="active">
                     <span class="material-icons-sharp">logout</span>
                     <h3>DESLOGAR</h3>
                 </a>
@@ -129,7 +137,7 @@
                 </button>
                 <div class="profile">
                     <div class="info">
-                        <p>OLÁ, <b>Winyc</b></p>
+                        <p>OLÁ, <b id="b_usuario"></b></p>
                     </div>
                     <div class="profile-photo"><a href="../telas/dadosUser.html">
                             <img src="../img/img1.jpg"></a>
@@ -246,6 +254,8 @@
         var emailVar = ipt_email.value;
         var senhaVar = ipt_senha.value;
         var cpfVar = cpf.value;
+        var idAtualVar =  
+        // idAtualServer
         cpfVar = cpfVar.replaceAll("-","").replaceAll(".", "") // Remoção de mascara
 
         console.log(nomeVar, emailVar, cpfVar,
@@ -272,11 +282,11 @@
         }).then(function (resposta) {
 
             console.log("resposta: ", resposta);
-
+            
             if (resposta.ok) {
                 setTimeout(() => {
-                    window.location = "funcionario.html";
-                }, "2000")
+                window.location("./funcionario.html");
+            }, "2000")
             } else {
                 throw ("Houve um erro ao tentar realizar o cadastro!");
             }
@@ -286,6 +296,11 @@
 
         return false;
     }
+
+
+
+
+    
 
     function Mascara(valuecpf, patternCpf) {
         let i = 0;

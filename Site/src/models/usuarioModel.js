@@ -35,12 +35,12 @@ function cadastrar( nome, email, cpf, senha) {
 } 
 function Funcionario(nomeFunc, funcaoFunc, nivelAcessoFunc, emailFunc, senhaFunc, cpfFunc) {
     var instrucao = `
-    INSERT INTO usuario (nomeUsuario, tipo, nivelAcesso, email, senha, cpf) VALUES ('${nomeFunc}', '${funcaoFunc}', '${nivelAcessoFunc}' ,'${emailFunc}', '${senhaFunc}', '${cpfFunc}');`;
+    INSERT INTO usuario (nomeUsuario, tipo, nivel_acesso, email, senha, cpf) VALUES ('${nomeFunc}', '${funcaoFunc}', '${nivelAcessoFunc}' ,'${emailFunc}', '${senhaFunc}', '${cpfFunc}');`;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
 }
 
-function cadastrar2(nomeEmpresa, cnpj, desc, cep, rua, bairro, cidade, uf, numero, complemento) {
+function cadastrar2(nomeEmpresa, cnpj, desc) {
     
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente.");
     
@@ -49,7 +49,7 @@ function cadastrar2(nomeEmpresa, cnpj, desc, cep, rua, bairro, cidade, uf, numer
     // INSERT INTO empresa (nomeEmpresa, CNPJ, CEP, numero, rua, bairro, cidade, UF, complemento, descricao) VALUES ('${nome}', '${cnpj}', '${cep}', '${numero}', '${rua}', '${bairro}', '${cidade}', '${uf}', '${complemento}', '${desc}');
 
     var instrucao2 = `
-    INSERT INTO empresa (nomeEmpresa, cnpj, descricao, cep, rua, bairro, cidade, uf, numero, complemento) VALUES ('${nomeEmpresa}', '${cnpj}', '${desc}' , '${cep}', '${rua}', '${bairro}', '${cidade}', '${uf}', '${numero}', '${complemento}');
+    INSERT INTO empresa (nome, cnpj, descricao) VALUES ('${nomeEmpresa}', '${cnpj}', '${desc}');
     `;
     console.log("Executando a instrução SQL: \n" + instrucao2);
     return database.executar(instrucao2);

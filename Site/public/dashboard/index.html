@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DashBoard</title>
 
+    <script src="../js/funcao.js"></script>
 
     <link rel="icon" type="imagem/ico" sizes="192x192" href="./img/favicon.ico" />
 
@@ -35,7 +36,7 @@
     </style>
 </head>
 
-<body>
+<body onload="validarSessao()">
 
     <!--side bar-->
     <div class="container">
@@ -72,7 +73,7 @@
                     <h3>CANAL DE AJUDA</h3>
                 </a>
 
-                <a href="../login/index.html" class="active">
+                <a onclick="limparSessao()" class="active">
                     <span class="material-icons-sharp">logout</span>
                     <h3>DESLOGAR</h3>
                 </a>
@@ -189,7 +190,7 @@
                 </button>
                 <div class="profile">
                     <div class="info">
-                        <p>OLÁ, <b>Winyc</b></p>
+                        <p>OLÁ, <b id="b_usuario">Winyc</b></p>
                     </div>
                     <div class="profile-photo"><a href="./telas/dadosUser.html">
                             <img src="img/img1.jpg"></a>

@@ -8,6 +8,8 @@
     <title>Dados usúario</title>
 
 
+    <script src="../../js/funcao.js"></script>
+
     <link rel="icon" type="imagem/ico" sizes="192x192" href="../img/favicon.ico" />
 
     <!--links pages-->
@@ -38,7 +40,7 @@
     </style>
 </head>
 
-<body>
+<body onload="validarSessao(), mostrar_dados()">
 
     <!--side bar-->
     <div class="container">
@@ -75,7 +77,7 @@
                     <h3>CANAL DE AJUDA</h3>
                 </a>
 
-                <a href="../../login/index.html" class="active">
+                <a onclick="limparSessao_telas()" class="active">
                     <span class="material-icons-sharp">logout</span>
                     <h3>DESLOGAR</h3>
                 </a>
@@ -87,38 +89,30 @@
         <main>
             <h1>DADOS DO USÚARIO</h1>
 
-            <!-- partial:index.partial.html -->
-
             <div class="recent-orders">
                 <div class="resume">
                     <div class="base">
                         <div class="profile">
                             <div class="avatar-upload">
-                                <div class="avatar-edit">
-                                    <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg"
-                                        onchange="showImage()" />
-                                    <label for="imageUpload"></label>
-                                </div>
                                 <div class="avatar-preview">
                                     <img id="exemplo" style="border-radius: 50%;" src="../img/img1.jpg" alt="">
                                 </div>
                             </div>
                             <div class="info">
-                                <h4 class="name">WINYCIOS ALVES</h4><small class="job">Carlos Fazendas</small>
+                                <h4 class="name" id="b_usuario">WINYCIOS ALVES</h4><small class="job">Carlos Fazendas</small>
                             </div>
                         </div>
                     </div>
                     <div class="func">
                         <div class="work">
-                            <h3><i class="fa fa-briefcase"><a href="#atualizar_dados"></i>Dados Pessoais</h3></a>
+                            <h3><i class="fa fa-briefcase"></i>Dados Pessoais</h3>
                             <ul style="margin-top: 20px;">
-                                <li><span>Nome</span><small>Winycios alves</small></li>
-                                <li><span>Email</span><small>winycebas@gmail.com</small></li>
-                                <li><span>CPF</span><small>123.456.789-31</small></li>
+                                <li><span>Email</span><small id="emailUser"></small></li>
+                                <li><span>CPF</span><small id="cpfUser"></small></li>
                             </ul>
                         </div>
                         <div class="edu">
-                            <h3><i class="fa fa-graduation-cap"><A href="#atualizar_dados"></i>Endereço</h3></A>
+                            <h3><i class="fa fa-graduation-cap"></i>Empresa</h3>
                             <ul style="margin-top: 20px;">
                                 <li><span>Endereço Plantio</span><small>Rua sei la das contas, 57</small></li>
                                 <li><span>Nome Do Plantio</span><small>Carlos fazendas</small></li>
@@ -138,66 +132,8 @@
                 <button id="menu-btn">
                     <span class="material-icons-sharp">menu</span>
                 </button>
-                <div class="profile">
-                    <div class="info">
-                        <p>OLÁ, <b>Winyc</b></p>
-                    </div>
-                    <div class="profile-photo">
-                        <a href="./dadosUser.html"><img src="../img/img1.jpg"></a>
-                    </div>
-                </div>
             </div>
         </div>
-    </div>
-
-
-    <!-- Modal -->
-    <div class="modal-wrapper modal" id="atualizar_dados">
-        <div class="modal-body card_modal">
-            <div class="modal-header">
-                <h2 class="heading">Dados Pessoais</h2>
-                <a href="#!" role="button" class="close" aria-label="close this modal">
-                    <svg viewBox="0 0 24 24">
-                        <path
-                            d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z" />
-                    </svg>
-                </a>
-            </div>
-            <section class="input-content">
-                <div class="input-content-wrap">
-                    <dl class="inputbox">
-                        <dt class="inputbox-title">Nome</dt>
-                        <dd class="inputbox-content">
-                            <input id="" type="text" placeholder="Nome Completo" required />
-                            <span class="underline"></span>
-                        </dd>
-                    </dl>
-                    <dl class="inputbox">
-                        <dt class="inputbox-title">Email</dt>
-                        <dd class="inputbox-content">
-                            <input id="" type="text" placeholder="Email" required />
-                            <span class="underline"></span>
-                        </dd>
-                    </dl>
-                    <dl class="inputbox">
-                        <dt class="inputbox-title">Nome empresa</dt>
-                        <dd class="inputbox-content">
-                            <input id="" type="text" placeholder="Nome empresa" required />
-                            <span class="underline"></span>
-                        </dd>
-                    </dl>
-                    <dl class="inputbox">
-                        <dt class="inputbox-title">Descrição da empresa</dt>
-                        <dd class="inputbox-content">
-                            <textarea cols="30" rows="10"></textarea>
-                            <span class="underline"></span>
-                        </dd>
-                    </dl>
-                    <button class="btn btn-confirm">Atualizar dados</button>
-                </div>
-            </section>
-        </div>
-        <a href="#!" class="outside-trigger"></a>
     </div>
 
 
