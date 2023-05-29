@@ -25,6 +25,7 @@
         <!-- Login -->
         <form class="sign-in-form">
           <h2 class="title">LOGAR</h2>
+          <div id="alerta"></div>
           <div class="input-field">
             <i class="fas fa-user"></i>
             <input type="email" id="ipt_email" placeholder="Email" />
@@ -35,13 +36,13 @@
           </div>
           <a onclick="entrar()" class="btn solid">Login</a>
           <a href="./recuperar_senha.html" class="nav_logins">Esqueceu a senha ? clique aqui </a>
-          <div id="alerta"></div>
         </form>
 
         <!-- Cadastro de usuario-->
         <form action="" class="sign-up-form">
           <h2 class="title">CADASTRE-SE</h2>
 
+          <div id="alerta_cadastro"></div>
           <div id="part1" class="form-group">
             <section>
               <div class="container-fluid">
@@ -70,7 +71,6 @@
               </div>
             </section>
           </div>
-          <div id="alerta_cadastro"></div>
         </form>
       </div>
     </div>
@@ -130,15 +130,23 @@
     var emailVar = input_email.value;
     var cpfVar = cpf.value;
     var senhaVar = ipt_senha.value;
-  
+
     console.log(nomeVar, emailVar, cpfVar,
       senhaVar)
 
-      if (nomeVar == "" || emailVar == "" || senhaVar == ""  || cpfVar == "") {
-            alert("(Mensagem de erro para todos os campos em branco)");
+    if (nomeVar == "" || emailVar == "" || senhaVar == "" || cpfVar == "") {
+      alerta_cadastro.innerHTML = `
+  
+  <div class="alert alert-3-danger">
+    <h3 class="alert-title">ERRO!</h3>
+    <p class="alert-content">Todos os campos estão em branco.</p>
+</div>`;
 
-            return false;  
-           }
+setTimeout(function () {
+          alerta_cadastro.style.display = 'none';
+      }, 2000); 
+      return false;
+    }
 
     // Enviando o valor da nova input
     fetch("/usuarios/cadastrar", {
@@ -161,20 +169,33 @@
 
       if (resposta.ok) {
 
-        alert("Cadastro realizado com sucesso! Redirecionando para tela de Login...");
-
+        alerta_cadastro.innerHTML = `
+    <div class="alert alert-2-success">
+        <h3 class="alert-title">Opa, ${nomeVar}!</h3>
+        <p class="alert-content">Cadastro realizado com sucesso! Redirecionando para tela de Login...</p>
+    </div>`;
         setTimeout(() => {
           window.location = "./index.html";
         }, "2000")
 
       } else {
-        alert("Houve um erro ao tentar realizar o cadastro!");
+        alerta_cadastro.innerHTML = `
+  
+      <div class="alert alert-3-danger">
+        <h3 class="alert-title">ERRO!</h3>
+        <p class="alert-content">Houve um erro ao tentar realizar o cadastro!.</p>
+    </div>`;
+
+    setTimeout(function () {
+          alerta_cadastro.style.display = 'none';
+      }, 2000); 
       }
     }).catch(function (resposta) {
       console.log(`#ERRO: ${resposta}`);
     });
 
     return false;
+
   }
 
 
@@ -185,8 +206,17 @@
     var senhaVar = in_senha.value;
 
     if (emailVar == "" || senhaVar == "") {
-       
-      alert("Campos invalidos digite suas credenciais novamente");
+
+      alerta.innerHTML = `
+  
+      <div class="alert alert-3-danger">
+        <h3 class="alert-title">ERRO!</h3>
+        <p class="alert-content">Os campos estão vazios!.</p>
+    </div>`;
+
+    setTimeout(function () {
+          alerta.style.display = 'none';
+      }, 2000); 
     }
 
     console.log("FORM LOGIN: ", emailVar);
@@ -219,15 +249,31 @@
           sessionStorage.NIVEL_ACESSO_USUARIO = json.nivel_acesso;
 
 
+          alerta.innerHTML = `
+  
+          <div class="alert alert-2-success">
+              <h3 class="alert-title">Opa!</h3>
+              <p class="alert-content">Cadastro realizado com sucesso! Redirecionando para a dashboard...</p>
+          </div>`;
+
           setTimeout(function () {
+
             window.location = "../dashboard/index.html";
-          }, 1000); // apenas para exibir o loading
+          }, 2000); // apenas para exibir o loading
 
         });
 
       } else {
 
-        console.log("Houve um erro ao tentar realizar o login!");
+        alerta.innerHTML = `
+        <div class="alert alert-3-danger">
+          <h3 class="alert-title">ERRO!</h3>
+          <p class="alert-content">Houve um erro ao tentar realizar o login!.</p>
+        </div>`;
+
+      setTimeout(function () {
+          alerta.style.display = 'none';
+      }, 2000); 
 
         resposta.text().then(texto => {
           console.error(texto);

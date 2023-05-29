@@ -2539,3 +2539,8 @@ a{
   #myBtn:hover {
     background-color: none;
   }
+
+  .servico_footer .pdf{
+    margin-top: 80%;
+    color: #000000;
+  }
