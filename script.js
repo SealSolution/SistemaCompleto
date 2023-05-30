@@ -1,7 +1,5 @@
 const nodemailer = require('nodemailer');
-const express = require('express');
-const path = require('path');
-const app = express();
+
 
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
@@ -44,6 +42,3 @@ app.post('/sendEmail', (req, res) => {
     });
 });
 
-app.listen(4002, () => {
-    console.log(`Servidor rodando na porta 4002`);
-});

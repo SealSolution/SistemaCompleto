@@ -4,6 +4,7 @@ process.env.AMBIENTE_PROCESSO = "desenvolvimento";
 var express = require("express");
 var cors = require("cors");
 var path = require("path");
+const nodemailer = require('nodemailer');
 var PORTA = process.env.AMBIENTE_PROCESSO == "desenvolvimento" ? 3333 : 8080;
 
 var app = express();
@@ -31,3 +32,45 @@ app.listen(PORTA, function () {
     \t\tSe "producao", você está se conectando ao banco REMOTO (SQL Server em nuvem Azure) \n
     \t\t\t\tPara alterar o ambiente, comente ou descomente as linhas 1 ou 2 no arquivo 'app.js'`);
 });
+
+app.use(express.json());
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.post('/sendEmail', (req, res) => {
+    const { name, email, select, message, attachmentData } = req.body;
+
+    const transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+            user: 'winyciosnascimento31@gmail.com', // generated ethereal user
+            pass: 'nhlsqzisunovwzri',
+        }
+    });
+
+
+    const mailOptions = {
+        from: 'Winyciosnascimento31@gmail.com',
+        to: 'support@sealsupport.atlassian.net',
+        subject: select,
+        html: `<p>Olá meu nome é ${name}</p> 
+        \n\n\n\n,
+        <p>Mensagem : ${message} </p> 
+        \n\n\n\n 
+        <p> Email: ${email}</p> 
+        `,
+        attachments: [{
+            path: attachmentData,
+        }]
+    };
+
+    transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+            console.log(error);
+            res.status(500).send('Ocorreu um erro ao enviar o email.');
+        } else {
+            console.log('Email enviado: ' + info.response);
+            res.send('Email enviado com sucesso!');
+        }
+    });
+});
+

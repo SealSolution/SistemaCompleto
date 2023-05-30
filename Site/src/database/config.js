@@ -20,9 +20,9 @@ var sql = require('mssql');
 // CONEXÃO DO MYSQL WORKBENCH (LOCAL)
 var mySqlConfig = {
     host: "localhost",
-    database: "sealSolutions",
+    database: "sealSolution",
     user: "root",
-    password: "Cringe1305!",
+    password: "MAdalena13",
     // create user 'userPomodoro'@'localhost' identified by '123';
     // grant all privileges on sealSolutions.* to 'userPomodoro'@'localhost';
 };

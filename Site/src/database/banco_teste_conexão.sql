@@ -75,5 +75,5 @@ create table viagem(
 
 -- Cadastro userPomodoro
 create user 'userPomodoro'@'localhost' identified by '123';
-grant all privileges on sealSolutions.* to 'userPomodoro'@'localhost';
+grant all privileges on sealSolution.* to 'userPomodoro'@'localhost';
 flush privileges;
