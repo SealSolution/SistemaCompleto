@@ -1,4 +1,3 @@
-
 // sessão
 function validarSessao() {
     // aguardar();
@@ -38,9 +37,15 @@ function limparSessao() {
     // aguardar();
     sessionStorage.clear();
     // finalizarAguardar();
-    window.location = "../../login/index.html";
+    window.location = "../login/index.html";
 }
 
+function limparSessao_telas() {
+    // aguardar();
+    sessionStorage.clear();
+    // finalizarAguardar();
+    window.location = "../../login/index.html";
+}
 
 
 

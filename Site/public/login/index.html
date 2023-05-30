@@ -38,12 +38,16 @@
           <a href="./recuperar_senha.html" class="nav_logins">Esqueceu a senha ? clique aqui </a>
         </form>
 
-        <!-- Cadastro de usuario-->
+
+        <!-- Cadastro de usuario empresa-->
         <form action="" class="sign-up-form">
           <h2 class="title">CADASTRE-SE</h2>
+          <input id='step2' type='checkbox'>
 
           <div id="alerta_cadastro"></div>
           <div id="part1" class="form-group">
+            
+            
             <section>
               <div class="container-fluid">
                 <p>INFORMAÇÕES DO USUÁRIO</p>
@@ -56,7 +60,7 @@
                   <input type="text" placeholder="Email" id="input_email" />
                 </div>
                 <div class="input-field">
-                  <i class="fas fa-envelope"></i>
+                  <i class="fa-solid fa-user-pen"></i>
                   <input type="text" placeholder="Digite o seu CPF" maxlength="14" id="cpf" />
                 </div>
                 <div class="input-field">
@@ -64,6 +68,35 @@
                   <input type="password" placeholder="Senha" id="ipt_senha" maxlength="12" />
                 </div>
                 <div style="display: flex; flex-direction: row; gap: 30px;">
+                  <label for='step2' class="continue">
+                    <div class="btn solid" role="button">Continue</div>
+                  </label>
+                </div>
+              </div>
+            </section>
+          </div>
+
+          <div id="part2" class="form-group">
+            <section>
+              <div class="container-fluid">
+                <p>CADASTRO DA EMPRESA</p>
+                <div class="input-field">
+                  <i class="fa-solid fa-building"></i>
+                  <input type="text" placeholder="Digite o nome da empresa" id="ipt_nomeEmpresa" />
+                </div>
+                <div class="input-field">
+                  <i class="fas fa-location-dot"></i>
+                  <input type="text" maxlength="14" id="ipt_cnpj" placeholder="Digite o cnpj" />
+                </div>
+                <div class="textarea-field">
+                  <i class="fa fa-scroll"></i>
+                  <textarea id="ipt_desc_empresa" placeholder="Descrição da empresa" cols="30" rows="10"></textarea>
+                </div>
+
+                <div style="display: flex; flex-direction: row; gap: 30px;">
+                  <label for='step2' class="back">
+                    <div class="btn solid" role="button">Voltar</div>
+                  </label>
                   <label>
                     <a onclick="cadastrar()" class="btn solid">CADASTRAR</a>
                   </label>
@@ -74,7 +107,6 @@
         </form>
       </div>
     </div>
-
 
     <!-- transição -->
     <div class="panels-container">

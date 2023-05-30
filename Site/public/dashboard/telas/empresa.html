@@ -207,7 +207,6 @@
     </div>
 
     <script src="../js/style.js"></script>
-    <script src="../js/viaCep.js"></script>
 </body>
 
 </html>
@@ -243,13 +242,10 @@
             console.log("resposta: ", resposta);
 
             if (resposta.ok) {
-                cardErro.style.display = "block";
 
-                mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
-
-                setTimeout(() => {
-                    window.location = "login.html";
-                }, "2000")
+                // setTimeout(() => {
+                //     window.location = "login.html";
+                // }, "2000")
 
                 limparFormulario();
                 finalizarAguardar();

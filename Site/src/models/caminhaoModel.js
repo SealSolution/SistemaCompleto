@@ -8,7 +8,14 @@ function cadastrar(placa, marca, tipo, sensor) {
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
 }
-
+function viagem(data, qtdTomate){
+    var instrucao = 
+    `
+    insert into viagem values
+        (null, fk_caminhao, fk_motorista, ${data}, ${qtdTomate})
+    `
+    return database.executar(instrucao)
+}
 module.exports = {
-    cadastrar
+    cadastrar, viagem
 }

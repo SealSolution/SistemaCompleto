@@ -5,5 +5,8 @@ var caminhaoController = require("../controllers/caminhaoController")
 router.post("/cadastrar", function (req, res) {
     caminhaoController.cadastrar(req, res);
 });
+router.post("/viagem", function (req, res) {
+    caminhaoController.cadastrar(req, res);
+});
 
 module.exports = router;

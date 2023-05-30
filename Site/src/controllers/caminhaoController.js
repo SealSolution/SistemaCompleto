@@ -32,7 +32,34 @@ function cadastrar(req, res){
             );
     }
 }
+function viagem(req, res){
+    var data = req.body.dataServer;
+    var qtdTomate = req.body.qtdTomateServer;
+
+    if(data == undefined){
+        res.status(400).send("Sua data está undefined!");
+    }else if(qtdTomate == undefined){
+        res.status(400).send("Sua marca está undefined!");
+    }else{
+        caminhaoModel.viagem(data, qtdTomate)
+        .then(
+            function(resultado){
+                res.json(resultado)
+            }
+        ).catch(
+            function (erro) {
+                console.log(erro);
+                console.log(
+                    "\nHouve um erro ao realizar o cadastro da viagem! Erro: ",
+                    erro.sqlMessage
+                );
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+    }
+}
 
 module.exports = {
-    cadastrar
+    cadastrar,
+    viagem
 }
