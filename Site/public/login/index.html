@@ -98,7 +98,7 @@
                     <div class="btn solid" role="button">Voltar</div>
                   </label>
                   <label>
-                    <a onclick="cadastrar()" class="btn solid">CADASTRAR</a>
+                    <a onclick="juntar()" class="btn solid">CADASTRAR</a>
                   </label>
                 </div>
               </div>
@@ -230,7 +230,10 @@ setTimeout(function () {
 
   }
 
-
+  function juntar(){
+    cadastrar()
+    cadastrar2()
+  }
   /* ========================== Entrar ============================== */
   function entrar() {
 
@@ -318,5 +321,52 @@ setTimeout(function () {
 
     return false;
   }
+
+  function cadastrar2() {
+
+//Recupere o valor da nova input pelo nome do id
+// Agora vá para o método fetch logo abaixo
+var nomeEmpresaVar = ipt_nomeEmpresa.value;
+var cnpjVar = ipt_cnpj.value;
+var descVar = ipt_desc_empresa.value;
+
+console.log(nomeEmpresaVar, cnpjVar, descVar)
+
+
+// Enviando o valor da nova input
+fetch("/usuarios/cadastrar2", {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+        // crie um atributo que recebe o valor recuperado aqui
+        // Agora vá para o arquivo routes/usuario.js
+        nomeEmpresaServer: nomeEmpresaVar,
+        cnpjServer: cnpjVar,
+        descServer: descVar,
+    })
+
+}).then(function (resposta) {
+
+    console.log("resposta: ", resposta);
+
+    if (resposta.ok) {
+
+        // setTimeout(() => {
+        //     window.location = "login.html";
+        // }, "2000")
+
+        limparFormulario();
+        finalizarAguardar();
+    } else {
+        throw ("Houve um erro ao tentar realizar o cadastro!");
+    }
+}).catch(function (resposta) {
+    console.log(`#ERRO: ${resposta}`);
+});
+
+return false;
+}
 
 </script>
