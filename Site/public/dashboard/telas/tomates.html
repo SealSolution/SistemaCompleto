@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    QUANTIDADE DE TOMATE<input type="number" id="ipt_qtd_tomate">
+    PREÇO DO TOMATE<input type="number" id="ipt_preco_tomate">
+
+    <button onclick="cadastrar_tomate()">CADASTRAR</button>
+</body>
+</html>
+<script>
+    function cadastrar_tomate() {
+
+        //Recupere o valor da nova input pelo nome do id
+        // Agora vá para o método fetch logo abaixo
+        var quantidadeVar = Number(ipt_qtd_tomate.value);
+        var precoVar = Number(ipt_preco_tomate.value);
+        
+
+        if ( quantidadeVar == "" || precoVar == "" ) {
+            alert("CAMPOS INVÁLIDOS")
+        }
+        else {
+            // Enviando o valor da nova input
+            fetch("/medidas/cadastrar_tomate", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    // crie um atributo que recebe o valor recuperado aqui
+                    // Agora vá para o arquivo routes/usuario.js
+                    quantidadeServer: quantidadeVar,
+                    precoServer: precoVar
+                })
+            }).then(function (resposta) {
+    
+                console.log("resposta: ", resposta);
+    
+                if (resposta.ok) {
+                    
+                } else {
+                    throw ("Houve um erro ao tentar realizar o cadastro!");
+                }
+            }).catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+            });
+    
+            return false;
+        }
+
+    }
+</script>

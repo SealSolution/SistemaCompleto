@@ -41,8 +41,42 @@ function buscarMedidasEmTempoReal(req, res) {
     });
 }
 
+function cadastrar_tomate(req, res) {
+    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
+    var quantidade = req.body.quantidadeServer;
+    var preco = req.body.precoServer;
+
+    // Faça as validações dos valores
+    if (quantidade == undefined) {
+        res.status(400).send("Sua quantidade está undefined!");
+    } else if (preco == undefined) {
+        res.status(400).send("Seu preço está undefined!");
+    } else {
+
+        // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
+        medidaModel.cadastrar_tomate(quantidade, preco)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao realizar o cadastro! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+}
+
+
+
 module.exports = {
     buscarUltimasMedidas,
-    buscarMedidasEmTempoReal
+    buscarMedidasEmTempoReal,
+    cadastrar_tomate
 
 }
