@@ -57,7 +57,7 @@ create table motorista(
 	idMotorista INT PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR(45),
     cpf VARCHAR(11),
-    idade DATE,
+    dtNascto DATE,
     cnh VARCHAR(12)
 );
 

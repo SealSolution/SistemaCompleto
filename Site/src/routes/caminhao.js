@@ -8,5 +8,8 @@ router.post("/cadastrar", function (req, res) {
 router.post("/viagem", function (req, res) {
     caminhaoController.cadastrar(req, res);
 });
+router.post("/motorista", function(req, res){
+    caminhaoController.motorista(req, res);
+});
 
 module.exports = router;

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="ipt_nomeMotorista" placeholder="nome"><br>
+    <input type="text" id="ipt_cpfMotorista" placeholder="cpf"><br>
+    <input type="date" id="ipt_NasctMotorista"  placeholder="Data Nascimento"><br>
+    <input type="text" id="ipt_cnhMotorista" placeholder="cnh"><br>
+    <button onclick="cadastro()">cadastrar</button>
+</body>
+</html>
+<script>
+    
+    function cadastro(){
+        var nomeVar= ipt_nomeMotorista.value
+        var cpfVar = ipt_cpfMotorista.value
+        var cnhVar = ipt_cnhMotorista.value
+        var dtNasctoVar = ipt_NasctMotorista.value
+        
+        if(nomeVar == "" || cpfVar == "" ||dtNasctoVar == "" ||cnhVar == ""){
+            alert("Preencha os campos corretamente.")
+        }
+        
+        fetch("/caminhaos/motorista", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                nomeServer:nomeVar,
+                cpfServer: cpfVar,
+                cnhServer: cnhVar,
+                dtNasctoServer: dtNasctoVar,
+            })
+
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                setTimeout(() => {
+                    window.location = "funcionario.html";
+                }, "2000")
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+
+        
+        return false;
+    }
+
+
+
+
+</script>

@@ -58,8 +58,35 @@ function viagem(req, res){
         );
     }
 }
+function motorista(req, res){
+    var nome = req.body.nomeServer;
+    var cpf = req.body.cpfServer;
+    var dtNascto = req.body.dtNasctoServer;
+    var cnh = req.body.cnhServer;
 
+    if(nome == undefined){
+        res.status(400).send("Seu nome está undefined")
+    }else if(cpf == undefined){
+        res.status(400).send("Seu cpf está undefined")
+    }else if(dtNascto == undefined){
+        res.status(400).send("Sua data de nascimento está undefined");
+    }else if(cnh == undefined){
+        res.status(400).send("Sua cnh está undefined");
+    }else{
+        caminhaoModel.motorista(nome, cpf, dtNascto, cnh)
+            .then(
+                function (resultado){
+                    res.json(resultado)
+                }
+            ).catch(function (error){
+                res.json(error)
+                console.log(error.sqlMessage)
+                res.status(500).json(error.sqlMessage);
+            });
+    }
+}
 module.exports = {
     cadastrar,
-    viagem
+    viagem,
+    motorista
 }
