@@ -49,8 +49,8 @@ app.post('/sendEmail', (req, res) => {
 
 
     const mailOptions = {
-        from: 'support@sealsupport.atlassian.net',
-        to: 'support@sealsupport.atlassian.net',
+        from: 'winyciosnascimento31@gmail.com',
+        to: 'support@sealsolution.atlassian.net',
         subject: select,
         html: `<p>Olá meu nome é ${name}</p> 
         \n\n\n\n,

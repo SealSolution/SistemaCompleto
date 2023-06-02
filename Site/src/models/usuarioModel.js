@@ -121,6 +121,20 @@ function plotar_empresa() {
 }
 
 
+/* select empresa*/
+function plotar_usuario() {
+    console.log("Iremos fazer o select empresa");
+    var instrucao = `
+    SELECT e.nome, e.cnpj, e.descricao, u.tipo, u.nomeUsuario, u.cpf, u.nivel_acesso as 'nivel', u.email, u.senha  FROM empresa e
+        INNER JOIN usuario u ON u.fkEmpresa = e.idEmpresa
+            WHERE idEmpresa = (select idEmpresa from empresa join usuario on empresa.idEmpresa = usuario.fkEmpresa where email = "${emailSessionAtual}");
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+
+
 module.exports = {
     entrar,
     cadastrar,
@@ -129,6 +143,7 @@ module.exports = {
     plotar_empresa,
     plotar_funcionario,
     Funcionario,
+    plotar_usuario,
     exportFkEmpresa: exportFkEmpresa
 };
 

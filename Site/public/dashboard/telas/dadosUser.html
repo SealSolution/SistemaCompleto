@@ -40,7 +40,7 @@
     </style>
 </head>
 
-<body onload="validarSessao(), mostrar_dados()">
+<body onload="validarSessao(), select_usuario()">
 
     <!--side bar-->
     <div class="container">
@@ -99,7 +99,8 @@
                                 </div>
                             </div>
                             <div class="info">
-                                <h4 class="name" id="b_usuario">WINYCIOS ALVES</h4><small class="job">Carlos Fazendas</small>
+                                <h4 class="name" id="b_usuario">WINYCIOS ALVES</h4><small class="job"
+                                    id="nomeEmpresa"></small>
                             </div>
                         </div>
                     </div>
@@ -109,14 +110,16 @@
                             <ul style="margin-top: 20px;">
                                 <li><span>Email</span><small id="emailUser"></small></li>
                                 <li><span>CPF</span><small id="cpfUser"></small></li>
+                                <li><span>tipo</span><small id="tipoUser"></small></li>
+                                <li><span>Nível</span><small id="nivelUser"></small></li>
+                                <li><span>senha</span><small id="senhaUser"></small></li>
                             </ul>
                         </div>
                         <div class="edu">
                             <h3><i class="fa fa-graduation-cap"></i>Empresa</h3>
                             <ul style="margin-top: 20px;">
-                                <li><span>Endereço Plantio</span><small>Rua sei la das contas, 57</small></li>
-                                <li><span>Nome Do Plantio</span><small>Carlos fazendas</small></li>
-                                <li><span>Descrição</span><small>Nós da 'Carlos fazendas' plantamos excelentes
+                                <li><span>CNPJ</span><small id="cnpjEmpresa">Rua sei la das contas, 57</small></li>
+                                <li><span>Descrição</span><small id="descricao">Nós da 'Carlos fazendas' plantamos excelentes
                                         tomatinhos</small></li>
                             </ul>
                         </div>
@@ -141,3 +144,44 @@
 </body>
 
 </html>
+
+<script>
+
+    function select_usuario() {
+        fetch(`/usuarios/plotar_usuario`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`data recebidos: ${JSON.stringify(resposta)}`);
+
+                    plotarFuncionario(resposta);
+
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos data p/ gráfico: ${error.message}`);
+            });
+    }
+
+    // Esta função *plotarFuncionario* usa os data capturados na função anterior para criar o gráfico
+    // Configura o gráfico (cores, tipo, etc), materializa-o na página e, 
+    // A função *plotarFuncionario* também invoca a função *atualizarGrafico*
+    function plotarFuncionario(resposta) {
+
+        // Inserindo valores recebidos em estrutura para plotar o gráfico
+        for (i = 0; i < resposta.length; i++) {
+            var registro = resposta[i];
+
+            nomeEmpresa.innerHTML = registro.nome;
+            emailUser.innerHTML = registro.email;
+            cpfUser.innerHTML = registro.cpf;
+            nivelUser.innerHTML = registro.nivel;
+            senhaUser.innerHTML = registro.senha;
+
+            cnpjEmpresa.innerHTML = registro.cnpj;
+            descricao.innerHTML = registro.descricao;
+        }
+    }
+</script>

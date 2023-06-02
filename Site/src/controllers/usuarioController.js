@@ -1,5 +1,24 @@
 var usuarioModel = require("../models/usuarioModel");
 
+/* select dos dados do usuario*/
+function plotar_usuario(req, res) {
+    usuarioModel.plotar_usuario()
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                res.status(200).json(resultado);
+            } else {
+                res.status(204).send("Nenhum resultado encontrado!")
+            }
+        }).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
+/* select dos dados dos funcionarios*/
 function plotar_funcionario(req, res) {
     usuarioModel.plotar_funcionario()
         .then(function (resultado) {
@@ -17,7 +36,7 @@ function plotar_funcionario(req, res) {
         );
 }
 
-
+/* select dos dados da empresa*/
 function plotar_empresa(req, res) {
     usuarioModel.plotar_empresa()
         .then(function (resultado) {
@@ -204,6 +223,7 @@ module.exports = {
     cadastrar2,
     plotar_empresa,
     plotar_funcionario,
+    plotar_usuario,
     listar,
     Funcionario
 }
