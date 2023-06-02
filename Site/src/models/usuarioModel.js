@@ -1,11 +1,8 @@
-const { rows } = require("mssql")
 var database = require("../database/config")
 var DadosEmail = null
 var DadosCnpj = null
-var emailFuncglobal = null
 var senhaFuncglobal = null
 var emailSessionAtual = null
-var senhaSessionAtual = null
 
 
 function listar() {
@@ -18,8 +15,6 @@ function listar() {
 }
 function entrar(email, senha) {
     emailSessionAtual = email
-    senhaSessionAtual = senha
-    emailFuncglobal = email
     senhaFuncglobal = senha
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function entrar(): ", email, senha)
     var instrucao = `
@@ -64,7 +59,6 @@ function ownerInComp() {
 };
 
 function Funcionario(nomeFunc, funcaoFunc, nivelAcessoFunc, emailFunc, senhaFunc, cpfFunc) {
-    emailFuncglobal = emailFunc
     senhaFuncglobal = senhaFuncglobal
     var instrucao = `
     INSERT INTO usuario (nomeUsuario, tipo, nivel_acesso, email, senha, cpf) VALUES ('${nomeFunc}', '${funcaoFunc}', '${nivelAcessoFunc}' ,'${emailFunc}', '${senhaFunc}', '${cpfFunc}');`;
@@ -77,8 +71,6 @@ function Funcionario(nomeFunc, funcaoFunc, nivelAcessoFunc, emailFunc, senhaFunc
 
 function employeeInComp() {
     return new Promise(() => {
-
-
         database.executar(`
                 SELECT idEmpresa FROM empresa JOIN usuario
                 ON empresa.idEmpresa = usuario.fkEmpresa
@@ -99,6 +91,11 @@ function employeeInComp() {
     }
     )
 }
+function exportFkEmpresa(){
+    return emailSessionAtual
+}
+
+
 
 
 module.exports = {
@@ -106,7 +103,8 @@ module.exports = {
     cadastrar,
     cadastrar2,
     listar,
-    Funcionario
+    Funcionario,
+    exportFkEmpresa: exportFkEmpresa
 };
 
 
