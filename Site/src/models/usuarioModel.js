@@ -95,7 +95,30 @@ function exportFkEmpresa(){
     return emailSessionAtual
 }
 
+/* select funcionarios*/
 
+function plotar_funcionario() {
+    console.log("Iremos fazer o select funcionarios");
+    var instrucao = `
+    SELECT tipo, nomeUsuario as nome, cpf, nivel_acesso as nivel FROM usuario where fkEmpresa = ( select idEmpresa from empresa join usuario
+        on empresa.idEmpresa = usuario.fkEmpresa
+            where email = "${emailSessionAtual}") 
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+/* select empresa*/
+function plotar_empresa() {
+    console.log("Iremos fazer o select empresa");
+    var instrucao = `
+    SELECT nome, cnpj, descricao FROM empresa WHERE idEmpresa = (select idEmpresa from empresa join usuario
+        on empresa.idEmpresa = usuario.fkEmpresa
+            where email = "${emailSessionAtual}");
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
 
 
 module.exports = {
@@ -103,6 +126,8 @@ module.exports = {
     cadastrar,
     cadastrar2,
     listar,
+    plotar_empresa,
+    plotar_funcionario,
     Funcionario,
     exportFkEmpresa: exportFkEmpresa
 };

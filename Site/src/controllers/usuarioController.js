@@ -1,8 +1,40 @@
 var usuarioModel = require("../models/usuarioModel");
 
-var sessoes = [];
+function plotar_funcionario(req, res) {
+    usuarioModel.plotar_funcionario()
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                res.status(200).json(resultado);
+            } else {
+                res.status(204).send("Nenhum resultado encontrado!")
+            }
+        }).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
 
-var oi = "oi"
+
+function plotar_empresa(req, res) {
+    usuarioModel.plotar_empresa()
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                res.status(200).json(resultado);
+            } else {
+                res.status(204).send("Nenhum resultado encontrado!")
+            }
+        }).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
 
 function listar(req, res) {
     usuarioModel.listar()
@@ -170,6 +202,8 @@ module.exports = {
     entrar,
     cadastrar,
     cadastrar2,
+    plotar_empresa,
+    plotar_funcionario,
     listar,
     Funcionario
 }

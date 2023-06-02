@@ -56,8 +56,21 @@ function motorista(nome, cpf, dtNascto, cnh) {
     return database.executar(instrucao)
 }
 
+/* mostrar caminhao*/
+function plotar_caminhao() {
+    console.log("Iremos fazer o select funcionarios");
+    var instrucao = `
+    select marca, placa, tipoCaminhao, sensor from caminhao where fk_idEmpresa = (
+        select idEmpresa from empresa join usuario
+    on empresa.idEmpresa = usuario.fkEmpresa
+        where email = "${require("./usuarioModel").exportFkEmpresa()}")
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
 module.exports = {
     cadastrar,
     viagem,
     motorista,
+    plotar_caminhao
 }

@@ -40,7 +40,7 @@
 
 </head>
 
-<body onload="validarSessao()">
+<body onload="validarSessao(), select_caminhao()">
 
     <!--side bar-->
     <div class="container">
@@ -84,7 +84,7 @@
                     <span class="material-icons-sharp">business</span>
                     <h3>MOTORISTA</h3>
                 </a>
-                <a onclick="limparSessao()" class="active">
+                <a onclick="limparSessao_telas()" class="active">
                     <span class="material-icons-sharp">logout</span>
                     <h3>DESLOGAR</h3>
                 </a>
@@ -99,35 +99,14 @@
                 <table>
                     <thead>
                         <tr>
-                            <th>Placa</th>
                             <th>Marca</th>
+                            <th>placa</th>
                             <th>Tipo Caminhão</th>
                             <th>Sensor</th>
                             <th>Status</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td>MWI-4533</td>
-                            <td>Mercedes-Benz</td>
-                            <td>Carreta</td>
-                            <td>DHT11</td>
-                            <td class="success">Ativo</td>
-                        </tr>
-                        <tr>
-                            <td>IDC-8170</td>
-                            <td>Mercedes-Benz</td>
-                            <td>toco</td>
-                            <td>DHT11</td>
-                            <td class="warning">Manutenção</td>
-                        </tr>
-                        <tr>
-                            <td>MOA-3824</td>
-                            <td>Scandia</td>
-                            <td>Carreta-Extendida</td>
-                            <td>DHT11</td>
-                            <td class="safe">Garagem</td>
-                        </tr>
+                    <tbody id="mostrar">
                     </tbody>
                 </table>
                 <a href="#cadastro_caminhao">CADASTRAR CAMINHÃO</a>
@@ -151,17 +130,6 @@
                 </div>
             </div>
             <!--end top-->
-            <div class="recent-updates">
-                <h2>GRÁFICO</h2>
-                <div class="updates">
-                    <div class="update">
-                        <span class="material-icons-sharp icons">donut_large</span>
-                        <div style="width: 100%;">
-                            <canvas id="Donnut_caminhao"></canvas>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 
@@ -232,13 +200,12 @@
 
 
     <script src="../js/style.js"></script>
-    <script src="../js/chart_individual.js"></script>
 </body>
 
 </html>
 <script>
 
-function cadastrarCaminhao() {
+    function cadastrarCaminhao() {
         var placaVar = ipt_Placa.value
         var marcaVar = ipt_Marca.value
         var tipoCaminhaoVar = sel_tipoCaminhao.value
@@ -277,4 +244,46 @@ function cadastrarCaminhao() {
         return false;
     }
 
+</script>
+
+<script>
+
+    function select_caminhao() {
+        fetch(`/caminhaos/plotar_caminhao`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`data recebidos: ${JSON.stringify(resposta)}`);
+
+                    plotarFuncionario(resposta);
+
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos data p/ gráfico: ${error.message}`);
+            });
+    }
+
+    // Esta função *plotarFuncionario* usa os data capturados na função anterior para criar o gráfico
+    // Configura o gráfico (cores, tipo, etc), materializa-o na página e, 
+    // A função *plotarFuncionario* também invoca a função *atualizarGrafico*
+    function plotarFuncionario(resposta) {
+
+        // Inserindo valores recebidos em estrutura para plotar o gráfico
+        for (i = 0; i < resposta.length; i++) {
+            var registro = resposta[i];
+
+            mostrar.innerHTML += `
+                        <tr>
+                            <td>${registro.marca}</td>
+                            <td>${registro.placa}</td>
+                            <td>${ registro.tipoCaminhao}</td>
+                            <td>${registro.sensor}</td>
+                            <td class="success">Ativo</td>
+                        </tr>
+ `
+        }
+    }
 </script>

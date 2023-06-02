@@ -49,7 +49,7 @@ app.post('/sendEmail', (req, res) => {
 
 
     const mailOptions = {
-        from: 'Winyciosnascimento31@gmail.com',
+        from: 'support@sealsupport.atlassian.net',
         to: 'support@sealsupport.atlassian.net',
         subject: select,
         html: `<p>Olá meu nome é ${name}</p> 

@@ -41,7 +41,7 @@
     </style>
 </head>
 
-<body onload="validarSessao()">
+<body onload="validarSessao(), select_func()">
 
     <!--side bar-->
     <div class="container">
@@ -85,7 +85,7 @@
                     <span class="material-icons-sharp">business</span>
                     <h3>MOTORISTA</h3>
                 </a>
-                <a onclick="limparSessao()" class="active">
+                <a onclick="limparSessao_telas()" class="active">
                     <span class="material-icons-sharp">logout</span>
                     <h3>DESLOGAR</h3>
                 </a>
@@ -107,28 +107,7 @@
                             <th>Status</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td>Analista</td>
-                            <td>Gabriel</td>
-                            <td>123.456.789-31</td>
-                            <td>Médio</td>
-                            <td class="success">Ativo</td>
-                        </tr>
-                        <tr>
-                            <td>Estagiário</td>
-                            <td>Rafael</td>
-                            <td>340.759.250-72</td>
-                            <td>Basico</td>
-                            <td class="success">Ativo</td>
-                        </tr>
-                        <tr>
-                            <td>Gerencia</td>
-                            <td>Winycius</td>
-                            <td>370.192.810-01</td>
-                            <td>Total</td>
-                            <td class="success">Ativo</td>
-                        </tr>
+                    <tbody id="mostrar">
                     </tbody>
                 </table>
                 <a href="#cadastro_user">CADASTRAR FUNCIONÁRIO</a>
@@ -152,17 +131,6 @@
                 </div>
             </div>
             <!--end top-->
-            <div class="recent-updates">
-                <h2>GRÁFICO</h2>
-                <div class="updates">
-                    <div class="update">
-                        <span class="material-icons-sharp icons">donut_large</span>
-                        <div style="width: 100%;">
-                            <canvas id="Donnut_funcionario"></canvas>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 
@@ -321,4 +289,46 @@
         document.getElementById('cpf').value = cpf;
     }
 
+</script>
+
+<script>
+
+    function select_func() {
+        fetch(`/usuarios/plotar_funcionario`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`data recebidos: ${JSON.stringify(resposta)}`);
+
+                    plotarFuncionario(resposta);
+
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos data p/ gráfico: ${error.message}`);
+            });
+    }
+
+    // Esta função *plotarFuncionario* usa os data capturados na função anterior para criar o gráfico
+    // Configura o gráfico (cores, tipo, etc), materializa-o na página e, 
+    // A função *plotarFuncionario* também invoca a função *atualizarGrafico*
+    function plotarFuncionario(resposta) {
+
+        // Inserindo valores recebidos em estrutura para plotar o gráfico
+        for (i = 0; i < resposta.length; i++) {
+            var registro = resposta[i];
+
+            mostrar.innerHTML += `
+                        <tr>
+                            <td>${registro.tipo}</td>
+                            <td>${registro.nome}</td>
+                            <td>${ registro.cpf}</td>
+                            <td>${registro.nivel}</td>
+                            <td class="success">Ativo</td>
+                        </tr>
+ `
+        }
+    }
 </script>
