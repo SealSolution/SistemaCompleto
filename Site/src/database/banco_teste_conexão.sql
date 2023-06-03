@@ -81,7 +81,7 @@ create table viagem(
 	fk_caminhao INT,
     fk_motorista INT,
     fk_remessa, INT,       
-    data_viagem DATE,
+    dtViagem DATE,
     FOREIGN KEY (fk_caminhao) REFERENCES caminhao(idCaminhao),
     FOREIGN KEY (fk_motorista) REFERENCES motorista(idMotorista),
     CONSTRAINT chkComposta PRIMARY KEY (idViagem, fk_caminhao, fk_motorista)
