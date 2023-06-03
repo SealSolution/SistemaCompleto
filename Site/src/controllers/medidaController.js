@@ -41,6 +41,89 @@ function buscarMedidasEmTempoReal(req, res) {
     });
 }
 
+
+function buscarUltimasMedidas2(req, res) {
+
+    const limite_linhas = 7;
+
+    var idAquario = req.params.idAquario;
+
+    console.log(`Recuperando as ultimas ${limite_linhas} medidas`);
+
+    medidaModel.buscarUltimasMedidas2(idAquario, limite_linhas).then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar as ultimas medidas.", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
+
+
+function buscarMedidasEmTempoReal2(req, res) {
+
+    var idAquario = req.params.idAquario;
+
+    console.log(`Recuperando medidas em tempo real`);
+
+    medidaModel.buscarMedidasEmTempoReal2(idAquario).then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar as ultimas medidas.", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
+
+function buscarUltimasMedidasDonnut(req, res) {
+
+    const limite_linhas = 1;
+
+    var idAquario = req.params.idAquario;
+
+    console.log(`Recuperando as ultimas ${limite_linhas} medidas`);
+
+    medidaModel.buscarUltimasMedidasDonnut(idAquario, limite_linhas).then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar as ultimas medidas.", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
+
+
+function buscarMedidasEmTempoRealDonnut(req, res) {
+
+    var idAquario = req.params.idAquario;
+
+    console.log(`Recuperando medidas em tempo real`);
+
+    medidaModel.buscarMedidasEmTempoRealDonnut(idAquario).then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar as ultimas medidas.", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
+
 function cadastrar_tomate(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
     var quantidade = req.body.quantidadeServer;
@@ -77,6 +160,10 @@ function cadastrar_tomate(req, res) {
 module.exports = {
     buscarUltimasMedidas,
     buscarMedidasEmTempoReal,
+    buscarUltimasMedidas2,
+    buscarMedidasEmTempoReal2,
+    buscarUltimasMedidasDonnut,
+    buscarMedidasEmTempoRealDonnut,
     cadastrar_tomate
 
 }

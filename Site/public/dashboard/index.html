@@ -17,6 +17,8 @@
 
     <!-- chart js-->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+    <script src="http://www.chartjs.org/dist/2.7.1/Chart.js"></script>
 
     <!--Material CDN-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
@@ -37,7 +39,7 @@
     </style>
 </head>
 
-<body onload="validarSessao()">
+<body onload="validarSessao(), obterDadosGrafico(), obterDadosDinheiro(), obterdados(), obterDadosTomates()">
 
     <!--side bar-->
     <div class="container">
@@ -81,6 +83,10 @@
                     <span class="material-icons-sharp">sports_motorsports</span>
                     <h3>MOTORISTA</h3>
                 </a>
+                <div id="alerta" class="alertaTemp">
+                </div>
+                <div id="alerta1" class="alertaUmid">
+                </div>
                 <a onclick="limparSessao()" class="active">
                     <span class="material-icons-sharp">logout</span>
                     <h3>DESLOGAR</h3>
@@ -96,8 +102,9 @@
             <div class="insights">
                 <div class="sales">
                     <span class="material-icons-sharp">bar_chart</span>
+                    <h3>Comparativo dos valores em Reais</h3>
                     <div style="width: 100%;">
-                        <canvas id="chartBar"></canvas>
+                        <canvas id="perdaDinheiro"></canvas>
                     </div>
                     <small class="text-muted">ATUALIZADO HÁ 30 MINUTOS
                     </small>
@@ -106,7 +113,8 @@
                 <div class="expenses">
                     <span class="material-icons-sharp">ssid_chart</span>
                     <div style="width: 100%;">
-                        <canvas id="chartLine"></canvas>
+                        <h3>Temperatura e umidade da viagem</h3>
+                        <canvas id="dht11Temperatura"></canvas>
                     </div>
                     <small class="text-muted">ATUALIZADO HÁ 30 MINUTOS
                     </small>
@@ -210,6 +218,7 @@
                 <div class="updates">
                     <div class="update">
                         <span class="material-icons-sharp icons">donut_large</span>
+                        <h3>Comparativo Quantidade de Tomates</h3>
                         <div style="width: 100%;">
                             <canvas id="chartDonnut"></canvas>
                         </div>
@@ -255,4 +264,214 @@
 
 </html>
 
+<script>
+    
+    function obterdados() {
+        fetch(`/medidas/tempo-real`)
+            .then(resposta => {
 
+                if (resposta.ok) {
+                    resposta.json().then(resposta => {
+
+                        console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+
+                        var dados = {
+                            temperatura: resposta[0].temperatura,
+                            umidade: resposta[0].umidade
+                        }
+                        setTimeout(() => {
+                            alertarTemp(resposta[0].temperatura);
+                        },);
+
+                        setTimeout(() => {
+                            alertarUmid(resposta[0].umidade);
+                        },);
+
+                    });
+                } else {
+
+                    console.error('Nenhum dado encontrado ou erro na API');
+                }
+            })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados do aquario p/ gráfico: ${error.message}`);
+            });
+
+    }
+
+    function alertarTemp(temperatura, idAquario) {
+        var limites = {
+            muito_quente: 13.8,
+            quente: 13,
+            acima: 12,
+            ideal: 10,
+            abaixo: 9,
+            frio: 8,
+            muito_frio: 7
+        };
+
+        var classe_temperatura = 'cor-alerta';
+
+        if (temperatura >= limites.muito_quente) {
+            alerta.style.display = "flex"
+            alerta.classList.add('destaque-vermelho')
+            classe_temperatura = 'cor-alerta perigo-quente';
+            alerta.innerHTML += `Temperatura esta muito alta <br> ${temperatura}°C`
+            setTimeout(() => {
+                alerta.style.display = "none"
+            }, 7000);
+            return false
+        }
+        else if (temperatura < limites.muito_quente && temperatura >= limites.quente) {
+            alerta.style.display = "flex"
+            alerta.classList.add('destaque-laranja')
+            classe_temperatura = 'cor-alerta alerta-quente';
+            alerta.innerHTML += `Temperatura esta alta <br> ${temperatura}°C`
+            setTimeout(() => {
+                alerta.style.display = "none"
+            }, 7000);
+            return false
+        }
+        else if (temperatura < limites.quente && temperatura >= limites.acima) {
+            alerta.style.display = "flex"
+            alerta.classList.add('destaque-amarelo')
+            classe_temperatura = 'cor-alerta alerta-acima'
+            alerta.innerHTML += `Temperatura esta acima do Ideal <br> ${temperatura}°C`
+            setTimeout(() => {
+                alerta.style.display = "none"
+            }, 7000);
+            return false
+        }
+        else if (temperatura < limites.acima || temperatura > limites.ideal) {
+            alerta.style.display = "flex"
+            alerta.classList.add('destaque-verde')
+            classe_temperatura = 'cor-alerta ideal';
+            alerta.innerHTML += `Temperatura esta Ideal<br> ${temperatura}°C`
+            setTimeout(() => {
+                alerta.style.display = "none"
+            }, 7000);
+            return false
+        }
+        else if (temperatura < limites.ideal && temperatura >= limites.abaixo) {
+            alerta.style.display = "flex"
+            alerta.classList.add('destaque-amarelo')
+            classe_temperatura = 'cor-alerta alerta-abaixo';
+            alerta.innerHTML += `Temperatura esta abaixo do ideal<br> ${temperatura}°C`
+            setTimeout(() => {
+                alerta.style.display = "none"
+            }, 7000);
+            return false
+        }
+        else if (temperatura < limites.abaixo && temperatura >= limites.frio) {
+            alerta.style.display = "flex"
+            alerta.classList.add('destaque-laranja')
+            classe_temperatura = 'cor-alerta alerta-frio';
+            alerta.innerHTML += `Temperatura esta baixa<br> ${temperatura}°C`
+            setTimeout(() => {
+                alerta.style.display = "none"
+            }, 7000);
+            return false
+
+
+        }
+        else if (temperatura <= limites.muito_frio) {
+            alerta.style.display = "flex"
+            alerta.classList.add('destaque-vermelho')
+            classe_temperatura = 'cor-alerta perigo-frio';
+            alerta.innerHTML += `Temperatura esta muito baixa<br> ${temperatura}°C`
+            setTimeout(() => {
+                alerta.style.display = "none"
+            }, 7000);
+            return false
+        }
+
+
+
+
+    }
+
+    function alertarUmid(umidade, idUmidade) {
+        var limites = {
+            muito_alta: 90.4,
+            alta: 88,
+            pouco_acima: 85.28,
+            ideal: 84.7,
+            pouco_abaixo: 82.78,
+            baixa: 78,
+            muito_baixa: 77.5
+        };
+
+        var classe_umidade = 'cor-alerta';
+
+        if (umidade >= limites.muito_alta) {
+            alerta1.style.display = "flex"
+            alerta1.classList.add('destaque-vermelho')
+            classe_umidade = 'cor-alerta perigo-quente';
+            alerta1.innerHTML = `Umidade esta muito alta <br> ${umidade}%`
+            setTimeout(() => {
+                alerta1.style.display = "none"
+            }, 7000);
+            return false
+        }
+        else if (umidade < limites.muito_alta && umidade >= limites.alta) {
+            alerta1.style.display = "flex"
+            alerta1.classList.add('destaque-laranja')
+            classe_umidade = 'cor-alerta alerta-quente';
+            alerta1.innerHTML = `Umidade esta alta<br> ${umidade}%`
+            setTimeout(() => {
+                alerta1.style.display = "none"
+            }, 7000);
+            return false
+        }
+        else if (umidade < limites.alta && umidade >= limites.pouco_acima) {
+            alerta1.style.display = "flex"
+            alerta1.classList.add('destaque-amarelo')
+            classe_umidade = 'cor-alerta alerta-acima'
+            alerta1.innerHTML = `Umidade esta acima do Ideal<br> ${umidade}%`
+            setTimeout(() => {
+                alerta1.style.display = "none"
+            }, 7000);
+            return false
+        }
+        else if (umidade < limites.pouco_acima && umidade > limites.pouco_abaixo) {
+            alerta1.style.display = "flex"
+            alerta1.classList.add('destaque-verde')
+            classe_umidade = 'cor-alerta ideal';
+            alerta1.innerHTML = `Umidade esta Ideal<br> ${umidade}%`
+            setTimeout(() => {
+                alerta1.style.display = "none"
+            }, 7000);
+            return false
+        }
+        else if (umidade < limites.ideal && umidade >= limites.pouco_abaixo) {
+            alerta1.style.display = "flex"
+            alerta1.classList.add('destaque-amarelo')
+            classe_umidade = 'cor-alerta alerta-abaixo';
+            alerta1.innerHTML = `Umidade esta abaixo do ideal<br> ${umidade}%`
+            setTimeout(() => {
+                alerta1.style.display = "none"
+            }, 7000);
+            return false
+        }
+        else if (umidade < limites.pouco_abaixo && umidade > limites.baixa) {
+            alerta1.style.display = "flex"
+            alerta1.classList.add('destaque-laranja')
+            classe_umidade = 'cor-alerta alerta-frio';
+            alerta1.innerHTML = `Umidade esta baixa<br> ${umidade}%`
+            setTimeout(() => {
+                alerta1.style.display = "none"
+            }, 7000);
+            return false
+        }
+        else if (umidade <= limites.muito_baixa) {
+            alerta1.style.display = "flex"
+            alerta1.classList.add('destaque-vermelho')
+            classe_umidade = 'cor-alerta perigo-frio';
+            alerta1.innerHTML = `Umidade esta muito baixa<br> ${umidade}%`
+            setTimeout(() => {
+                alerta1.style.display = "none"
+            }, 7000);
+            return false
+        }
+    }
+</script>

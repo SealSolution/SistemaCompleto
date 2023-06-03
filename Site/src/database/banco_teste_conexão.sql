@@ -21,6 +21,9 @@ cnpj char(14),
 descricao varchar(45)
 );
 
+insert into empresa values 
+	(null, 'a', '33333', 'Ñ');
+
 
 create table caminhao (
 	
@@ -33,6 +36,9 @@ create table caminhao (
 	FOREIGN KEY (fk_idEmpresa) REFERENCES empresa(idEmpresa)
 );
 
+insert into caminhao values
+	(null, 1, 'wol', 'bbb3333', 'com roda', 'dht11');
+
 
 create table sensor(
 
@@ -43,14 +49,19 @@ create table sensor(
     FOREIGN KEY (fk_idEmpresa) REFERENCES empresa(idEmpresa)
 );
 
-create table dadossensor(
+insert into sensor values
+	(null, 2, 'temperatura e umidade', 'dht11'); 
 
+create table dadossensor(
 	dtHora DATETIME PRIMARY KEY,
     fk_idSensor INT,
     temperatura DOUBLE,
     umidade DOUBLE,
     FOREIGN KEY (fk_idSensor) REFERENCES sensor(idSensor)
 );
+
+INSERT INTO dadossensor values
+	('2023-03-10 00:00:00', 2, '8.9', '69');
 
 create table motorista(
 
@@ -61,6 +72,9 @@ create table motorista(
     cnh VARCHAR(12)
 );
 
+insert into motorista values
+	(null, 'carl', '9999999', '2022-01-01', '000000000');
+
 create table viagem(
 
 	idViagem INT AUTO_INCREMENT,
@@ -68,10 +82,14 @@ create table viagem(
     fk_motorista INT,
     data_viagem DATE,
     qtd_tomate INT,
+    preco_tomate float,
     FOREIGN KEY (fk_caminhao) REFERENCES caminhao(idCaminhao),
     FOREIGN KEY (fk_motorista) REFERENCES motorista(idMotorista),
     CONSTRAINT chkComposta PRIMARY KEY (idViagem, fk_caminhao, fk_motorista)
 );
+
+insert into viagem values
+	(null, 2, 2, '2023-06-05', 600, 3);
 
 -- Cadastro userPomodoro
 create user 'userPomodoro'@'localhost' identified by '123';
