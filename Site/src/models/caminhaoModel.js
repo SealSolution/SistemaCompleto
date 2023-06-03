@@ -33,12 +33,12 @@ function caminhaoComComp() {
     )
 }
 
-function viagem(data, qtdTomate) {
+function viagem(fk_caminhao, fk_motorista, fk_remessa) {
     var instrucao =
         `
     insert into viagem values
-        (null, fk_caminhao, fk_motorista, ${data}, ${qtdTomate})
-    `
+        (null, ${fk_caminhao}, ${fk_motorista}, ${fk_remessa}, now())
+        `
     console.log(instrucao)
     return database.executar(instrucao)
 }
@@ -51,7 +51,9 @@ function motorista(nome, cpf, dtNascto, cnh) {
         ('${nome}', '${cpf}', '${dtNascto}','${cnh}');
     `
     console.log(instrucao)
-
+    //                        _ _
+    //                      _-_-_-_
+    //                      | . . |
     //    console.log(`AQUI |+>-<+| ${fkEmpresa.exportFkEmpresa()}`) 
     return database.executar(instrucao)
 }
@@ -68,9 +70,30 @@ function plotar_caminhao() {
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
 }
+
+
+function plotar_dadoscaminhao() {
+    var instrucao = `select idCaminhao, placa from caminhao;`;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+function plotar_motorista() {
+    var instrucao = `select idMotorista ,nome from motorista;`;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+function plotar_remessa() {
+    var instrucao = `select idRemessa, qtd_tomate from remessa;`;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
 module.exports = {
     cadastrar,
     viagem,
     motorista,
-    plotar_caminhao
+    plotar_caminhao,
+    plotar_dadoscaminhao,
+    plotar_motorista,
+    plotar_remessa
 }

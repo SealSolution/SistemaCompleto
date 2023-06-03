@@ -4,15 +4,14 @@ var router = express.Router();
 var usuarioController = require("../controllers/usuarioController");
 
 
-/* mostra dados do usuario*/
 router.get("/plotar_usuario", function (req, res) {
     usuarioController.plotar_usuario(req, res);
 });
-/* mostra dados do funcionario*/
+
 router.get("/plotar_funcionario", function (req, res) {
     usuarioController.plotar_funcionario(req, res);
 });
-/* mostra dados da empresa*/
+
 router.get("/plotar_empresa", function (req, res) {
     usuarioController.plotar_empresa(req, res);
 });

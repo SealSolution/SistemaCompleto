@@ -143,7 +143,7 @@ function cadastrar_tomate(quantidade, preco) {
     // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
     //  e na ordem de inserção dos dados.
     var instrucao = `
-        INSERT INTO viagem (qtd_tomate, preco_tomate) VALUES ('${quantidade}', '${preco}');
+        INSERT INTO remessa (qtd_tomate, valor) VALUES ('${quantidade}', '${preco}');
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);

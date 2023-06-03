@@ -33,15 +33,19 @@ function cadastrar(req, res){
     }
 }
 function viagem(req, res){
-    var data = req.body.dataServer;
-    var qtdTomate = req.body.qtdTomateServer;
+    var fk_caminhao = req.body.fk_caminhaoServer;
+    var fk_motorista = req.body.fk_motoristaServer;
+    var fk_remessa = req.body.fk_remessaServer;
 
-    if(data == undefined){
-        res.status(400).send("Sua data está undefined!");
-    }else if(qtdTomate == undefined){
-        res.status(400).send("Sua marca está undefined!");
-    }else{
-        caminhaoModel.viagem(data, qtdTomate)
+    if(fk_caminhao == undefined){
+        res.status(400).send("Seu caminhao está undefined!");
+    }else if(fk_motorista == undefined){
+        res.status(400).send("Seu motorista está undefined!");
+    }else if(fk_remessa == undefined){
+        res.status(400).send("Sua remessa está undefined!");
+    }
+    else{
+        caminhaoModel.viagem(fk_caminhao, fk_motorista, fk_remessa)
         .then(
             function(resultado){
                 res.json(resultado)
@@ -103,9 +107,61 @@ function plotar_caminhao(req, res) {
         );
 }
 
+function plotar_remessa(req, res) {
+    caminhaoModel.plotar_remessa()
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                res.status(200).json(resultado);
+            } else {
+                res.status(204).send("Nenhum resultado encontrado!")
+            }
+        }).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+function plotar_motorista(req, res) {
+    caminhaoModel.plotar_motorista()
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                res.status(200).json(resultado);
+            } else {
+                res.status(204).send("Nenhum resultado encontrado!")
+            }
+        }).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+function plotar_dadoscaminhao(req, res) {
+    caminhaoModel.plotar_dadoscaminhao()
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                res.status(200).json(resultado);
+            } else {
+                res.status(204).send("Nenhum resultado encontrado!")
+            }
+        }).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
 module.exports = {
     cadastrar,
     viagem,
     motorista,
-    plotar_caminhao
+    plotar_caminhao,
+    plotar_dadoscaminhao,
+    plotar_motorista,
+    plotar_remessa
 }

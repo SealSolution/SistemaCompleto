@@ -18,6 +18,7 @@ function plotar_usuario(req, res) {
         );
 }
 
+
 /* select dos dados dos funcionarios*/
 function plotar_funcionario(req, res) {
     usuarioModel.plotar_funcionario()
@@ -184,7 +185,6 @@ function Funcionario(req, res) {
     var email = req.body.emailServer;
     var senha = req.body.senhaServer;
     var cpf = req.body.cpfServer;
-    var idAtual = req.body.idAtualServer;
 
     if (nome == undefined) {
         res.status(400).send("Seu nome está undefined!");

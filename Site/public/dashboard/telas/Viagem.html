@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body onload="caminhao()">
+
+    <div id="dados"></div>
+    <select id="ipt_caminhao">
+        <option value="" selected disabled>selecione a placa</option>
+    </select>
+    <select id="ipt_motorista">
+        <option value="" selected disabled>selecione o motorista</option>
+    </select>
+    <select id="ipt_remessa">
+        <option value="" selected disabled>selecione a remessa</option>
+    </select>
+   <button onclick="cadastrar()">Cadastrar</button>
+</body>
+
+</html>
+<script>
+    var ListatotalPlaca = []
+    var Listatotalids = []
+  
+    function cadastrar(){
+        var caminhaoVar = ipt_caminhao.value
+        var motoristaVar = ipt_motorista.value
+        var remessaVar = ipt_remessa.value
+        if(caminhaoVar == "" || motoristaVar == "" || remessaVar == ""){
+            alert("Campos não preenchidos.")
+        }
+        fetch("/caminhaos/viagem", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                fk_caminhaoServer: caminhaoVar,
+                fk_motoristaServer: motoristaVar,
+                fk_remessaServer: remessaVar,
+            })
+
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                alert("Caminhão cadastrado com sucesso!!")
+                setTimeout(() => {
+                    window.location = "Caminhao.html";
+                }, "2000")
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+
+    }
+    function caminhao() {
+        fetch("/caminhaos/plotar_dadoscaminhao")
+            .then(function (response) {
+                if (response.ok) {
+                    response.json().then(function (resposta) {
+                        // console.log(`dados <||*_*||> ${JSON.stringify(resposta)}`);
+                        for(var i = 1; i<=resposta.length; i++){
+                        Listatotalids.push(i)
+                        ListatotalPlaca.push(resposta[i-1].placa)
+                        }
+                        motorista()
+                        selectCaminhoes(resposta)
+                    })
+                } else {
+                    console.log("No Data Found")
+                }
+            })
+            .catch(function (error) {
+                console.error(error)
+            })
+    }
+    
+    var ListatotalidsMotorista = []
+    var ListatotalNome = []
+    function motorista() {
+        fetch("/caminhaos/plotar_motorista")
+            .then(function (response) {
+                if (response.ok) {
+                    response.json().then(function (resposta) {
+                        // console.log(`dados <||*_*||> ${JSON.stringify(resposta)}`);
+                        for(var i = 1; i<=resposta.length; i++){
+                        ListatotalidsMotorista.push(i)
+                        ListatotalNome.push(resposta[i-1].nome)
+                        }
+                        remessa()
+                        selectMotorista(resposta)
+                    })
+                } else {
+                    console.log("No Data Found")
+                }
+            })
+            .catch(function (error) {
+                console.error(error)
+            })
+    }
+    var ListatotalidsRemessa = []
+    var Listatotalidsqtd = []
+    function remessa() {
+        fetch("/caminhaos/plotar_remessa")
+            .then(function (response) {
+                if (response.ok) {
+                    response.json().then(function (resposta) {
+                        // console.log(`dados <||*_*||> ${JSON.stringify(resposta)}`);
+                        for(var i = 1; i<=resposta.length; i++){
+                        ListatotalidsRemessa.push(i)
+                        Listatotalidsqtd.push(resposta[i-1].qtd_tomate)
+                    }
+                    selectRemessa(resposta)
+                    })
+                } else {
+                    console.log("No Data Found")
+                }
+            })
+            .catch(function (error) {
+                console.error(error)
+            })
+    }
+
+    function selectCaminhoes(value){
+        for(var i =0; i<value.length; i++){
+            ipt_caminhao.innerHTML += `<option value="${Listatotalids[i]}">${ListatotalPlaca[i]}</option>`
+        }
+    }
+    function selectMotorista(value){
+        for(var i =0; i<value.length; i++){
+            ipt_motorista.innerHTML += `<option value="${ListatotalidsMotorista[i]}">${ListatotalNome[i]}</option>`
+        }
+    }
+    function selectRemessa(value){
+        for(var i =0; i<value.length; i++){
+            ipt_remessa.innerHTML += `<option value="${ListatotalidsRemessa[i]}">${Listatotalidsqtd[i]}</option>`
+        }
+    }
+</script>

@@ -80,13 +80,16 @@ create table viagem(
 	idViagem INT AUTO_INCREMENT,
 	fk_caminhao INT,
     fk_motorista INT,
+    fk_remessa, INT,       
     data_viagem DATE,
-    qtd_tomate INT,
-    preco_tomate float,
     FOREIGN KEY (fk_caminhao) REFERENCES caminhao(idCaminhao),
     FOREIGN KEY (fk_motorista) REFERENCES motorista(idMotorista),
     CONSTRAINT chkComposta PRIMARY KEY (idViagem, fk_caminhao, fk_motorista)
 );
+create table remessa(
+	idRemessa INT PRIMARY KEY AUTO_INCREMENT,
+    qtd_tomate INT,
+    valor DECIMAL(7,2));
 
 insert into viagem values
 	(null, 2, 2, '2023-06-05', 600, 3);
