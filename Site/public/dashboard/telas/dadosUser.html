@@ -22,6 +22,7 @@
 
     <!--Material CDN-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
 
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css'>
 
@@ -40,7 +41,7 @@
     </style>
 </head>
 
-<body onload="validarSessao(), select_usuario()">
+<body onload="validarSessao(), select_usuario()()">
 
     <!--side bar-->
     <div class="container">
@@ -58,7 +59,7 @@
                     <span class="material-icons-sharp">grid_view</span>
                     <h3>GRÁFICOS</h3>
                 </a>
-                <a href="./empresa.html" class="active">
+                <a href="../telas/empresa.html" class="active">
                     <span class="material-icons-sharp">business</span>
                     <h3>EMPRESA</h3>
                 </a>
@@ -67,7 +68,7 @@
                     <h3>USÚARIOS</h3>
                 </a>
                 <a href="../telas/Caminhao.html" class="active">
-                    <span class="material-icons-sharp">receipt_long</span>
+                    <span class="material-icons-sharp">local_shipping</span>
                     <h3>CAMINHÕES</h3>
                     <span class="message-count">3</span>
                 </a>
@@ -76,7 +77,14 @@
                     <span class="material-icons-sharp">help</span>
                     <h3>CANAL DE AJUDA</h3>
                 </a>
-
+                <a href="../telas/tomates.html" class="active">
+                    <span class="material-symbols-outlined"> nutrition </span>
+                    <h3>TOMATES</h3>
+                </a>
+                <a href="../telas/motorista.html" class="active">
+                    <span class="material-icons-sharp">sports_motorsports</span>
+                    <h3>MOTORISTA</h3>
+                </a>
                 <a onclick="limparSessao_telas()" class="active">
                     <span class="material-icons-sharp">logout</span>
                     <h3>DESLOGAR</h3>
@@ -84,104 +92,95 @@
             </div>
         </aside>
 
-        <!---------------- end aside ---------------->
 
-        <main>
-            <h1>DADOS DO USÚARIO</h1>
+    <!---------------- end aside ---------------->
 
-            <div class="recent-orders">
-                <div class="resume">
-                    <div class="base">
-                        <div class="profile">
-                            <div class="avatar-upload">
-                                <div class="avatar-preview">
-                                    <img id="exemplo" style="border-radius: 50%;" src="../img/img1.jpg" alt="">
-                                </div>
-                            </div>
-                            <div class="info">
-                                <h4 class="name" id="b_usuario">WINYCIOS ALVES</h4><small class="job"
-                                    id="nomeEmpresa"></small>
+    <main>
+        <h1>DADOS DO USÚARIO</h1>
+
+        <div class="recent-orders">
+            <div class="resume">
+                <div class="base">
+                    <div class="profile">
+                        <div class="avatar-upload">
+                            <div class="avatar-preview">
+                                <img id="exemplo" style="border-radius: 50%;" src="../img/img1.jpg" alt="">
                             </div>
                         </div>
-                    </div>
-                    <div class="func">
-                        <div class="work">
-                            <h3><i class="fa fa-briefcase"></i>Dados Pessoais</h3>
-                            <ul style="margin-top: 20px;">
-                                <li><span>Email</span><small id="emailUser"></small></li>
-                                <li><span>CPF</span><small id="cpfUser"></small></li>
-                                <li><span>tipo</span><small id="tipoUser"></small></li>
-                                <li><span>Nível</span><small id="nivelUser"></small></li>
-                                <li><span>senha</span><small id="senhaUser"></small></li>
-                            </ul>
-                        </div>
-                        <div class="edu">
-                            <h3><i class="fa fa-graduation-cap"></i>Empresa</h3>
-                            <ul style="margin-top: 20px;">
-                                <li><span>CNPJ</span><small id="cnpjEmpresa">Rua sei la das contas, 57</small></li>
-                                <li><span>Descrição</span><small id="descricao">Nós da 'Carlos fazendas' plantamos excelentes
-                                        tomatinhos</small></li>
-                            </ul>
+                        <div class="info">
+                            <h4 class="name" id="b_usuario">WINYCIOS ALVES</h4><small class="job"
+                                id="nomeEmpresa"></small>
                         </div>
                     </div>
                 </div>
-            </div>
-            <!-- partial -->
-        </main>
-        <!----------- end main ------------->
-
-        <div class="right">
-            <div class="top">
-                <button id="menu-btn">
-                    <span class="material-icons-sharp">menu</span>
-                </button>
+                <div class="func">
+                    <div class="work">
+                        <h3><i classfa fa-briefcasese"></i>Dados Pessoais</h3>
+                        <ul style="margin-top: 20px;">
+                            <li><span>Email</span><small id="emailUser"></small></li>
+                            <li><span>CPF</span><small id="cpfUser"></small></li>
+                            <li><span>tipo</span><small id="tipoUser"></small></li>
+                            <li><span>Nível</span><small id="nivelUser"></small></li>
+                            <li><span>senha</span><small id="senhaUser"></small></li>
+                        </ul>
+                    </div>
+                    <div class="edu">
+                        <h3><i classfa fa-graduation-capap"></i>Empresa</h3>
+                        <ul style="margin-top: 20px;">
+                            <li><span>CNPJ</span><small id="cnpjEmpresa">Rua sei la das contas, 57</small></li>
+                            <li><span>Descrição</span><small id="descricao">Nós da 'Carlos fazendas' plantamos
+                                    excelentes
+                                    tomatinhos</small></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
+        <!-- partial -->
+    </main>
+    <!----------- end main ------------->
+
+    <div class="right">
+        <div class="top">
+            <button id="menu-btn">
+                <span class="material-icons-sharp">menu</span>
+            </button>
+        </div>
+    </div>
     </div>
 
 
     <script src="../js/style.js"></script>
 </body>
 
-</html>
-
+</htmL> 
 <script>
 
-    function select_usuario() {
-        fetch(`/usuarios/plotar_usuario`, { cache: 'no-store' }).then(function (response) {
-            if (response.ok) {
-                response.json().then(function (resposta) {
-                    console.log(`data recebidos: ${JSON.stringify(resposta)}`);
+function select_usuario() {
+fetch(`/usuarios/plotar_usuario`, { cache: 'no-store' }).then(function (response) {
+if (response.ok) {
+response.json().then(function (resposta) {
+console.log(`data recebidos: ${JSON.stringify(resposta)}`);
 
-                    plotarFuncionario(resposta);
+plotarFuncionario(resposta);
 
-                });
-            } else {
-                console.error('Nenhum dado encontrado ou erro na API');
-            }
-        })
-            .catch(function (error) {
-                console.error(`Erro na obtenção dos data p/ gráfico: ${error.message}`);
-            });
-    }
+});
+} else {
+console.error('Nenhum dado encontrado ou erro na API');
+}
+})
+.catch(function (error) {
+console.error(`Erro na obtenção dos data p/ gráfico: ${error.message}`);
+});
+}
 
-    // Esta função *plotarFuncionario* usa os data capturados na função anterior para criar o gráfico
-    // Configura o gráfico (cores, tipo, etc), materializa-o na página e, 
-    // A função *plotarFuncionario* também invoca a função *atualizarGrafico*
-    function plotarFuncionario(resposta) {
+// Esta função *plotarFuncionario* usa os data capturados na função anterior para criar o gráfico
+// Configura o gráfico (cores, tipo, etc), materializa-o na página e,
+// A função *plotarFuncionario* também invoca a função *atualizarGrafico*
+function plotarFuncionario(resposta) {
 
-        // Inserindo valores recebidos em estrutura para plotar o gráfico
-        for (i = 0; i < resposta.length; i++) {
-            var registro = resposta[i];
-
-            nomeEmpresa.innerHTML = registro.nome;
-            emailUser.innerHTML = registro.email;
-            cpfUser.innerHTML = registro.cpf;
-            nivelUser.innerHTML = registro.nivel;
-            senhaUser.innerHTML = registro.senha;
-
-            cnpjEmpresa.innerHTML = registro.cnpj;
-            descricao.innerHTML = registro.descricao;
-        }
-    }
-</script>
+// Inserindo valores recebidos em estrutura para plotar o gráfico
+for (i = 0; i < resposta.length; i++) { var registro=resposta[i]; nomeEmpresa.innerHTML=registro.nome;
+    emailUser.innerHTML=registro.email; cpfUser.innerHTML=registro.cpf; nivelUser.innerHTML=registro.nivel;
+    senhaUser.innerHTML=registro.senha; cnpjEmpresa.innerHTML=registro.cnpj; descricao.innerHTML=registro.descricao; } }
+    </script>

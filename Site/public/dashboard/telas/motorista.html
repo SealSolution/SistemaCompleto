@@ -1,19 +1,196 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="PT-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Funcionários</title>
+
+    <link rel="icon" type="imagem/ico" sizes="192x192" href="../img/favicon.ico" />
+
+    <script src="../../js/funcao.js"></script>
+    
+    <!--links pages-->
+
+    <link rel="stylesheet" href="../css/style.css">
+
+    <link rel="stylesheet" href="../css/modal_form.css">
+
+
+    <!-- chart js-->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script src="../../js/funcao.js"></script>
+
+    <!--Material CDN-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+
+    <style>
+        /* Dark theme  */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --color-background: #181a1e;
+                --color-white: #202528;
+                --color-dark: #edeffd;
+                --color-dark-variant: #a3bdcc;
+                --color-light: rgba(0, 0, 0, 0.4);
+                --box-shadow: 0 2rem 3rem var(--color-light);
+            }
+        }
+    </style>
 </head>
-<body>
-    <input type="text" id="ipt_nomeMotorista" placeholder="nome"><br>
-    <input type="text" id="ipt_cpfMotorista" placeholder="cpf"><br>
-    <input type="date" id="ipt_NasctMotorista"  placeholder="Data Nascimento"><br>
-    <input type="text" id="ipt_cnhMotorista" placeholder="cnh"><br>
-    <button onclick="cadastro()">cadastrar</button>
+
+<body onload="validarSessao(), select_func()">
+
+    <!--side bar-->
+    <div class="container">
+        <aside>
+            <div class="top">
+                <div class="logo">
+                    <h2>SEAL<span style="color: var(--color-primary);"> SOLUTION</span></h2>
+                </div>
+                <div class="close" id="close-btn">
+                    <span class="material-icons-sharp">close</span>
+                </div>
+            </div>
+            <div class="sidebar">
+                <a href="../index.html" class="active">
+                    <span class="material-icons-sharp">grid_view</span>
+                    <h3>GRÁFICOS</h3>
+                </a>
+                <a href="../telas/empresa.html" class="active">
+                    <span class="material-icons-sharp">business</span>
+                    <h3>EMPRESA</h3>
+                </a>
+                <a href="../telas/funcionario.html" class="active">
+                    <span class="material-icons-sharp">person_outline</span>
+                    <h3>USÚARIOS</h3>
+                </a>
+                <a href="../telas/Caminhao.html" class="active">
+                    <span class="material-icons-sharp">local_shipping</span>
+                    <h3>CAMINHÕES</h3>
+                    <span class="message-count">3</span>
+                </a>
+
+                <a href="../telas/help.html" class="active">
+                    <span class="material-icons-sharp">help</span>
+                    <h3>CANAL DE AJUDA</h3>
+                </a>
+                <a href="../telas/tomates.html" class="active">
+                    <span class="material-symbols-outlined"> nutrition </span>
+                    <h3>TOMATES</h3>
+                </a>
+                <a href="../telas/motorista.html" class="active">
+                    <span class="material-icons-sharp">sports_motorsports</span>
+                    <h3>MOTORISTA</h3>
+                </a>
+                <a onclick="limparSessao_telas()" class="active">
+                    <span class="material-icons-sharp">logout</span>
+                    <h3>DESLOGAR</h3>
+                </a>
+            </div>
+        </aside>
+
+        <!---------------- end aside ---------------->
+
+        <main>
+            <div class="recent-orders">
+                <h2>MOTORISTAS CADASTRADOS</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>CPF</th>
+                            <th>CNH</th>
+                            <th>data de nascimento</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="mostrar">
+                    </tbody>
+                </table>
+                <a href="#cadastro_user">CADASTRAR FUNCIONÁRIO</a>
+            </div>
+        </main>
+
+        <!----------- end main ------------->
+
+        <div class="right">
+            <div class="top">
+                <button id="menu-btn">
+                    <span class="material-icons-sharp">menu</span>
+                </button>
+                <div class="profile">
+                    <div class="info">
+                        <p>OLÁ, <b id="b_usuario"></b></p>
+                    </div>
+                    <div class="profile-photo"><a href="../telas/dadosUser.html">
+                            <img src="../img/img1.jpg"></a>
+                    </div>
+                </div>
+            </div>
+            <!--end top-->
+        </div>
+    </div>
+
+
+
+    <!-- Modal -->
+    <div class="modal-wrapper modal" id="cadastro_user">
+        <div class="modal-body card_modal">
+            <div class="modal-header">
+                <h2 class="heading">Dados do motorista</h2>
+                <a href="#!" role="button" class="close" aria-label="close this modal">
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z" />
+                    </svg>
+                </a>
+            </div>
+            <section class="input-content">
+                <div class="input-content-wrap">
+                    <dl class="inputbox">
+                        <dt class="inputbox-title">Nome</dt>
+                        <dd class="inputbox-content">
+                            <input id="ipt_nomeMotorista" type="text" placeholder="Nome Completo" />
+                            <span class="underline"></span>
+                        </dd>
+                    </dl>
+                    <dl class="inputbox">
+                        <dt class="inputbox-title">CNH</dt>
+                        <dd class="inputbox-content">
+                            <input id="ipt_cnhMotorista" type="text" placeholder="CNH" />
+                            <span class="underline"></span>
+                        </dd>
+                    </dl>
+                    <dl class="inputbox">
+                        <dt class="inputbox-title">Data de nascimento</dt>
+                        <dd class="inputbox-content">
+                            <input id="ipt_NasctMotorista" type="date" placeholder="Senha" />
+                            <span class="underline"></span>
+                        </dd>
+                    </dl>
+                    <dl class="inputbox">
+                        <dt class="inputbox-title">CPF</dt>
+                        <dd class="inputbox-content">
+                            <input maxlength="14" id="ipt_cpfMotorista" placeholder="CPF" onkeypress="CPF(cpf.value)" />
+                            <span class="underline"></span>
+                        </dd>
+                    </dl>
+
+                    <button class="btn btn-confirm" onclick="cadastro()">Cadastrar</button>
+                </div>
+            </section>
+        </div>
+        <a href="#!" class="outside-trigger"></a>
+    </div>
+
+
+
+    <script src="../js/style.js"></script>
 </body>
-</html>
 <script>
     
     function cadastro(){
@@ -43,6 +220,7 @@
             console.log("resposta: ", resposta);
 
             if (resposta.ok) {
+                alert("Remessa cadastradata com sucesso!!")
                 setTimeout(() => {
                     window.location = "funcionario.html";
                 }, "2000")
@@ -53,11 +231,20 @@
             console.log(`#ERRO: ${resposta}`);
         });
 
-        
         return false;
     }
 
 
+    function Mascara(valuecpf, patternCpf) {
+        let i = 0;
+        let v = valuecpf.toString();
+        v = v.replace(/\D/g, '');
+        return patternCpf.replace(/#/g, () => v[i++] || '');
+    };
 
+    function CPF(valuecpf) {
+        const cpf = Mascara(valuecpf, '###.###.###-##');
+        document.getElementById('cpf').value = cpf;
+    }
 
 </script>
