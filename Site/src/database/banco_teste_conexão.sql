@@ -14,12 +14,16 @@ fkEmpresa int,
 	foreign key (fkEmpresa) references empresa(idEmpresa)
 );
 
+select * from usuario;
+
 create table empresa(
 idempresa int primary key auto_increment,
 nome varchar(45),
 cnpj char(14),
 descricao varchar(45)
 );
+
+select * from empresa;
 
 insert into empresa values 
 	(null, 'a', '33333', 'Ñ');
@@ -50,7 +54,11 @@ create table sensor(
 );
 
 insert into sensor values
-	(null, 2, 'temperatura e umidade', 'dht11'); 
+	(null, 1, 'temperatura e umidade', 'dht11'); 
+    
+select * from sensor;
+
+truncate table sensor;
 
 create table dadossensor(
 	dtHora DATETIME PRIMARY KEY,
@@ -61,7 +69,7 @@ create table dadossensor(
 );
 
 INSERT INTO dadossensor values
-	('2023-03-10 00:00:00', 2, '8.9', '69');
+	('2023-03-10 10:10:02', 22, '9', '85');
 
 create table motorista(
 
@@ -80,17 +88,24 @@ create table viagem(
 	idViagem INT AUTO_INCREMENT,
 	fk_caminhao INT,
     fk_motorista INT,
-    fk_remessa, INT,       
+    fk_remessa INT,       
     dtViagem DATE,
     FOREIGN KEY (fk_caminhao) REFERENCES caminhao(idCaminhao),
     FOREIGN KEY (fk_motorista) REFERENCES motorista(idMotorista),
     CONSTRAINT chkComposta PRIMARY KEY (idViagem, fk_caminhao, fk_motorista)
 );
+select * from viagem;
+insert into viagem values
+	(null, 1, 1, 1, '2022-01-01');
+    
 create table remessa(
 	idRemessa INT PRIMARY KEY AUTO_INCREMENT,
     qtd_tomate INT,
     valor DECIMAL(7,2));
-
+    
+    insert into remessa values
+		(null, 100, '2.5');
+    
 insert into viagem values
 	(null, 2, 2, '2023-06-05', 600, 3);
 

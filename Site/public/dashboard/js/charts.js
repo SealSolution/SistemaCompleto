@@ -111,7 +111,7 @@ function plotarGrafico(resposta) {
     var dht11Temperatura = new Chart(document.getElementById('dht11Temperatura').getContext('2d'),
         config
     );
-    setTimeout(() => atualizarGrafico(dados, dht11Temperatura), 10000);
+    setTimeout(() => atualizarGrafico(dados, dht11Temperatura), 5000);
 }
 
 
@@ -154,20 +154,19 @@ function atualizarGrafico(dados, dht11Temperatura) {
                     dht11Temperatura.update();
                 }
                 // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-                proximaAtualizacao = setTimeout(() => atualizarGrafico(dados, dht11Temperatura), 10000);
+                proximaAtualizacao = setTimeout(() => atualizarGrafico(dados, dht11Temperatura), 5000);
 
             });
         } else {
             console.error('Nenhum dado encontrado ou erro na API');
             // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-            proximaAtualizacao = setTimeout(() => atualizarGrafico(dados, dht11Temperatura), 10000);
+            proximaAtualizacao = setTimeout(() => atualizarGrafico(dados, dht11Temperatura), 5000);
         }
     })
         .catch(function (error) {
             console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
         });
 }
-
 
 
 
@@ -287,7 +286,7 @@ function plotarGraficoDinheiro(resposta) {
     var perdaDinheiro = new Chart(document.getElementById('perdaDinheiro').getContext('2d'),
         config
     );
-    setTimeout(() => atualizarGraficoDinheiro(dados, perdaDinheiro), 30000);
+    setTimeout(() => atualizarGraficoDinheiro(dados, perdaDinheiro), 15000);
 }
 
 function atualizarGraficoDinheiro(dados, perdaDinheiro) {
@@ -326,21 +325,21 @@ function atualizarGraficoDinheiro(dados, perdaDinheiro) {
                 }
                 // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
                 proximaAtualizacaoDinheiro =
-                    setTimeout(() => atualizarGraficoDinheiro(dados, perdaDinheiro), 30000);
+                    setTimeout(() => atualizarGraficoDinheiro(dados, perdaDinheiro), 15000);
 
             });
         } else {
             console.error('Nenhum dado encontrado ou erro na API');
             // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
             proximaAtualizacaoDinheiro =
-                setTimeout(() => atualizarGraficoDinheiro(dados, perdaDinheiro), 30000);
+                setTimeout(() => atualizarGraficoDinheiro(dados, perdaDinheiro), 15000);
         }
     })
         .catch(function (error) {
             console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
         });
 
-    setTimeout(() => atualizarGraficoDinheiro(dados, perdaDinheiro), 30000);
+    setTimeout(() => atualizarGraficoDinheiro(dados, perdaDinheiro), 15000);
 }
 
 
@@ -449,7 +448,7 @@ function plotarGraficoDonnut(resposta) {
     var chartDonnut = new Chart(document.getElementById('chartDonnut').getContext('2d'),
         configDonnut
     );
-    setTimeout(() => atualizarGraficoTomates(dados, chartDonnut), 30000);
+    setTimeout(() => atualizarGraficoTomates(dados, chartDonnut), 20000);
 }
 
 function atualizarGraficoTomates(dados, chartDonnut) {
@@ -486,21 +485,21 @@ function atualizarGraficoTomates(dados, chartDonnut) {
                 }
                 // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
                 proximaAtualizacaoTomates =
-                    setTimeout(() => atualizarGraficoTomates(dados, chartDonnut), 30000);
+                    setTimeout(() => atualizarGraficoTomates(dados, chartDonnut), 20000);
 
             });
         } else {
             console.error('Nenhum dado encontrado ou erro na API');
             // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
             proximaAtualizacaoTomates =
-                setTimeout(() => atualizarGraficoTomates(dados, chartDonnut), 30000);
+                setTimeout(() => atualizarGraficoTomates(dados, chartDonnut), 20000);
         }
     })
         .catch(function (error) {
             console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
         });
 
-    setTimeout(() => atualizarGraficoTomates(dados, chartDonnut), 30000);
+    setTimeout(() => atualizarGraficoTomates(dados, chartDonnut), 20000);
 }
 
 

@@ -10,7 +10,9 @@ function buscarUltimasMedidas(req, res) {
 
     medidaModel.buscarUltimasMedidas(idAquario, limite_linhas).then(function (resultado) {
         if (resultado.length > 0) {
-            res.status(200).json(resultado);
+            setTimeout(() => {
+                res.status(200).json(resultado);
+                }, 7000)
         } else {
             res.status(204).send("Nenhum resultado encontrado!")
         }
@@ -30,7 +32,9 @@ function buscarMedidasEmTempoReal(req, res) {
 
     medidaModel.buscarMedidasEmTempoReal(idAquario).then(function (resultado) {
         if (resultado.length > 0) {
+            setTimeout(() => {
             res.status(200).json(resultado);
+            }, 7000)
         } else {
             res.status(204).send("Nenhum resultado encontrado!")
         }

@@ -166,34 +166,41 @@
                 </table>
 
                 <div class="icon-box">
-                    <div class="icon icon__danger">
-                        <div class="tooltip tooltip__dang">
-                            Fudeu
+                    <div class="icon icondanger">
+                        <div class="tooltip tooltipdang">
+                            estado cítico
                         </div>
                         <span class="material-icons-sharp" style="color: var(--color-primary);">
                             radio_button_checked
                         </span>
                     </div>
 
-                    <div class="icon icon__src">
-                        <div class="tooltip tooltip__war">
-                            Perigo, não ta ruim mas não tá bão
+                    <div class="icon iconsrc">
+                        <div class="tooltip tooltipwar">
+                            emergência
+                        </div>
+                        <span class="material-icons-sharp" style="color: #ef5e0a;">
+                            radio_button_checked
+                        </span>
+                    </div> 
+
+                    <div class="icon iconsrc">
+                        <div class="tooltip tooltipwar">
+                            atenção
                         </div>
                         <span class="material-icons-sharp" style="color: var(--color-warning);">
                             radio_button_checked
                         </span>
                     </div>
 
-                    <div class="icon icon__cow">
-                        <div class="tooltip tooltip__suc">
-                            Coisa boinhaaaa
+                    <div class="icon iconcow">
+                        <div class="tooltip tooltipsuc">
+                            ideal
                         </div>
                         <span class="material-icons-sharp" style="color: var(--color-success);">
                             radio_button_checked
                         </span>
                     </div>
-                </div>
-
             </div>
         </main>
 
@@ -265,7 +272,7 @@
 </html>
 
 <script>
-    
+ 
     function obterdados() {
         fetch(`/medidas/tempo-real`)
             .then(resposta => {
@@ -274,19 +281,19 @@
                     resposta.json().then(resposta => {
 
                         console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-
-                        var dados = {
-                            temperatura: resposta[0].temperatura,
-                            umidade: resposta[0].umidade
-                        }
+                        
+                            var dados = {
+                                temperatura: resposta[resposta.length - 1].temperatura,
+                                umidade: resposta[resposta.length - 1].umidade
+                            }
+                        
                         setTimeout(() => {
-                            alertarTemp(resposta[0].temperatura);
-                        },);
-
+                            alertarUmid(resposta[resposta.length - 1].umidade);
+                        }, 5000);
                         setTimeout(() => {
-                            alertarUmid(resposta[0].umidade);
-                        },);
-
+                            alertarTemp(resposta[resposta.length - 1].temperatura);
+                        }, 5000);
+                        
                     });
                 } else {
 
@@ -299,7 +306,17 @@
 
     }
 
-    function alertarTemp(temperatura, idAquario) {
+    function atualizacaoPeriodica() {
+        obterdados();
+        // obterdados(2);
+        // obterdados(3);
+        // obterdados(4);
+
+        // setTimeout(atualizacaoPeriodica(), 12000);
+    }
+    
+
+    function alertarTemp(temperatura) {
         var limites = {
             muito_quente: 13.8,
             quente: 13,
@@ -310,84 +327,99 @@
             muito_frio: 7
         };
 
-        var classe_temperatura = 'cor-alerta';
-
         if (temperatura >= limites.muito_quente) {
+            alerta.innerHTML = null
             alerta.style.display = "flex"
             alerta.classList.add('destaque-vermelho')
-            classe_temperatura = 'cor-alerta perigo-quente';
             alerta.innerHTML += `Temperatura esta muito alta <br> ${temperatura}°C`
             setTimeout(() => {
                 alerta.style.display = "none"
             }, 7000);
+            setTimeout(() => {
+                atualizacaoPeriodica()
+            }, 3000);
             return false
         }
         else if (temperatura < limites.muito_quente && temperatura >= limites.quente) {
+            alerta.innerHTML = null
             alerta.style.display = "flex"
             alerta.classList.add('destaque-laranja')
-            classe_temperatura = 'cor-alerta alerta-quente';
             alerta.innerHTML += `Temperatura esta alta <br> ${temperatura}°C`
             setTimeout(() => {
                 alerta.style.display = "none"
             }, 7000);
+            setTimeout(() => {
+                atualizacaoPeriodica()
+            }, 3000);
             return false
         }
         else if (temperatura < limites.quente && temperatura >= limites.acima) {
+            alerta.innerHTML = null
             alerta.style.display = "flex"
             alerta.classList.add('destaque-amarelo')
-            classe_temperatura = 'cor-alerta alerta-acima'
             alerta.innerHTML += `Temperatura esta acima do Ideal <br> ${temperatura}°C`
             setTimeout(() => {
                 alerta.style.display = "none"
             }, 7000);
+            setTimeout(() => {
+                atualizacaoPeriodica()
+            }, 3000);
             return false
         }
         else if (temperatura < limites.acima || temperatura > limites.ideal) {
+            alerta.innerHTML = null
             alerta.style.display = "flex"
             alerta.classList.add('destaque-verde')
-            classe_temperatura = 'cor-alerta ideal';
             alerta.innerHTML += `Temperatura esta Ideal<br> ${temperatura}°C`
             setTimeout(() => {
                 alerta.style.display = "none"
             }, 7000);
+            setTimeout(() => {
+                atualizacaoPeriodica()
+            }, 3000);
             return false
         }
         else if (temperatura < limites.ideal && temperatura >= limites.abaixo) {
+            alerta.innerHTML = null
             alerta.style.display = "flex"
             alerta.classList.add('destaque-amarelo')
-            classe_temperatura = 'cor-alerta alerta-abaixo';
             alerta.innerHTML += `Temperatura esta abaixo do ideal<br> ${temperatura}°C`
             setTimeout(() => {
                 alerta.style.display = "none"
             }, 7000);
+            setTimeout(() => {
+                atualizacaoPeriodica()
+            }, 3000);
             return false
         }
         else if (temperatura < limites.abaixo && temperatura >= limites.frio) {
+            alerta.innerHTML = null
             alerta.style.display = "flex"
             alerta.classList.add('destaque-laranja')
-            classe_temperatura = 'cor-alerta alerta-frio';
             alerta.innerHTML += `Temperatura esta baixa<br> ${temperatura}°C`
             setTimeout(() => {
                 alerta.style.display = "none"
             }, 7000);
+            setTimeout(() => {
+                atualizacaoPeriodica()
+            }, 3000);
             return false
 
 
         }
         else if (temperatura <= limites.muito_frio) {
+            alerta.innerHTML = null
             alerta.style.display = "flex"
             alerta.classList.add('destaque-vermelho')
-            classe_temperatura = 'cor-alerta perigo-frio';
             alerta.innerHTML += `Temperatura esta muito baixa<br> ${temperatura}°C`
             setTimeout(() => {
                 alerta.style.display = "none"
             }, 7000);
+                        setTimeout(() => {
+                atualizacaoPeriodica()
+            }, 3000);
             return false
         }
-
-
-
-
     }
 
     function alertarUmid(umidade, idUmidade) {
@@ -404,74 +436,97 @@
         var classe_umidade = 'cor-alerta';
 
         if (umidade >= limites.muito_alta) {
+            alerta1.innerHTML= null
             alerta1.style.display = "flex"
             alerta1.classList.add('destaque-vermelho')
-            classe_umidade = 'cor-alerta perigo-quente';
             alerta1.innerHTML = `Umidade esta muito alta <br> ${umidade}%`
             setTimeout(() => {
                 alerta1.style.display = "none"
             }, 7000);
+            setTimeout(() => {
+                atualizacaoPeriodica()
+            }, 3000);
             return false
         }
         else if (umidade < limites.muito_alta && umidade >= limites.alta) {
+            alerta1.innerHTML= null
             alerta1.style.display = "flex"
             alerta1.classList.add('destaque-laranja')
-            classe_umidade = 'cor-alerta alerta-quente';
             alerta1.innerHTML = `Umidade esta alta<br> ${umidade}%`
             setTimeout(() => {
                 alerta1.style.display = "none"
             }, 7000);
+            setTimeout(() => {
+                atualizacaoPeriodica()
+            }, 3000);
             return false
         }
         else if (umidade < limites.alta && umidade >= limites.pouco_acima) {
+            alerta1.innerHTML = null
             alerta1.style.display = "flex"
             alerta1.classList.add('destaque-amarelo')
-            classe_umidade = 'cor-alerta alerta-acima'
             alerta1.innerHTML = `Umidade esta acima do Ideal<br> ${umidade}%`
             setTimeout(() => {
                 alerta1.style.display = "none"
             }, 7000);
+            setTimeout(() => {
+                atualizacaoPeriodica()
+            }, 3000);
             return false
         }
         else if (umidade < limites.pouco_acima && umidade > limites.pouco_abaixo) {
+            alerta1.innerHTML = null
             alerta1.style.display = "flex"
             alerta1.classList.add('destaque-verde')
-            classe_umidade = 'cor-alerta ideal';
             alerta1.innerHTML = `Umidade esta Ideal<br> ${umidade}%`
             setTimeout(() => {
                 alerta1.style.display = "none"
             }, 7000);
+            setTimeout(() => {
+                atualizacaoPeriodica()
+            }, 3000);
             return false
         }
         else if (umidade < limites.ideal && umidade >= limites.pouco_abaixo) {
+            alerta1.innerHTML = null
             alerta1.style.display = "flex"
             alerta1.classList.add('destaque-amarelo')
-            classe_umidade = 'cor-alerta alerta-abaixo';
             alerta1.innerHTML = `Umidade esta abaixo do ideal<br> ${umidade}%`
             setTimeout(() => {
                 alerta1.style.display = "none"
             }, 7000);
+            setTimeout(() => {
+                atualizacaoPeriodica()
+            }, 3000);
             return false
         }
         else if (umidade < limites.pouco_abaixo && umidade > limites.baixa) {
+            alerta1.innerHTML = null
             alerta1.style.display = "flex"
             alerta1.classList.add('destaque-laranja')
-            classe_umidade = 'cor-alerta alerta-frio';
             alerta1.innerHTML = `Umidade esta baixa<br> ${umidade}%`
             setTimeout(() => {
                 alerta1.style.display = "none"
             }, 7000);
+            setTimeout(() => {
+                atualizacaoPeriodica()
+            }, 3000);
             return false
         }
         else if (umidade <= limites.muito_baixa) {
+            alerta1.innerHTML = null
             alerta1.style.display = "flex"
             alerta1.classList.add('destaque-vermelho')
-            classe_umidade = 'cor-alerta perigo-frio';
             alerta1.innerHTML = `Umidade esta muito baixa<br> ${umidade}%`
             setTimeout(() => {
                 alerta1.style.display = "none"
             }, 7000);
+            setTimeout(() => {
+                atualizacaoPeriodica()
+            }, 3000);
             return false
         }
     }
+
+
 </script>

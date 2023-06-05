@@ -19,7 +19,7 @@ function buscarUltimasMedidas(idAquario, limite_linhas) {
         umidade as umidade,
         dtHora,
                         DATE_FORMAT(dtHora,'%H:%i:%s') as momento_grafico 
-                        from dadossensor join sensor on fk_idSensor = idSensor order by idSensor desc;`;
+                        from dadossensor join sensor on fk_idSensor = idSensor order by idSensor desc limit 14;`;
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
         return
@@ -48,7 +48,7 @@ function buscarMedidasEmTempoReal(idAquario) {
         umidade as umidade,
         dtHora,
                         DATE_FORMAT(dtHora,'%H:%i:%s') as momento_grafico 
-                        from dadossensor join sensor on fk_idSensor = idSensor order by idSensor desc;`;
+                        from dadossensor join sensor on fk_idSensor = idSensor order by idSensor desc limit 14;`;
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
         return
@@ -62,16 +62,16 @@ function buscarMedidasEmTempoReal(idAquario) {
 function buscarUltimasMedidas2() {
     instrucaoSql2 = ''
 
-if (process.env.AMBIENTE_PROCESSO == "producao") {
-    instrucaoSql2 =""
+    if (process.env.AMBIENTE_PROCESSO == "producao") {
+        instrucaoSql2 = ""
 
-} else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
-    instrucaoSql2 = `select (qtd_tomate * preco_tomate) * 0.05 as perda, (select qtd_tomate * preco_tomate) as total from viagem order by idViagem desc limit 1;`
+    } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
+        instrucaoSql2 = `select (qtd_tomate * valor) * 0.05 as perda, (select qtd_tomate * valor) as total from remessa join viagem on fk_remessa = idRemessa order by idRemessa desc limit 1`
 
-} else {
-    console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
-    return
-}
+    } else {
+        console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
+        return
+    }
     console.log("Executando a instrução SQL: \n" + instrucaoSql2);
     return database.executar(instrucaoSql2);
 
@@ -85,7 +85,7 @@ function buscarMedidasEmTempoReal2() {
         instrucaoSql2 = ``;
 
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
-        instrucaoSql2 = `select (qtd_tomate * preco_tomate) * 0.05 as perda, (select qtd_tomate * preco_tomate) as total from viagem order by idViagem desc limit 1;`  
+        instrucaoSql2 = `select (qtd_tomate * valor) * 0.05 as perda, (select qtd_tomate * valor) as total from remessa join viagem on fk_remessa = idRemessa order by idRemessa desc limit 1`
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
         return
@@ -95,46 +95,46 @@ function buscarMedidasEmTempoReal2() {
     return database.executar(instrucaoSql2);
 }
 
-function buscarUltimasMedidasDonnut(limite_linhas) {
-instrucaoSql2 = ''
+    function buscarUltimasMedidasDonnut(limite_linhas) {
+        instrucaoSql2 = ''
 
-if (process.env.AMBIENTE_PROCESSO == "producao") {
-instrucaoSql2 = `select top ${limite_linhas}
-dht11_temperatura as temperatura, 
-dht11_umidade as umidade,  
-                momento,
-                FORMAT(momento, 'HH:mm:ss') as momento_grafico
-            from medida`;
-} else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
-instrucaoSql2 = `select qtd_tomate * 0.05 as perda, (select qtd_tomate) as mantidos from viagem order by idViagem desc limit 1`
-} else {
-console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
-return
-}
-console.log("Executando a instrução SQL: \n" + instrucaoSql2);
-return database.executar(instrucaoSql2);
+        if (process.env.AMBIENTE_PROCESSO == "producao") {
+            instrucaoSql2 = `select top ${limite_linhas}
+            dht11_temperatura as temperatura, 
+            dht11_umidade as umidade,  
+                    momento,
+                    FORMAT(momento, 'HH:mm:ss') as momento_grafico
+                from medida`;
+        } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
+            instrucaoSql2 = `select qtd_tomate * 0.05 as perda, (select qtd_tomate) as mantidos from  remessa join viagem on fk_remessa = idRemessa order by idRemessa desc limit 1;`
+        } else {
+            console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
+            return
+        }
+        console.log("Executando a instrução SQL: \n" + instrucaoSql2);
+        return database.executar(instrucaoSql2);
 
-}
+    }
 
 function buscarMedidasEmTempoRealDonnut(limite_linhas) {
-instrucaoSql2 = ''
+    instrucaoSql2 = ''
 
-if (process.env.AMBIENTE_PROCESSO == "producao") {
-    instrucaoSql2 = `select top 1 ${limite_linhas}
+    if (process.env.AMBIENTE_PROCESSO == "producao") {
+        instrucaoSql2 = `select top 1 ${limite_linhas}
     dht11_temperatura as temperatura, 
     dht11_umidade as umidade,  
                     CONVERT(varchar, momento, 108) as momento_grafico, 
                 order by id desc`;
 
-} else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
-    instrucaoSql2 = `select qtd_tomate * 0.05 as perda, (select qtd_tomate) as mantidos from viagem order by idViagem desc limit 1`  
-} else {
-    console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
-    return
-}
+    } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
+        instrucaoSql2 = `select qtd_tomate * 0.05 as perda, (select qtd_tomate) as mantidos from  remessa join viagem on fk_remessa = idRemessa order by idRemessa desc limit 1;`
+    } else {
+        console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
+        return
+    }
 
-console.log("Executando a instrução SQL: \n" + instrucaoSql2);
-return database.executar(instrucaoSql2);
+    console.log("Executando a instrução SQL: \n" + instrucaoSql2);
+    return database.executar(instrucaoSql2);
 }
 
 function cadastrar_tomate(quantidade, preco) {

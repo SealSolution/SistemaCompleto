@@ -21,8 +21,8 @@ var sql = require('mssql');
 var mySqlConfig = {
     host: "localhost",
     database: "sealSolution",
-    user: "userPomodoro",
-    password: "123",
+    user: "root",
+    password: "57725771",
     // create user 'userPomodoro'@'localhost' identified by '123';
     // grant all privileges on sealSolution.* to 'userPomodoro'@'localhost';
 };

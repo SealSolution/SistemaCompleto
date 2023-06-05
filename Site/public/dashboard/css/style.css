@@ -1076,9 +1076,8 @@ input[type=file]::file-selector-button:hover {
     padding: 6%;
     height: 72px;
     color: white;
-    box-shadow: #dadada 1px 1px 8px;
     border-radius: 12px;
-    background-color: #89cff0;
+    background-color: transparent;
     position: relative;
     margin-left: 0px;
     margin-top: 8px;
@@ -1089,7 +1088,7 @@ input[type=file]::file-selector-button:hover {
     width: 200px;
     padding: 6%;
     height: 70px;
-    background-color: #ff7782;
+    background-color: transparent;
     position: relative;
     border-radius: 12px;
     margin-right: 0px;
