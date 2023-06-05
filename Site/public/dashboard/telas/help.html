@@ -1,27 +1,25 @@
 <!DOCTYPE html>
 <html lang="PT-BR">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ajuda</title>
-
-    <script src="../../js/funcao.js"></script>
-
-    <link rel="icon" type="imagem/ico" sizes="192x192" href="../img/favicon.ico" />
-
-    <!--links pages-->
-
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/modal_form.css">
-
-
-    <!--Material CDN-->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
-
-    <style>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ajuda</title>
+        <script src="../../js/funcao.js"></script>
+        <link
+            rel="icon"
+            type="imagem/ico"
+            sizes="192x192"
+            href="../img/favicon.ico"
+        >
+        <!--links pages-->
+        <link rel="stylesheet" href="../css/style.css">
+        <link rel="stylesheet" href="../css/modal_form.css">
+        <link rel="stylesheet" href="../css/alert.css">
+        <!--Material CDN-->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+        <style>
         /* Dark theme  */
         @media (prefers-color-scheme: dark) {
             :root {
@@ -33,149 +31,167 @@
                 --box-shadow: 0 2rem 3rem var(--color-light);
             }
         }
-    </style>
-</head>
-
-<body onload="validarSessao()">
-    <div>
-        <!--side bar-->
-        <div class="container">
-            <aside>
-                <div class="top">
-                    <div class="logo">
-                        <h2>SEAL<span style="color: var(--color-primary);"> SOLUTION</span></h2>
-                    </div>
-                    <div class="close" id="close-btn">
-                        <span class="material-icons-sharp">close</span>
-                    </div>
-                </div>
-                <div class="sidebar">
-                    <a href="../index.html" class="active">
-                        <span class="material-icons-sharp">grid_view</span>
-                        <h3>GRÁFICOS</h3>
-                    </a>
-                    <a href="../telas/empresa.html" class="active">
-                        <span class="material-icons-sharp">business</span>
-                        <h3>EMPRESA</h3>
-                    </a>
-                    <a href="../telas/funcionario.html" class="active">
-                        <span class="material-icons-sharp">person_outline</span>
-                        <h3>USÚARIOS</h3>
-                    </a>
-                    <a href="../telas/Caminhao.html" class="active">
-                        <span class="material-icons-sharp">local_shipping</span>
-                        <h3>CAMINHÕES</h3>
-                    </a>
-                    <a href="../telas/tomates.html" class="active">
-                        <span class="material-symbols-outlined"> nutrition</span>
-                        <h3>TOMATES</h3>
-                    </a>
-                    <a href="../telas/motorista.html" class="active">
-                        <span class="material-icons-sharp">sports_motorsports</span>
-                        <h3>MOTORISTA</h3>
-                    </a>
-                    <a href="../telas/help.html" class="active">
-                        <span class="material-icons-sharp">pending_actions</span>
-                        <h3>VIAGENS</h3>
-                    </a>
-                    <a href="../telas/help.html" class="active">
-                        <span class="material-icons-sharp">help</span>
-                        <h3>CANAL DE AJUDA</h3>
-                    </a>
-                    <a onclick="limparSessao_telas()" class="active">
-                        <span class="material-icons-sharp">logout</span>
-                        <h3>DESLOGAR</h3>
-                    </a>
-                </div>
-            </aside>
-
-            <main>
-                <div class="retangulo_contato">
-                    <div class="info_contato">
-                        <div class="row01_con">
-                            <b>
-                                <div class="cont" id="contato">CANAL DE AJUDA</div>
-                            </b><br>
-                            <div class="cont_01">Caso precise de ajuda ou queira enviar um feedback mande-nos um email
-                                que responderemos em no maximo 24H</div>
+        </style>
+    </head>
+    <body onload="validarSessao()">
+        <div>
+            <!--side bar-->
+            <div class="container">
+                <aside>
+                    <div class="top">
+                        <div class="logo">
+                            <h2>SEAL
+                                <span style="color: var(--color-primary);"> SOLUTION</span>
+                            </h2>
                         </div>
-                        <div class="form">
-                            <form id="emailForm" method="post"
-                                style="display: flex; flex-direction: column; gap: 30px;">
-                                <div class="subtitle">Informe as suas duvidas</div>
-                                <div class="input-container ic1">
-                                    <label for="">Nome</label>
-                                    <input id="name" class="input" type="text" placeholder="">
+                        <div class="close" id="close-btn">
+                            <span class="material-icons-sharp">close</span>
+                        </div>
+                    </div>
+                    <div class="sidebar">
+                        <a href="../index.html" class="active">
+                            <span class="material-icons-sharp">grid_view</span>
+                            <h3>GRÁFICOS</h3>
+                        </a>
+                        <a href="../telas/empresa.html" class="active">
+                            <span class="material-icons-sharp">business</span>
+                            <h3>EMPRESA</h3>
+                        </a>
+                        <a href="../telas/funcionario.html" class="active">
+                            <span class="material-icons-sharp">person_outline</span>
+                            <h3>USÚARIOS</h3>
+                        </a>
+                        <a href="../telas/Caminhao.html" class="active">
+                            <span class="material-icons-sharp">local_shipping</span>
+                            <h3>CAMINHÕES</h3>
+                        </a>
+                        <a href="../telas/tomates.html" class="active">
+                            <span class="material-symbols-outlined"> nutrition</span>
+                            <h3>TOMATES</h3>
+                        </a>
+                        <a href="../telas/motorista.html" class="active">
+                            <span class="material-icons-sharp">sports_motorsports</span>
+                            <h3>MOTORISTA</h3>
+                        </a>
+                        <a href="../telas/Viagem.html" class="active">
+                            <span class="material-icons-sharp">pending_actions</span>
+                            <h3>VIAGENS</h3>
+                        </a>
+                        <a href="../telas/help.html" class="active">
+                            <span class="material-icons-sharp">help</span>
+                            <h3>CANAL DE AJUDA</h3>
+                        </a>
+                        <a onclick="limparSessao_telas()" class="active">
+                            <span class="material-icons-sharp">logout</span>
+                            <h3>DESLOGAR</h3>
+                        </a>
+                    </div>
+                </aside>
+                <main>
+                    <div class="retangulo_contato">
+                        <div class="info_contato">
+                            <div class="row01_con">
+                                <b>
+                                    <div class="cont" id="contato">CANAL DE AJUDA</div>
+                                </b>
+                                <br>
+                                <div class="cont_01">
+                                    Caso precise de ajuda ou queira enviar um feedback mande-nos um e-mail
+                                que responderemos em no máximo 24H
                                 </div>
-                                <div class="input-container ic1">
-                                    <label for="">Email</label>
-                                    <input id="email" class="input" type="text" placeholder="">
-                                </div>
-                                <div class="input-container ic2">
-                                    <div class="box_file">
-                                        <label for="">Imagem ou documento (Até 50kb)</label>
-                                        <input type="file" id="image" accept="*" required>
+                            </div>
+                            <div class="form">
+                                <form id="emailForm" method="post" style="display: flex; flex-direction: column; gap: 30px;">
+                                    <div class="subtitle">Informe as suas dúvidas</div>
+                                    <div class="input-container ic1">
+                                        <label for="">Nome</label>
+                                        <input
+                                            id="name"
+                                            class="input"
+                                            type="text"
+                                            placeholder=""
+                                        >
+                                    </div>
+                                    <div class="input-container ic1">
+                                        <label for="">Email</label>
+                                        <input
+                                            id="email"
+                                            class="input"
+                                            type="text"
+                                            placeholder=""
+                                        >
+                                    </div>
+                                    <div class="input-container ic2">
+                                        <div class="box_file">
+                                            <label for="">Imagem ou documento (Até 50kb)</label>
+                                            <input
+                                                type="file"
+                                                id="image"
+                                                accept="*"
+                                                required
+                                            >
+                                        </div>
+                                    </div>
+                                    <div id="resultado"></div>
+                                    <div class="input-container ic2">
+                                        <select class="input" id="select-values">
+                                            <option value="opção1">Selecione o Assunto</option>
+                                            <option value="Sugestão">Sugestão</option>
+                                            <option value="Reclamação">Reclamação</option>
+                                            <option value="Elogios">Elogios</option>
+                                        </select>
+                                    </div>
+                                    <div class="mensagem">
+                                        <label for="">Descrição</label>
+                                        <textarea class="text_area" name="" id="message"></textarea>
+                                    </div>
+                                    <button type="submit" class="submit">Enviar</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+                <!----------- end main ------------->
+                <div class="right">
+                    <div class="top">
+                        <button id="menu-btn">
+                            <span class="material-icons-sharp">menu</span>
+                        </button>
+                        <div class="profile">
+                            <div class="info">
+                                <p>OLÁ,
+                                    <b id="b_usuario"></b>
+                                </p>
+                            </div>
+                            <div class="profile-photo">
+                                <a href="./telas/dadosUser.html">
+                                    <img src="../img/img1.jpg">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!------------------- end recent updates -------------------->
+                    <div class="sales-analytics">
+                        <h2>CANAL DE AJUDA</h2>
+                        <div class="item online">
+                            <span class="material-icons-sharp icons">help</span>
+                            <div class="right">
+                                <div class="info">
+                                    <h3>
+                                        Olá está com problemas para entrar em contato? Acesse diretamente nossa centralde ajuda
+                                    </h3>
+                                    <div style="margin-top: 20px;">
+                                        <a href="https://sealsolution.atlassian.net/servicedesk/customer/portal/1" class="link_atla">Clique aqui</a>
                                     </div>
                                 </div>
-                                <div class="input-container ic2">
-                                    <select class="input" id="select-values">
-                                        <option value="opção1">Selecione o Assunto</option>
-                                        <option value="Sugestão">Sugestão</option>
-                                        <option value="Reclamação">Reclamação</option>
-                                        <option value="Elogios">Elogios</option>
-                                    </select>
-                                </div>
-                                <div class="mensagem">
-                                    <label for="">Descrição</label>
-                                    <textarea class="text_area" name="" id="message"></textarea>
-                                </div>
-                                <button type="submit" class="submit">Enviar</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </main>
-
-            <!----------- end main ------------->
-
-            <div class="right">
-                <div class="top">
-                    <button id="menu-btn">
-                        <span class="material-icons-sharp">menu</span>
-                    </button>
-                    <div class="profile">
-                        <div class="info">
-                            <p>OLÁ, <b id="b_usuario"></b></p>
-                        </div>
-                        <div class="profile-photo"><a href="./telas/dadosUser.html">
-                                <img src="../img/img1.jpg"></a>
-                        </div>
-                    </div>
-                </div>
-                <!------------------- end recent updates -------------------->
-                <div class="sales-analytics">
-                    <h2>CANAL DE AJUDA</h2>
-                    <div class="item online">
-                        <span class="material-icons-sharp icons">help</span>
-                        <div class="right">
-                            <div class="info">
-                                <h3>Olá está com problemas para entrar em contato ? acesse diretamente nossa ferramente
-                                </h3>
-                                <div style="margin-top: 20px;"><a
-                                        href="https://sealsolution.atlassian.net/servicedesk/customer/portal/1"
-                                        class="link_atla">Clique aqui</a></div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div id="resultado"></div>
-</body>
-
-</html>
-
-<script>
+        </body>
+    </html>
+    <script>
     const form = document.getElementById('emailForm');
 
     form.addEventListener('submit', function (event) {
@@ -200,9 +216,51 @@
             })
                 .then(response => {
                     if (response.ok) {
-                        alert('Email enviado com sucesso!');
+                        resultado.innerHTML = `
+                    <div id="alertar" class="alert">
+                    <!-- Danger Success -->
+                    <div class="xd-message msg-success">
+                        <div class="xd-message-icon">
+                            <span class="material-icons-sharp">check</span>
+                        </div>
+                        <div class="xd-message-content">
+                            <p>Email enviado sucesso!!</p>
+                            <p>Entraremos em contato em breve !!</p>
+                        </div>
+                        <a href="#" class="xd-message-close" onclick="alertar.style.display = 'none'">
+                            <span class="material-icons-sharp">cancel</span>
+                        </a>
+                    </div>
+                </div>
+                `
+                setTimeout(() => {
+                    alertar.style.display = 'none'
+                    window.location.href = "./help.html"
+                }, 2000);
+
                     } else {
                         throw new Error('Erro ao enviar o email.');
+                        resultado.innerHTML = `
+            <div id="alertar" class="alert">
+                    <!-- Danger Message -->
+                    <div class="xd-message msg-danger">
+                        <div class="xd-message-icon">
+                            <span class="material-icons-sharp">close</span>
+                        </div>
+                        <div class="xd-message-content">
+                            <p>CAMPOS INVÁLIDOS</p>
+                        </div>
+                        <a href="#" class="xd-message-close" onclick="alertar.style.display = 'none'">
+                            <span class="material-icons-sharp">cancel</span>
+                        </a>
+                    </div>
+                </div>`
+
+                setTimeout(() => {
+                    alertar.style.display = 'none'
+                }, 2000);
+                
+                return false;
                     }
                 })
                 .catch(error => {
@@ -211,4 +269,4 @@
         };
         reader.readAsDataURL(attachment);
     });
-</script>
+    </script>

@@ -17,6 +17,9 @@ router.get("/plotar_remessa", function (req, res) {
     caminhaoController.plotar_remessa(req, res);
 });
 
+router.get("/plotar_viagem", function (req, res) {
+    caminhaoController.plotar_viagem(req, res);
+});
 
 router.post("/cadastrar", function (req, res) {
     caminhaoController.cadastrar(req, res);

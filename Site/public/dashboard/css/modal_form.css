@@ -245,6 +245,7 @@ option{
     grid-template-areas: "select";
     align-items: center;
     position: relative;
+    margin-top: 10px;
     min-width: 15ch;
     max-width: 30ch;
     border: 1px solid var(--color-dark);

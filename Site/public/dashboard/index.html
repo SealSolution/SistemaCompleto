@@ -1,30 +1,27 @@
 <!DOCTYPE html>
 <html lang="PT-BR">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DashBoard</title>
-
-    <script src="../js/funcao.js"></script>
-
-    <link rel="icon" type="imagem/ico" sizes="192x192" href="./img/favicon.ico" />
-
-    <!--links pages-->
-
-    <link rel="stylesheet" href="css/style.css">
-
-    <!-- chart js-->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
-    <script src="http://www.chartjs.org/dist/2.7.1/Chart.js"></script>
-
-    <!--Material CDN-->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
-
-    <style>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>DashBoard</title>
+        <script src="../js/funcao.js"></script>
+        <link
+            rel="icon"
+            type="imagem/ico"
+            sizes="192x192"
+            href="./img/favicon.ico"
+        >
+        <!--links pages-->
+        <link rel="stylesheet" href="css/style.css">
+        <!-- chart js-->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+        <script src="http://www.chartjs.org/dist/2.7.1/Chart.js"></script>
+        <!--Material CDN-->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+        <style>
         /* Dark theme  */
         @media (prefers-color-scheme: dark) {
             :root {
@@ -36,246 +33,193 @@
                 --box-shadow: 0 2rem 3rem var(--color-light);
             }
         }
-    </style>
-</head>
-
-<body onload="validarSessao(), obterDadosGrafico(), obterDadosDinheiro(), obterdados(), obterDadosTomates()">
-
-    <!--side bar-->
-    <div class="container">
-        <aside>
-            <div class="top">
-                <div class="logo">
-                    <h2>SEAL<span style="color: var(--color-primary);"> SOLUTION</span></h2>
-                </div>
-                <div class="close" id="close-btn">
-                    <span class="material-icons-sharp">close</span>
-                </div>
-            </div>
-            <div class="sidebar">
-                <a href="./index.html" class="active">
-                    <span class="material-icons-sharp">grid_view</span>
-                    <h3>GRÁFICOS</h3>
-                </a>
-                <a href="./telas/empresa.html" class="active">
-                    <span class="material-icons-sharp">business</span>
-                    <h3>EMPRESA</h3>
-                </a>
-                <a href="./telas/funcionario.html" class="active">
-                    <span class="material-icons-sharp">person_outline</span>
-                    <h3>USÚARIOS</h3>
-                </a>
-                <a href="./telas/Caminhao.html" class="active">
-                    <span class="material-icons-sharp">local_shipping</span>
-                    <h3>CAMINHÕES</h3>
-                    <span class="message-count">3</span>
-                </a>
-
-                <a href="./telas/tomates.html" class="active">
-                    <span class="material-symbols-outlined"> nutrition </span>
-                    <h3>TOMATES</h3>
-                </a>
-                <a href="./telas/motorista.html" class="active">
-                    <span class="material-icons-sharp">sports_motorsports</span>
-                    <h3>MOTORISTA</h3>
-                </a>
-                <a href="./telas/Viagem.html" class="active">
-                    <span class="material-icons-sharp">pending_actions</span>
-                    <h3>VIAGENS</h3>
-                </a>
-                <a href="./telas/help.html" class="active">
-                    <span class="material-icons-sharp">help</span>
-                    <h3>CANAL DE AJUDA</h3>
-                </a>
-                <div id="alerta" class="alertaTemp">
-                </div>
-                <div id="alerta1" class="alertaUmid">
-                </div>
-                <a onclick="limparSessao()" class="active">
-                    <span class="material-icons-sharp">logout</span>
-                    <h3>DESLOGAR</h3>
-                </a>
-            </div>
-        </aside>
-
-        <!---------------- end aside ---------------->
-
-        <main>
-            <h1>DASHBOARD</h1>
-
-            <div class="insights">
-                <div class="sales">
-                    <span class="material-icons-sharp">bar_chart</span>
-                    <h3>Comparativo dos valores em Reais</h3>
-                    <div style="width: 100%;">
-                        <canvas id="perdaDinheiro"></canvas>
+        </style>
+    </head>
+    <body onload="validarSessao(), obterDadosGrafico(), obterDadosDinheiro(), obterdados(), obterDadosTomates(), select_viagem()">
+        <!--side bar-->
+        <div class="container">
+            <aside>
+                <div class="top">
+                    <div class="logo">
+                        <h2>SEAL
+                            <span style="color: var(--color-primary);"> SOLUTION</span>
+                        </h2>
                     </div>
-                    <small class="text-muted">ATUALIZADO HÁ 30 MINUTOS
-                    </small>
-                </div>
-                <!-----------------end sales----------------->
-                <div class="expenses">
-                    <span class="material-icons-sharp">ssid_chart</span>
-                    <div style="width: 100%;">
-                        <h3>Temperatura e umidade da viagem</h3>
-                        <canvas id="dht11Temperatura"></canvas>
-                    </div>
-                    <small class="text-muted">ATUALIZADO HÁ 30 MINUTOS
-                    </small>
-                </div>
-                <!-----------------end of expenses----------------->
-            </div>
-            <!---------------- end insights ---------------->
-
-            <div class="recent-orders">
-                <h2>VIAGENS EM ANDAMENTO</h2>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Modelo</th>
-                            <th>Motorista</th>
-                            <th>umidade(tomate)</th>
-                            <th>temperatura(tomate)</th>
-                            <th>Caixas</th>
-                            <th>Tempo estimado</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Peterbilt 379</td>
-                            <td>Winycios</td>
-                            <td class="success">84</td>
-                            <td class="danger">50°C</td>
-                            <td>100</td>
-                            <td>5 dias</td>
-                        </tr>
-                        <tr>
-                            <td>5700XE</td>
-                            <td>Winycios</td>
-                            <td class="warning">80</td>
-                            <td class="danger">5°C</td>
-                            <td>110</td>
-                            <td>5 dias</td>
-                        </tr>
-                        <tr>
-                            <td>S730</td>
-                            <td>Winycios</td>
-                            <td class="success">85</td>
-                            <td class="success">11°C</td>
-                            <td>200</td>
-                            <td>5 dias</td>
-                        </tr>
-                    </tbody>
-                    <small class="text-muted">ATUALIZADO HÁ 1 HORA</small>
-                </table>
-
-                <div class="icon-box">
-                    <div class="icon icondanger">
-                        <div class="tooltip tooltipdang">
-                            estado cítico
-                        </div>
-                        <span class="material-icons-sharp" style="color: var(--color-primary);">
-                            radio_button_checked
-                        </span>
-                    </div>
-
-                    <div class="icon iconsrc">
-                        <div class="tooltip tooltipwar">
-                            emergência
-                        </div>
-                        <span class="material-icons-sharp" style="color: #ef5e0a;">
-                            radio_button_checked
-                        </span>
-                    </div> 
-
-                    <div class="icon iconsrc">
-                        <div class="tooltip tooltipwar">
-                            atenção
-                        </div>
-                        <span class="material-icons-sharp" style="color: var(--color-warning);">
-                            radio_button_checked
-                        </span>
-                    </div>
-
-                    <div class="icon iconcow">
-                        <div class="tooltip tooltipsuc">
-                            ideal
-                        </div>
-                        <span class="material-icons-sharp" style="color: var(--color-success);">
-                            radio_button_checked
-                        </span>
-                    </div>
-            </div>
-        </main>
-
-        <!----------- end main ------------->
-
-        <div class="right">
-            <div class="top">
-                <button id="menu-btn">
-                    <span class="material-icons-sharp">menu</span>
-                </button>
-                <div class="profile">
-                    <div class="info">
-                        <p>OLÁ, <b id="b_usuario">Winyc</b></p>
-                    </div>
-                    <div class="profile-photo"><a href="./telas/dadosUser.html">
-                            <img src="img/img1.jpg"></a>
+                    <div class="close" id="close-btn">
+                        <span class="material-icons-sharp">close</span>
                     </div>
                 </div>
-            </div>
-            <!--end top-->
-            <div class="recent-updates">
-                <div class="updates">
-                    <div class="update">
-                        <span class="material-icons-sharp icons">donut_large</span>
-                        <h3>Comparativo Quantidade de Tomates</h3>
+                <div class="sidebar">
+                    <a href="./index.html" class="active">
+                        <span class="material-icons-sharp">grid_view</span>
+                        <h3>GRÁFICOS</h3>
+                    </a>
+                    <a href="./telas/empresa.html" class="active">
+                        <span class="material-icons-sharp">business</span>
+                        <h3>EMPRESA</h3>
+                    </a>
+                    <a href="./telas/funcionario.html" class="active">
+                        <span class="material-icons-sharp">person_outline</span>
+                        <h3>USÚARIOS</h3>
+                    </a>
+                    <a href="./telas/Caminhao.html" class="active">
+                        <span class="material-icons-sharp">local_shipping</span>
+                        <h3>CAMINHÕES</h3>
+                    </a>
+                    <a href="./telas/tomates.html" class="active">
+                        <span class="material-symbols-outlined"> nutrition</span>
+                        <h3>TOMATES</h3>
+                    </a>
+                    <a href="./telas/motorista.html" class="active">
+                        <span class="material-icons-sharp">sports_motorsports</span>
+                        <h3>MOTORISTA</h3>
+                    </a>
+                    <a href="./telas/Viagem.html" class="active">
+                        <span class="material-icons-sharp">pending_actions</span>
+                        <h3>VIAGENS</h3>
+                    </a>
+                    <a href="./telas/help.html" class="active">
+                        <span class="material-icons-sharp">help</span>
+                        <h3>CANAL DE AJUDA</h3>
+                    </a>
+                    <a onclick="limparSessao()" class="active">
+                        <span class="material-icons-sharp">logout</span>
+                        <h3>DESLOGAR</h3>
+                    </a>
+                </div>
+            </aside>
+            <!---------------- end aside ---------------->
+            <main>
+                <h1>DASHBOARD</h1>
+                <div class="insights">
+                    <div class="sales">
+                        <span class="material-icons-sharp">bar_chart</span>
+                        <h3>COMPARATIVO EM REAIS</h3>
                         <div style="width: 100%;">
-                            <canvas id="chartDonnut"></canvas>
+                            <canvas id="perdaDinheiro"></canvas>
+                        </div>
+                        <small class="text-muted">
+                            ATUALIZADO HÁ 1 MINUTO
+                        </small>
+                    </div>
+                    <!-----------------end sales----------------->
+                    <div class="expenses">
+                        <span class="material-icons-sharp">ssid_chart</span>
+                        <div style="width: 100%;">
+                            <h3>TEMPERATURA E UMIDADE NA VIAGEM</h3>
+                            <canvas id="dht11Temperatura"></canvas>
+                        </div>
+                        <small class="text-muted">
+                            ATUALIZADO HÁ 1 MINUTO
+                        </small>
+                    </div>
+                    <!-----------------end of expenses----------------->
+                </div>
+                <!---------------- end insights ---------------->
+                <div class="recent-orders">
+                    <h2>VIAGENS EM ANDAMENTO</h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>CAMINHÃO</th>
+                                <th>MOTORISTA</th>
+                                <th>TOMATES</th>
+                                <th>STATUS</th>
+                            </tr>
+                        </thead>
+                        <tbody id="mostrar"></tbody>
+                    </table>
+                </main>
+                <!----------- end main ------------->
+                <div class="right">
+                    <div class="top">
+                        <button id="menu-btn">
+                            <span class="material-icons-sharp">menu</span>
+                        </button>
+                        <div class="profile">
+                            <div class="info">
+                                <p>OLÁ,
+                                    <b id="b_usuario">Winyc</b>
+                                </p>
+                            </div>
+                            <div class="profile-photo">
+                                <a href="./telas/dadosUser.html">
+                                    <img src="img/img1.jpg">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!--end top-->
+                    <div class="recent-updates">
+                        <div class="updates">
+                            <div class="update">
+                                <span class="material-icons-sharp icons">donut_large</span>
+                                <h3>COMPARATIVO QUANTIDADE DE TOMATES</h3>
+                                <div style="width: 100%;">
+                                    <canvas id="chartDonnut"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!------------------- end recent updates -------------------->
+                    <div class="sales-analytics">
+                        <h2>AVISOS DOS SENSORES</h2>
+                        <div class="item online">
+                            <div class="right">
+                                <div class="info">
+                                    <div id="alerta" class="alertaTemp"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item offline">
+                            <div class="right">
+                                <div class="info">
+                                    <div id="alerta1" class="alertaUmid"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="icon-box">
+                        <div class="icon icondanger">
+                            <div class="tooltip tooltipdang">
+                               <span style="color: rgba(211, 4, 35);"> estado crítico</span>
+                            </div>
+                            <span class="material-icons-sharp" style="color: var(--color-primary);">
+                                radio_button_checked
+                            </span>
+                        </div>
+                        <div class="icon iconsrc">
+                            <div class="tooltip tooltipwar">
+                               <span style="color: #ef5e0a;"> emergência</span>
+                            </div>
+                            <span class="material-icons-sharp" style="color: #ef5e0a;">
+                                radio_button_checked
+                            </span>
+                        </div>
+                        <div class="icon iconsrc">
+                            <div class="tooltip tooltipwar">
+                               <span style="color: #ffbb55">atenção</span>
+                            </div>
+                            <span class="material-icons-sharp" style="color: var(--color-warning);">
+                                radio_button_checked
+                            </span>
+                        </div>
+                        <div class="icon iconcow">
+                            <div class="tooltip tooltipsuc">
+                               <span style="color: rgb(98, 188, 119);">ideal</span>
+                            </div>
+                            <span class="material-icons-sharp" style="color: var(--color-success);">
+                                radio_button_checked
+                            </span>
                         </div>
                     </div>
                 </div>
             </div>
-            <!------------------- end recent updates -------------------->
-            <div class="sales-analytics">
-                <h2>DADOS POR SEMANA</h2>
-                <div class="item online">
-                    <div class="icon">
-                        <span class="material-icons-sharp">all_inbox</span>
-                    </div>
-                    <div class="right">
-                        <div class="info">
-                            <h3>TOMATES ENTREGUES</h3>
-                            <smal class="text-muted">Atualizado há 7 dias</smal>
-                        </div>
-                        <h5 class="success">+39%</h5>
-                        <h3>349</h3>
-                    </div>
-                </div>
-                <div class="item offline">
-                    <div class="icon">
-                        <span class="material-icons-sharp">not_interested</span>
-                    </div>
-                    <div class="right">
-                        <div class="info">
-                            <h3>PERDA DE TOMATE</h3>
-                            <smal class="text-muted">Atualizado há 7 dias</smal>
-                        </div>
-                        <h5 class="danger">-17%</h5>
-                        <h3>1100</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script src="js/style.js"></script>
-    <script src="./js/charts.js"></script>
-</body>
-
-</html>
-
-<script>
+            <script src="js/style.js"></script>
+            <script src="./js/charts.js"></script>
+        </body>
+    </html>
+    <script>
  
     function obterdados() {
         fetch(`/medidas/tempo-real`)
@@ -293,10 +237,10 @@
                         
                         setTimeout(() => {
                             alertarUmid(resposta[resposta.length - 1].umidade);
-                        }, 5000);
+                        }, 1000);
                         setTimeout(() => {
                             alertarTemp(resposta[resposta.length - 1].temperatura);
-                        }, 5000);
+                        }, 1000);
                         
                     });
                 } else {
@@ -531,6 +475,42 @@
             return false
         }
     }
+    </script>
+    <script>
+    
+    function select_viagem() {
+    fetch(`/caminhaos/plotar_viagem`, { cache: 'no-store' }).then(function (response) {
+        if (response.ok) {
+            response.json().then(function (resposta) {
+                console.log(`data recebidos: ${JSON.stringify(resposta)}`);
 
+                plotarViagem(resposta);
+            });
+        } else {
+            console.error('Nenhum dado encontrado ou erro na API');
+        }
+    })
+        .catch(function (error) {
+            console.error(`Erro na obtenção dos data p/ gráfico: ${error.message}`);
+        });
+}
 
-</script>
+function plotarViagem(resposta) {
+    
+    // Inserindo valores recebidos em estrutura para plotar o gráfico
+    for (i = 0; i < resposta.length; i++) {
+        var registro = resposta[i];
+        
+        const date =  new Date(registro.data);
+const formattedDate = date.toLocaleDateString();
+        mostrar.innerHTML += `
+                    <tr>
+                        <td>${registro.nome}</td>
+                        <td>${registro.placa}</td>
+                        <td>${registro.qtd_tomate}</td>
+                        <td class="warning">EM ANDAMENTO</td>
+                    </tr>
+`
+    }
+}
+    </script>

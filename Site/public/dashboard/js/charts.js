@@ -382,8 +382,7 @@ function plotarGraficoDonnut(resposta) {
             label: "perda",
             fill: false,
             data: [],
-            backgroundColor: ['#ff7f7f'],
-            borderColor: '#ff3232',
+            backgroundColor: ['#1e5603', '#f00'],
         }]
     };
 

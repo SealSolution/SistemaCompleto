@@ -95,7 +95,7 @@ create table viagem(
     CONSTRAINT chkComposta PRIMARY KEY (idViagem, fk_caminhao, fk_motorista)
 );
 
-select * from viagem;
+
 insert into viagem values
 	(null, 1, 1, 1, '2022-01-01');
     

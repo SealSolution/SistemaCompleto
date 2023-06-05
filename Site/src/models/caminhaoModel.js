@@ -90,6 +90,19 @@ function plotar_remessa() {
     return database.executar(instrucao);
 }
 
+function plotar_viagem(){
+    var instrucao = `
+    select motorista.nome, caminhao.placa, remessa.qtd_tomate from viagem
+	join caminhao 
+		on viagem.fk_caminhao = caminhao.idCaminhao
+			join motorista
+				on viagem.fk_motorista = motorista.idMotorista
+					join remessa
+						on viagem.fk_remessa = remessa.idRemessa`
+    return database.executar(instrucao);
+}
+
+
 module.exports = {
     cadastrar,
     viagem,
@@ -97,5 +110,6 @@ module.exports = {
     plotar_caminhao,
     plotar_dadoscaminhao,
     plotar_motorista,
-    plotar_remessa
+    plotar_remessa,
+    plotar_viagem
 }
