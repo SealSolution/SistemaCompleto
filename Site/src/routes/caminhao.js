@@ -2,7 +2,8 @@ var express = require("express");
 var router = express.Router();
 var caminhaoController = require("../controllers/caminhaoController")
 
-/* mostra dados do caminhao*/
+
+/* mostra dados*/
 router.get("/plotar_caminhao", function (req, res) {
     caminhaoController.plotar_caminhao(req, res);
 });
@@ -15,7 +16,6 @@ router.get("/plotar_motorista", function (req, res) {
 router.get("/plotar_remessa", function (req, res) {
     caminhaoController.plotar_remessa(req, res);
 });
-
 
 
 router.post("/cadastrar", function (req, res) {

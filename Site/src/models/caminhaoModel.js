@@ -77,13 +77,15 @@ function plotar_dadoscaminhao() {
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
 }
+
 function plotar_motorista() {
-    var instrucao = `select idMotorista ,nome from motorista;`;
+    var instrucao = `select nome, cpf, dtNascto as 'data',cnh from motorista;`;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
 }
+
 function plotar_remessa() {
-    var instrucao = `select idRemessa, qtd_tomate from remessa;`;
+    var instrucao = `select qtd_tomate, valor from remessa;`;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
 }

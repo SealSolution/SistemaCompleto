@@ -15,6 +15,7 @@
 
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/modal_form.css">
+    <link rel="stylesheet" href="../css/alert.css">
 
 
     <!-- chart js-->
@@ -70,20 +71,22 @@
                 <a href="../telas/Caminhao.html" class="active">
                     <span class="material-icons-sharp">local_shipping</span>
                     <h3>CAMINHÕES</h3>
-                    <span class="message-count">3</span>
-                </a>
-
-                <a href="../telas/help.html" class="active">
-                    <span class="material-icons-sharp">help</span>
-                    <h3>CANAL DE AJUDA</h3>
                 </a>
                 <a href="../telas/tomates.html" class="active">
-                    <span class="material-symbols-outlined"> nutrition </span>
+                    <span class="material-symbols-outlined"> nutrition</span>
                     <h3>TOMATES</h3>
                 </a>
                 <a href="../telas/motorista.html" class="active">
                     <span class="material-icons-sharp">sports_motorsports</span>
                     <h3>MOTORISTA</h3>
+                </a>
+                <a href="../telas/help.html" class="active">
+                    <span class="material-icons-sharp">pending_actions</span>
+                    <h3>VIAGENS</h3>
+                </a>
+                <a href="../telas/help.html" class="active">
+                    <span class="material-icons-sharp">help</span>
+                    <h3>CANAL DE AJUDA</h3>
                 </a>
                 <a onclick="limparSessao_telas()" class="active">
                     <span class="material-icons-sharp">logout</span>
@@ -192,6 +195,7 @@
                         </dd>
                     </dl>
                     <button class="btn btn-confirm" onclick="cadastrarCaminhao()">Cadastrar</button>
+                    <div id="result"></div>
                 </div>
             </section>
         </div>
@@ -214,7 +218,27 @@
         var tipoCaminhaoVar = sel_tipoCaminhao.value
         var sensorVar = sel_sensor.value
         if (placaVar == "" || marcaVar == "" || tipoCaminhaoVar == "" || sensorVar == "") {
-            alert("Campos não preenchidos")
+            result.innerHTML = `
+            <div id="alertar" class="alert">
+                    <!-- Danger Message -->
+                    <div class="xd-message msg-danger">
+                        <div class="xd-message-icon">
+                            <span class="material-icons-sharp">close</span>
+                        </div>
+                        <div class="xd-message-content">
+                            <p>CAMPOS INVÁLIDOS</p>
+                        </div>
+                        <a href="#" class="xd-message-close" onclick="alertar.style.display = 'none'">
+                            <span class="material-icons-sharp">cancel</span>
+                        </a>
+                    </div>
+                </div>`
+
+                setTimeout(() => {
+                    alertar.style.display = 'none'
+                }, 2000);
+                
+                return
         }
 
         fetch("/caminhaos/cadastrar", {
@@ -233,13 +257,45 @@
 
             console.log("resposta: ", resposta);
 
-            if (resposta.ok) {
-                alert("Caminhão cadastrado com sucesso!!")
+                if (resposta.ok) {
+                result.innerHTML = `
+                    <div id="alertar" class="alert">
+                    <!-- Danger Success -->
+                    <div class="xd-message msg-success">
+                        <div class="xd-message-icon">
+                            <span class="material-icons-sharp">check</span>
+                        </div>
+                        <div class="xd-message-content">
+                            <p>Caminhão cadastrado com sucesso!!</p>
+                        </div>
+                        <a href="#" class="xd-message-close" onclick="alertar.style.display = 'none'">
+                            <span class="material-icons-sharp">cancel</span>
+                        </a>
+                    </div>
+                </div>
+                `
                 setTimeout(() => {
-                    window.location = "Caminhao.html";
-                }, "2000")
+                    alertar.style.display = 'none'
+                    window.location.href = "./Caminhao.html"
+                }, 2000);
+
             } else {
                 throw ("Houve um erro ao tentar realizar o cadastro!");
+                    result.innerHTML = `
+                    <div id="alertar" class="alert">
+                    <!-- Danger Message -->
+                    <div class="xd-message msg-danger">
+                        <div class="xd-message-icon">
+                            <span class="material-icons-sharp">close</span>
+                        </div>
+                        <div class="xd-message-content">
+                            <p>Houve um erro ao tentar realizar o cadastro!</p>
+                        </div>
+                        <a href="#" class="xd-message-close" onclick="alertar.style.display = 'none'">
+                            <span class="material-icons-sharp">cancel</span>
+                        </a>
+                    </div>
+                </div>`
             }
         }).catch(function (resposta) {
             console.log(`#ERRO: ${resposta}`);
