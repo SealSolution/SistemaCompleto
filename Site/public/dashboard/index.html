@@ -41,7 +41,8 @@
             <aside>
                 <div class="top">
                     <div class="logo">
-                        <h2>SEAL
+                        <h2>
+                            SEAL
                             <span style="color: var(--color-primary);"> SOLUTION</span>
                         </h2>
                     </div>
@@ -121,7 +122,7 @@
                     <table>
                         <thead>
                             <tr>
-                                <th>CAMINHÃO</th>
+                                <th>PLACA(CAMINHÃO)</th>
                                 <th>MOTORISTA</th>
                                 <th>TOMATES</th>
                                 <th>STATUS</th>
@@ -138,7 +139,8 @@
                         </button>
                         <div class="profile">
                             <div class="info">
-                                <p>OLÁ,
+                                <p>
+                                    OLÁ,
                                     <b id="b_usuario">Winyc</b>
                                 </p>
                             </div>
@@ -182,7 +184,7 @@
                     <div class="icon-box">
                         <div class="icon icondanger">
                             <div class="tooltip tooltipdang">
-                               <span style="color: rgba(211, 4, 35);"> estado crítico</span>
+                                <span style="color: rgba(211, 4, 35);"> estado crítico</span>
                             </div>
                             <span class="material-icons-sharp" style="color: var(--color-primary);">
                                 radio_button_checked
@@ -190,7 +192,7 @@
                         </div>
                         <div class="icon iconsrc">
                             <div class="tooltip tooltipwar">
-                               <span style="color: #ef5e0a;"> emergência</span>
+                                <span style="color: #ef5e0a;"> emergência</span>
                             </div>
                             <span class="material-icons-sharp" style="color: #ef5e0a;">
                                 radio_button_checked
@@ -198,7 +200,7 @@
                         </div>
                         <div class="icon iconsrc">
                             <div class="tooltip tooltipwar">
-                               <span style="color: #ffbb55">atenção</span>
+                                <span style="color: #ffbb55">atenção</span>
                             </div>
                             <span class="material-icons-sharp" style="color: var(--color-warning);">
                                 radio_button_checked
@@ -206,7 +208,7 @@
                         </div>
                         <div class="icon iconcow">
                             <div class="tooltip tooltipsuc">
-                               <span style="color: rgb(98, 188, 119);">ideal</span>
+                                <span style="color: rgb(98, 188, 119);">ideal</span>
                             </div>
                             <span class="material-icons-sharp" style="color: var(--color-success);">
                                 radio_button_checked
@@ -263,7 +265,6 @@
         // setTimeout(atualizacaoPeriodica(), 12000);
     }
     
-
     function alertarTemp(temperatura) {
         var limites = {
             muito_quente: 13.8,
@@ -282,10 +283,8 @@
             alerta.innerHTML += `Temperatura esta muito alta <br> ${temperatura}°C`
             setTimeout(() => {
                 alerta.style.display = "none"
-            }, 7000);
-            setTimeout(() => {
-                atualizacaoPeriodica()
             }, 3000);
+                atualizacaoPeriodica()
             return false
         }
         else if (temperatura < limites.muito_quente && temperatura >= limites.quente) {
@@ -295,10 +294,8 @@
             alerta.innerHTML += `Temperatura esta alta <br> ${temperatura}°C`
             setTimeout(() => {
                 alerta.style.display = "none"
-            }, 7000);
-            setTimeout(() => {
-                atualizacaoPeriodica()
             }, 3000);
+                atualizacaoPeriodica()
             return false
         }
         else if (temperatura < limites.quente && temperatura >= limites.acima) {
@@ -308,10 +305,8 @@
             alerta.innerHTML += `Temperatura esta acima do Ideal <br> ${temperatura}°C`
             setTimeout(() => {
                 alerta.style.display = "none"
-            }, 7000);
-            setTimeout(() => {
-                atualizacaoPeriodica()
             }, 3000);
+                atualizacaoPeriodica()
             return false
         }
         else if (temperatura < limites.acima || temperatura > limites.ideal) {
@@ -321,10 +316,8 @@
             alerta.innerHTML += `Temperatura esta Ideal<br> ${temperatura}°C`
             setTimeout(() => {
                 alerta.style.display = "none"
-            }, 7000);
-            setTimeout(() => {
-                atualizacaoPeriodica()
             }, 3000);
+                atualizacaoPeriodica()
             return false
         }
         else if (temperatura < limites.ideal && temperatura >= limites.abaixo) {
@@ -334,10 +327,8 @@
             alerta.innerHTML += `Temperatura esta abaixo do ideal<br> ${temperatura}°C`
             setTimeout(() => {
                 alerta.style.display = "none"
-            }, 7000);
-            setTimeout(() => {
-                atualizacaoPeriodica()
             }, 3000);
+                atualizacaoPeriodica()
             return false
         }
         else if (temperatura < limites.abaixo && temperatura >= limites.frio) {
@@ -347,10 +338,8 @@
             alerta.innerHTML += `Temperatura esta baixa<br> ${temperatura}°C`
             setTimeout(() => {
                 alerta.style.display = "none"
-            }, 7000);
-            setTimeout(() => {
-                atualizacaoPeriodica()
             }, 3000);
+                atualizacaoPeriodica()
             return false
 
 
@@ -362,10 +351,8 @@
             alerta.innerHTML += `Temperatura esta muito baixa<br> ${temperatura}°C`
             setTimeout(() => {
                 alerta.style.display = "none"
-            }, 7000);
-                        setTimeout(() => {
-                atualizacaoPeriodica()
             }, 3000);
+                atualizacaoPeriodica()
             return false
         }
     }
@@ -390,10 +377,8 @@
             alerta1.innerHTML = `Umidade esta muito alta <br> ${umidade}%`
             setTimeout(() => {
                 alerta1.style.display = "none"
-            }, 7000);
-            setTimeout(() => {
-                atualizacaoPeriodica()
             }, 3000);
+                atualizacaoPeriodica()
             return false
         }
         else if (umidade < limites.muito_alta && umidade >= limites.alta) {
@@ -403,10 +388,8 @@
             alerta1.innerHTML = `Umidade esta alta<br> ${umidade}%`
             setTimeout(() => {
                 alerta1.style.display = "none"
-            }, 7000);
-            setTimeout(() => {
-                atualizacaoPeriodica()
             }, 3000);
+                atualizacaoPeriodica()
             return false
         }
         else if (umidade < limites.alta && umidade >= limites.pouco_acima) {
@@ -416,10 +399,8 @@
             alerta1.innerHTML = `Umidade esta acima do Ideal<br> ${umidade}%`
             setTimeout(() => {
                 alerta1.style.display = "none"
-            }, 7000);
-            setTimeout(() => {
-                atualizacaoPeriodica()
             }, 3000);
+                atualizacaoPeriodica()
             return false
         }
         else if (umidade < limites.pouco_acima && umidade > limites.pouco_abaixo) {
@@ -429,10 +410,8 @@
             alerta1.innerHTML = `Umidade esta Ideal<br> ${umidade}%`
             setTimeout(() => {
                 alerta1.style.display = "none"
-            }, 7000);
-            setTimeout(() => {
-                atualizacaoPeriodica()
             }, 3000);
+                atualizacaoPeriodica()
             return false
         }
         else if (umidade < limites.ideal && umidade >= limites.pouco_abaixo) {
@@ -442,10 +421,8 @@
             alerta1.innerHTML = `Umidade esta abaixo do ideal<br> ${umidade}%`
             setTimeout(() => {
                 alerta1.style.display = "none"
-            }, 7000);
-            setTimeout(() => {
-                atualizacaoPeriodica()
             }, 3000);
+                atualizacaoPeriodica()
             return false
         }
         else if (umidade < limites.pouco_abaixo && umidade > limites.baixa) {
@@ -455,10 +432,8 @@
             alerta1.innerHTML = `Umidade esta baixa<br> ${umidade}%`
             setTimeout(() => {
                 alerta1.style.display = "none"
-            }, 7000);
-            setTimeout(() => {
-                atualizacaoPeriodica()
             }, 3000);
+                atualizacaoPeriodica()
             return false
         }
         else if (umidade <= limites.muito_baixa) {
@@ -468,10 +443,8 @@
             alerta1.innerHTML = `Umidade esta muito baixa<br> ${umidade}%`
             setTimeout(() => {
                 alerta1.style.display = "none"
-            }, 7000);
-            setTimeout(() => {
-                atualizacaoPeriodica()
             }, 3000);
+                atualizacaoPeriodica()
             return false
         }
     }
@@ -505,8 +478,8 @@ function plotarViagem(resposta) {
 const formattedDate = date.toLocaleDateString();
         mostrar.innerHTML += `
                     <tr>
-                        <td>${registro.nome}</td>
                         <td>${registro.placa}</td>
+                        <td>${registro.nome}</td>
                         <td>${registro.qtd_tomate}</td>
                         <td class="warning">EM ANDAMENTO</td>
                     </tr>

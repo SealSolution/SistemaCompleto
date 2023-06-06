@@ -12,7 +12,7 @@ function buscarUltimasMedidas(req, res) {
         if (resultado.length > 0) {
             setTimeout(() => {
                 res.status(200).json(resultado);
-                }, 7000)
+            }, 3000)
         } else {
             res.status(204).send("Nenhum resultado encontrado!")
         }
@@ -33,8 +33,8 @@ function buscarMedidasEmTempoReal(req, res) {
     medidaModel.buscarMedidasEmTempoReal(idAquario).then(function (resultado) {
         if (resultado.length > 0) {
             setTimeout(() => {
-            res.status(200).json(resultado);
-            }, 7000)
+                res.status(200).json(resultado);
+            }, 3000)
         } else {
             res.status(204).send("Nenhum resultado encontrado!")
         }
@@ -56,7 +56,9 @@ function buscarUltimasMedidas2(req, res) {
 
     medidaModel.buscarUltimasMedidas2(idAquario, limite_linhas).then(function (resultado) {
         if (resultado.length > 0) {
-            res.status(200).json(resultado);
+            setTimeout(() => {
+                res.status(200).json(resultado);
+            }, 10000)
         } else {
             res.status(204).send("Nenhum resultado encontrado!")
         }
@@ -76,7 +78,9 @@ function buscarMedidasEmTempoReal2(req, res) {
 
     medidaModel.buscarMedidasEmTempoReal2(idAquario).then(function (resultado) {
         if (resultado.length > 0) {
-            res.status(200).json(resultado);
+            setTimeout(() => {
+                res.status(200).json(resultado);
+            }, 10000)
         } else {
             res.status(204).send("Nenhum resultado encontrado!")
         }
@@ -97,7 +101,9 @@ function buscarUltimasMedidasDonnut(req, res) {
 
     medidaModel.buscarUltimasMedidasDonnut(idAquario, limite_linhas).then(function (resultado) {
         if (resultado.length > 0) {
-            res.status(200).json(resultado);
+            setTimeout(() => {
+                res.status(200).json(resultado);
+            }, 10000)
         } else {
             res.status(204).send("Nenhum resultado encontrado!")
         }
@@ -117,7 +123,9 @@ function buscarMedidasEmTempoRealDonnut(req, res) {
 
     medidaModel.buscarMedidasEmTempoRealDonnut(idAquario).then(function (resultado) {
         if (resultado.length > 0) {
-            res.status(200).json(resultado);
+            setTimeout(() => {
+                res.status(200).json(resultado);
+            }, 10000)
         } else {
             res.status(204).send("Nenhum resultado encontrado!")
         }

@@ -97,7 +97,7 @@
                     <table>
                         <thead>
                             <tr>
-                                <th>CAMINHÃO</th>
+                                <th>PLACA(CAMINHÃO)</th>
                                 <th>MOTORISTA</th>
                                 <th>TOMATES</th>
                                 <th>STATUS</th>
@@ -161,7 +161,7 @@
                             </dd>
                         </dl>
                         <dl class="inputbox">
-                            <dt class="inputbox-title">Selecione o </dt>
+                            <dt class="inputbox-title">Selecione o</dt>
                             <dd class="inputbox-content">
                                 <div class="select">
                                     <select id="ipt_motorista">
@@ -172,7 +172,7 @@
                             </dd>
                         </dl>
                         <dl class="inputbox">
-                            <dt class="inputbox-title">Selecione a </dt>
+                            <dt class="inputbox-title">Selecione a</dt>
                             <dd class="inputbox-content">
                                 <div class="select">
                                     <select id="ipt_remessa">
@@ -198,6 +198,7 @@
   
     function cadastrar(){
         var caminhaoVar = ipt_caminhao.value
+        
         var motoristaVar = ipt_motorista.value
         var remessaVar = ipt_remessa.value
         if(caminhaoVar == "" || motoristaVar == "" || remessaVar == ""){
@@ -257,7 +258,7 @@
                 `
                 setTimeout(() => {
                     alertar.style.display = 'none'
-                    window.location.href = "./tomates.html"
+                    window.location.href = "./Viagem.html"
                 }, 2000);
 
                 } else {
@@ -396,11 +397,11 @@ function plotarViagem(resposta) {
         var registro = resposta[i];
         
         const date =  new Date(registro.data);
-const formattedDate = date.toLocaleDateString();
+        const formattedDate = date.toLocaleDateString();
         mostrar.innerHTML += `
                     <tr>
-                        <td>${registro.nome}</td>
                         <td>${registro.placa}</td>
+                        <td>${registro.nome}</td>
                         <td>${registro.qtd_tomate}</td>
                         <td class="warning">EM ANDAMENTO</td>
                     </tr>

@@ -1,157 +1,162 @@
 <!DOCTYPE html>
 <html lang="PT-BR">
-
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <title>LOGIN USUÁRIO</title>
-
-  <script src="../js/funcao.js"></script>
-
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-  <link rel="stylesheet" href="style.css" />
-
-</head>
-
-<body>
-  <div class="container">
-    <div class="forms-container">
-      <div class="signin-signup">
-
-        <!-- Login -->
-        <form class="sign-in-form">
-          <h2 class="title">LOGAR</h2>
-          <div id="alerta"></div>
-          <div class="input-field">
-            <i class="fas fa-user"></i>
-            <input type="email" id="ipt_email" placeholder="Email" />
-          </div>
-          <div class="input-field">
-            <i class="fas fa-lock"></i>
-            <input type="password" id="in_senha" placeholder="Senha" />
-          </div>
-          <a onclick="entrar()" class="btn solid">Login</a>
-          <a href="./recuperar_senha.html" class="nav_logins">Esqueceu a senha ? clique aqui </a>
-        </form>
-
-
-        <!-- Cadastro de usuario empresa-->
-        <form action="" class="sign-up-form">
-          <h2 class="title">CADASTRE-SE</h2>
-          <input id='step2' type='checkbox'>
-
-          <div id="alerta_cadastro"></div>
-          <div id="part1" class="form-group">
-            
-            
-            <section>
-              <div class="container-fluid">
-                <p>INFORMAÇÕES DO USUÁRIO</p>
-                <div class="input-field">
-                  <i class="fas fa-user"></i>
-                  <input type="text" placeholder="Nome Usuário" id="ipt_nome" />
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>LOGIN USUÁRIO</title>
+        <script src="../js/funcao.js"></script>
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+            integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        >
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="container">
+            <div class="forms-container">
+                <div class="signin-signup">
+                    <!-- Login -->
+                    <form class="sign-in-form">
+                        <h2 class="title">LOGAR</h2>
+                        <div id="alerta"></div>
+                        <div class="input-field">
+                            <i class="fas fa-user"></i>
+                            <input type="email" id="ipt_email" placeholder="Email">
+                        </div>
+                        <div class="input-field">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" id="in_senha" placeholder="Senha">
+                        </div>
+                        <a onclick="entrar()" class="btn solid">Login</a>
+                        <a href="./recuperar_senha.html" class="nav_logins">Esqueceu a senha ? clique aqui</a>
+                    </form>
+                    <!-- Cadastro de usuario empresa-->
+                    <form action="" class="sign-up-form">
+                        <h2 class="title">CADASTRE-SE</h2>
+                        <input id="step2" type="checkbox">
+                        <div id="alerta_cadastro"></div>
+                        <div id="part1" class="form-group">
+                            <section>
+                                <div class="container-fluid">
+                                    <p>INFORMAÇÕES DO USUÁRIO</p>
+                                    <div class="input-field">
+                                        <i class="fas fa-user"></i>
+                                        <input type="text" placeholder="Nome Usuário" id="ipt_nome">
+                                    </div>
+                                    <div class="input-field">
+                                        <i class="fa-solid fa-at"></i>
+                                        <input type="text" placeholder="Email" id="input_email">
+                                    </div>
+                                    <div class="input-field">
+                                        <i class="fa-solid fa-user-pen"></i>
+                                        <input
+                                        maxlength="14"
+                                        id="cpf"
+                                        placeholder="CPF"
+                                        onkeypress="CPF(cpf.value)"
+                                    >
+                                    </div>
+                                    <div class="input-field">
+                                        <i class="fas fa-lock"></i>
+                                        <input
+                                            type="password"
+                                            placeholder="Senha"
+                                            id="ipt_senha"
+                                            maxlength="12"
+                                        >
+                                    </div>
+                                    <div style="display: flex; flex-direction: row; gap: 30px;">
+                                        <label for="step2" class="continue">
+                                            <div class="btn solid" role="button">Continue</div>
+                                        </label>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                        <div id="part2" class="form-group">
+                            <section>
+                                <div class="container-fluid">
+                                    <p>CADASTRO DA EMPRESA</p>
+                                    <div class="input-field">
+                                        <i class="fa-solid fa-building"></i>
+                                        <input type="text" placeholder="Digite o nome da empresa" id="ipt_nomeEmpresa">
+                                    </div>
+                                    <div class="input-field">
+                                        <i class="fas fa-location-dot"></i>
+                                        <input
+                                            type="text"
+                                            maxlength="14"
+                                            id="ipt_cnpj"
+                                            placeholder="Digite o cnpj"
+                                        >
+                                    </div>
+                                    <div class="textarea-field">
+                                        <i class="fa fa-scroll"></i>
+                                        <textarea
+                                            id="ipt_desc_empresa"
+                                            placeholder="Descrição da empresa"
+                                            cols="30"
+                                            rows="10"
+                                        ></textarea>
+                                    </div>
+                                    <div style="display: flex; flex-direction: row; gap: 30px;">
+                                        <label for="step2" class="back">
+                                            <div class="btn solid" role="button">Voltar</div>
+                                        </label>
+                                        <label>
+                                            <a onclick="juntar()" class="btn solid">CADASTRAR</a>
+                                        </label>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                    </form>
                 </div>
-                <div class="input-field">
-                  <i class="fa-solid fa-at"></i>
-                  <input type="text" placeholder="Email" id="input_email" />
+            </div>
+            <!-- transição -->
+            <div class="panels-container">
+                <div class="panel left-panel">
+                    <div class="content">
+                        <h3>NOVO POR AQUI ?</h3>
+                        <p>
+                            Olá cadastre-se para ter benefícios exclusivos e novos conteúdos
+                        </p>
+                        <div style="display: flex; flex-direction: row; gap: 20px;">
+                            <button onclick="ir_cadastro()" class="btn transparent" id="sign-up-btn">
+                                Inscrever-se
+                            </button>
+                            <a href="../SitePomodoFinalizado/index.html">
+                                <div class="btn transparent">Voltar</div>
+                            </a>
+                        </div>
+                    </div>
+                    <img src="img/log 2,0.png" class="image" alt="">
                 </div>
-                <div class="input-field">
-                  <i class="fa-solid fa-user-pen"></i>
-                  <input type="text" placeholder="Digite o seu CPF" maxlength="14" id="cpf" />
+                <div class="panel right-panel">
+                    <div class="content">
+                        <h3>POR ACASO JÁ É UM DE NÓS ?</h3>
+                        <p>
+                            Logue em sua conta para continuar sua navegação pelo nosso conteudo
+                        </p>
+                        <div style="display: flex; flex-direction: row; gap: 20px;">
+                            <button onclick="voltar_login()" class="btn transparent" id="sign-in-btn">
+                                Entrar
+                            </button>
+                            <a href="../SitePomodoFinalizado/index.html">
+                                <div class="btn transparent">Voltar</div>
+                            </a>
+                        </div>
+                    </div>
+                    <img src="./img/register.png" class="image" alt="">
                 </div>
-                <div class="input-field">
-                  <i class="fas fa-lock"></i>
-                  <input type="password" placeholder="Senha" id="ipt_senha" maxlength="12" />
-                </div>
-                <div style="display: flex; flex-direction: row; gap: 30px;">
-                  <label for='step2' class="continue">
-                    <div class="btn solid" role="button">Continue</div>
-                  </label>
-                </div>
-              </div>
-            </section>
-          </div>
-
-          <div id="part2" class="form-group">
-            <section>
-              <div class="container-fluid">
-                <p>CADASTRO DA EMPRESA</p>
-                <div class="input-field">
-                  <i class="fa-solid fa-building"></i>
-                  <input type="text" placeholder="Digite o nome da empresa" id="ipt_nomeEmpresa" />
-                </div>
-                <div class="input-field">
-                  <i class="fas fa-location-dot"></i>
-                  <input type="text" maxlength="14" id="ipt_cnpj" placeholder="Digite o cnpj" />
-                </div>
-                <div class="textarea-field">
-                  <i class="fa fa-scroll"></i>
-                  <textarea id="ipt_desc_empresa" placeholder="Descrição da empresa" cols="30" rows="10"></textarea>
-                </div>
-
-                <div style="display: flex; flex-direction: row; gap: 30px;">
-                  <label for='step2' class="back">
-                    <div class="btn solid" role="button">Voltar</div>
-                  </label>
-                  <label>
-                    <a onclick="juntar()" class="btn solid">CADASTRAR</a>
-                  </label>
-                </div>
-              </div>
-            </section>
-          </div>
-        </form>
-      </div>
-    </div>
-
-    <!-- transição -->
-    <div class="panels-container">
-      <div class="panel left-panel">
-        <div class="content">
-          <h3>NOVO POR AQUI ?</h3>
-          <p>
-            Olá cadastre-se para ter benefícios exclusivos e novos conteúdos
-          </p>
-          <div style="display: flex; flex-direction: row; gap: 20px;">
-            <button onclick="ir_cadastro()" class="btn transparent" id="sign-up-btn">
-              Inscrever-se
-            </button>
-            <a href="../SitePomodoFinalizado/index.html">
-              <div class="btn transparent">Voltar</div>
-            </a>
-          </div>
+            </div>
         </div>
-        <img src="img/log 2,0.png" class="image" alt="" />
-      </div>
-      <div class="panel right-panel">
-        <div class="content">
-          <h3>POR ACASO JÁ É UM DE NÓS ?</h3>
-          <p>
-            Logue em sua conta para continuar sua navegação pelo nosso conteudo
-          </p>
-          <div style="display: flex; flex-direction: row; gap: 20px;">
-            <button onclick="voltar_login()" class="btn transparent" id="sign-in-btn">
-              Entrar
-            </button>
-            <a href="../SitePomodoFinalizado/index.html">
-              <div class="btn transparent">Voltar</div>
-            </a>
-          </div>
-        </div>
-        <img src="./img/register.png" class="image" alt="" />
-      </div>
-    </div>
-  </div>
-
-</body>
-
-<script src="./js/main.js"></script>
-<script src="./js/app.js"></script>
-
+    </body>
+    <script src="./js/main.js"></script>
+    <script src="./js/app.js"></script>
 </html>
 <script>
   function cadastrar() {
@@ -162,6 +167,7 @@
     var emailVar = input_email.value;
     var cpfVar = cpf.value;
     var senhaVar = ipt_senha.value;
+    cpfVar = cpfVar.replaceAll("-","").replaceAll(".", "") // Remoção de mascara
 
     console.log(nomeVar, emailVar, cpfVar,
       senhaVar)
@@ -370,5 +376,4 @@ fetch("/usuarios/cadastrar2", {
 
 return false;
 }
-
 </script>

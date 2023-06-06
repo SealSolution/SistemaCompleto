@@ -107,7 +107,7 @@
                         </thead>
                         <tbody id="mostrar"></tbody>
                     </table>
-                    <a href="#cadastro_user">CADASTRAR FUNCIONÁRIO</a>
+                    <a href="#cadastro_user">CADASTRAR MOTORISTA</a>
                 </div>
             </main>
             <!----------- end main ------------->
@@ -176,11 +176,11 @@
                             <dt class="inputbox-title">CPF</dt>
                             <dd class="inputbox-content">
                                 <input
-                                    maxlength="14"
-                                    id="ipt_cpfMotorista"
-                                    placeholder="CPF"
-                                    onkeypress="CPF(cpf.value)"
-                                >
+                                maxlength="14"
+                                id="cpf"
+                                placeholder="CPF"
+                                onkeypress="CPF(cpf.value)"
+                            >
                                 <span class="underline"></span>
                             </dd>
                         </dl>
@@ -197,9 +197,10 @@
     
     function cadastro(){
         var nomeVar= ipt_nomeMotorista.value
-        var cpfVar = ipt_cpfMotorista.value
+        var cpfVar = cpf.value;
         var cnhVar = ipt_cnhMotorista.value
         var dtNasctoVar = ipt_NasctMotorista.value
+        cpfVar = cpfVar.replaceAll("-","").replaceAll(".", "") // Remoção de mascara
         
         if(nomeVar == "" || cpfVar == "" ||dtNasctoVar === "" ||cnhVar == ""){
             result.innerHTML = `
